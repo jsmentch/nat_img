@@ -1,5 +1,0 @@
-[submodule "inputs/data/HCP_7T_movie"]
-	path = inputs/data/HCP_7T_movie
-	url = /om4/group/gablab/data/HCP_7T_movie
-	datalad-id = da8f5f85-de39-4d04-bfe4-047f06d41b27
-	datalad-url = /om4/group/gablab/data/HCP_7T_movie
