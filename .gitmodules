@@ -1,10 +1,9 @@
-[submodule "inputs/data/HCP_7T_movie"]
-	path = inputs/data/HCP_7T_movie
-	url = /om4/group/gablab/data/HCP_7T_movie
-	datalad-id = da8f5f85-de39-4d04-bfe4-047f06d41b27
-	datalad-url = /om4/group/gablab/data/HCP_7T_movie
 [submodule "inputs/data/HCP_7T_movie_FIX/stimuli/hcp-7T_Movies"]
 	path = inputs/data/HCP_7T_movie_FIX/stimuli/hcp-7T_Movies
 	url = https://github.com/datalad-datasets/hcp-7T_Movies.git
 	datalad-id = 4757cbbb-3d98-48a2-a298-9dbf17d9b394
 	datalad-url = https://github.com/datalad-datasets/hcp-7T_Movies.git
+[submodule "inputs/data/HCP_7T_movie_FIX/brain/HCP_7T_movie_FIX"]
+	path = inputs/data/HCP_7T_movie_FIX/brain/HCP_7T_movie_FIX
+	url = /om4/group/gablab/data/HCP_7T_movie
+	datalad-id = da8f5f85-de39-4d04-bfe4-047f06d41b27
