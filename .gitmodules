@@ -7,3 +7,4 @@
 	path = inputs/data/HCP_7T_movie_FIX/stimuli/hcp-7T_Movies
 	url = https://github.com/datalad-datasets/hcp-7T_Movies.git
 	datalad-id = 4757cbbb-3d98-48a2-a298-9dbf17d9b394
+	datalad-url = https://github.com/datalad-datasets/hcp-7T_Movies.git
