@@ -47,7 +47,7 @@ def extract_low_level(args,basename,y,sr):
     np.save(args.output_dir+'/'+basename+'_mfcc.npy', mfcc)
     np.save(args.output_dir+'/'+basename+'_mfs.npy', mfs)
     
-def extract_cochleagram(args,y,sr):
+def extract_cochleagram(args,basename,y,sr):
     #requires pycochleagram
     from pycochleagram.cochleagram import cochleagram
     pc = cochleagram(signal=y, sr=sr, n=40,low_lim=186, hi_lim=6817, sample_factor=1)
@@ -56,7 +56,7 @@ def extract_cochleagram(args,y,sr):
     pc_downsampled = apply_envelope_downsample(pc, mode='poly', audio_sr=sr, env_sr=22, )
     np.save(args.output_dir+'/'+basename+"_pycochleagram.npy",pc_downsampled)
     
-def extract_voxel_decomp_cochleagram(args,y,sr):
+def extract_voxel_decomp_cochleagram(args,basename,y,sr):
     from pycochleagram.cochleagram import cochleagram
     pc = cochleagram(signal=y, sr=sr, n=6,low_lim=200, hi_lim=6400, sample_factor=1)
     # the first and last must be high and low pass filters (for reconstruction) that can be discarded
