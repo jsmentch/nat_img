@@ -39,7 +39,7 @@ def main():
 def load_wav(wav_in):
     #wav_data, sr = sf.read(wav_in, dtype=np.int16)
     #waveform = wav_data / 32768.0 # because it is 16bit this will scale it to -1 to 1
-    y, sr = librosa.load(wav_in)
+    y, sr = librosa.load(wav_in,sr=16000)
     return y,sr
 
 def extract_low_level(args,basename,y,sr):
@@ -53,6 +53,7 @@ def extract_low_level(args,basename,y,sr):
 def extract_cochleagram(args,basename,y,sr):
     #requires pycochleagram
     from pycochleagram.cochleagram import cochleagram
+    y=y[:-(y.size % sr)] #trim end of audio
     pc = cochleagram(signal=y, sr=sr, n=40,low_lim=186, hi_lim=6817, sample_factor=1)
     #np.save("/om2/user/jsmentch/data/audio_features/merlin_pycochleagram.npy",pc)
     from pycochleagram.cochleagram import apply_envelope_downsample
@@ -61,10 +62,11 @@ def extract_cochleagram(args,basename,y,sr):
     
 def extract_voxel_decomp_cochleagram(args,basename,y,sr):
     from pycochleagram.cochleagram import cochleagram
+    y=y[:-(y.size % sr)] #trim end of audio
     pc = cochleagram(signal=y, sr=sr, n=6,low_lim=200, hi_lim=6400, sample_factor=1)
     # the first and last must be high and low pass filters (for reconstruction) that can be discarded
     from pycochleagram.cochleagram import apply_envelope_downsample
-    pc_downsampled = apply_envelope_downsample(pc, mode='poly', audio_sr=sr, env_sr=22, )
+    pc_downsampled = apply_envelope_downsample(pc, mode='poly', audio_sr=sr, env_sr=16, )
     np.save(args.output_dir+'/'+basename+"_pycochleagram_6.npy",pc_downsampled)
     
 def extract_audioset(args,basename,y,sr):
