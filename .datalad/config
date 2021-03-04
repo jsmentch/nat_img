@@ -1,2 +1,5 @@
 [datalad "dataset"]
 	id = 1dae8cc0-2d6c-4436-a301-0567559fdd52
+[datalad "containers.analysis"]
+	image = .datalad/environments/analysis/image
+	cmdexec = singularity exec {img} {cmd}
