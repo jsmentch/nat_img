@@ -1,7 +1,7 @@
 # -----------------------------------------------------------
 # script to extract basic audio features from audio files
 #
-# first time using argparse believe it or not
+# 
 # -----------------------------------------------------------
 """
 script to extract a few basic audio features from an audio file.
