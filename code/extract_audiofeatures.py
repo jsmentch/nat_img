@@ -39,7 +39,7 @@ def main():
 def load_wav(wav_in):
     #wav_data, sr = sf.read(wav_in, dtype=np.int16)
     #waveform = wav_data / 32768.0 # because it is 16bit this will scale it to -1 to 1
-    y, sr = librosa.load(wav_in, sr=16000)
+    y, sr = librosa.load(wav_in)
     return y,sr
 
 def extract_low_level(args,basename,y,sr):
