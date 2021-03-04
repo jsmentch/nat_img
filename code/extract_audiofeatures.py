@@ -67,7 +67,7 @@ def extract_voxel_decomp_cochleagram(args,basename,y,sr):
     # the first and last must be high and low pass filters (for reconstruction) that can be discarded
     from pycochleagram.cochleagram import apply_envelope_downsample
     pc_downsampled = apply_envelope_downsample(pc, mode='poly', audio_sr=sr, env_sr=16, )
-    np.save(args.output_dir+'/'+basename+"_pycochleagram_6.npy",pc_downsampled)
+    np.save(args.output_dir+basename+"_pycochleagram_6.npy",pc_downsampled)
     
 def extract_audioset(args,basename,y,sr):
     import tensorflow as tf
