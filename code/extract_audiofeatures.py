@@ -6,13 +6,14 @@
 """
 script to extract a few basic audio features from an audio file.
 pycochleagram is required to get cochleagrams
+tensorflow and tensorflow_hub required for yamnet/audioset
 other dependencies: librosa, soundfile
 Standard usage: extract_audiofeatures.py '/user/home/test.wav' '/user/home/exports/' -l
 """
 import argparse
 from pathlib import Path
 import numpy as np
-import soundfile as sf
+#import soundfile as sf
 import librosa
 
 def main():
@@ -22,6 +23,7 @@ def main():
     parser.add_argument("-c", "--cochleagram", action='store_true', help="extract 40 band cochleagram with pycochleagram")
     parser.add_argument("-c6", "--cochleagram6", action='store_true', help="extract 6 band cochleagram with pycochleagram")
     parser.add_argument("-l", "--low", action='store_true', help="extract low level features")
+    parser.add_argument("-a", "--audioset", action='store_true', help="extract audioset features and embeddings")
     args = parser.parse_args()
     basename = Path(args.wav_in).stem
     y,sr=load_wav(args.wav_in)
@@ -31,12 +33,13 @@ def main():
         extract_cochleagram(args,basename,y,sr)
     if args.cochleagram6:
         extract_voxel_decomp_cochleagram(args,basename,y,sr)
+    if args.audioset:
+        extract_audioset(args,basename,y,sr)
 
 def load_wav(wav_in):
-    wav_file_name = wav_in
-    wav_data, sr = sf.read(wav_file_name, dtype=np.int16)
-    waveform = wav_data / 32768.0 # because it is 16bit this will scale it to -1 to 1
-    y, sr = librosa.load(wav_file_name)
+    #wav_data, sr = sf.read(wav_in, dtype=np.int16)
+    #waveform = wav_data / 32768.0 # because it is 16bit this will scale it to -1 to 1
+    y, sr = librosa.load(wav_in, sr=16000)
     return y,sr
 
 def extract_low_level(args,basename,y,sr):
@@ -63,6 +66,15 @@ def extract_voxel_decomp_cochleagram(args,basename,y,sr):
     from pycochleagram.cochleagram import apply_envelope_downsample
     pc_downsampled = apply_envelope_downsample(pc, mode='poly', audio_sr=sr, env_sr=22, )
     np.save(args.output_dir+'/'+basename+"_pycochleagram_6.npy",pc_downsampled)
+    
+def extract_audioset(args,basename,y,sr):
+    import tensorflow as tf
+    import tensorflow_hub as hub
+    import numpy as np
+    model = hub.load('https://tfhub.dev/google/yamnet/1')
+    scores, embeddings, log_mel_spectrogram = model(waveform)
+    np.save(args.output_dir+'/'+basename+"_as_scores.npy",scores.numpy())
+    np.save(args.output_dir+'/'+basename+"_as_embed.npy",scores.embeddings())
     
 if __name__ == "__main__":
     main()
