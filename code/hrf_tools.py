@@ -1,9 +1,39 @@
 # convenience functions to apply hrf to features
 # jsm 3/4/21
+import argparse
+from pathlib import Path
+import numpy as np
+from scipy.stats import gamma
 
-import nibabel as nb
-import hcp_utils as hcp
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("feat_in", type=str, help="input feature file")
+    parser.add_argument("output_dir", type=str, help="path to dir to save output")
+    args = parser.parse_args()
+    basename = Path(args.feat_in).stem
+    feat=np.load(args.feat_in)
+    feat_hrf=apply_optimal_hrf_10hz(feat)
+    feat_out = resample_1hz(feat_hrf)
+    np.save(args.output_dir+'/'+basename+'_hrf.npy', feat_out)
+    
+def apply_optimal_hrf_10hz(feat_in):
+    #applies optimal hrf from merlin study to a 10hz feature 
+    t=np.arange(320)
+    optimal_hrf=spm_hrf_compat(t,
+                   peak_delay=60,
+                   under_delay=180,
+                   peak_disp=14,
+                   under_disp=15,
+                   p_u_ratio = 4,
+                   normalize=False,)
+    n_to_remove = optimal_hrf.shape[0]-1 #how much to trim from end after convolution
+    for m in np.arange(feat_in.shape[1]):
+        feat_in[:,m]=np.convolve(feat_in[:,m], optimal_hrf)[:-n_to_remove]
+    return feat_in
 
+def resample_1hz(feat_in):
+    feat_in = feat_in[:,::10] 
+    return feat_in
 
 # SPM's HRF
 def spm_hrf_compat(t,
@@ -70,19 +100,5 @@ def spm_hrf_compat(t,
         return hrf
     return hrf / np.max(hrf)
 
-
-def apply_optimal_hrf_10hz(feat_in):
-    #applies optimal hrf from merlin study to a 10hz feature 
-    t=320
-    optimal_hrf=spm_hrf_compat(t,
-                   peak_delay=60,
-                   under_delay=180,
-                   peak_disp=14,
-                   under_disp=15,
-                   p_u_ratio = 4,
-                   normalize=False,)
-    n_to_remove = hrf.shape[0]-1 #how much to trim from end after convolution
-    
-    for m in np.arange(feat_in.shape[1]):
-        feat_in[:,m]=np.convolve(feat_in[:,m], optimal_hrf)[:-n_to_remove]
-    return feat_in
+if __name__ == "__main__":
+    main()
