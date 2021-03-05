@@ -4,6 +4,7 @@ import argparse
 from pathlib import Path
 import numpy as np
 from scipy.stats import gamma
+import glob
 
 def main():
     parser = argparse.ArgumentParser()
@@ -21,6 +22,7 @@ def main():
         feat_out = resample_1hz(feat_hrf)
         np.save(args.output_dir+'/'+basename+'_hrf.npy', feat_out)
     if args.directory:
+        print(args.feat_in + "*.npy")
         file_list = glob.glob(args.feat_in + "*.npy")
         for f in file_list:
             basename = Path(f).stem
