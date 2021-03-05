@@ -10,10 +10,10 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("feat_in", type=str, help="input feature file")
     parser.add_argument("output_dir", type=str, help="path to dir to save output")
-    group = parser.add_mutually_exclusive_group()
+    group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("-f", "--file", action='store_true', help="run on a file")
     group.add_argument("-d", "--directory", action='store_true', help="run on all .npy files in a directory directory")
-    parser.set_defaults(file=True, directory=False)
+    #parser.set_defaults(file=True, directory=False)
     args = parser.parse_args()
     if args.file:
         basename = Path(args.feat_in).stem
@@ -21,7 +21,7 @@ def main():
         feat_hrf=apply_optimal_hrf_10hz(feat)
         feat_out = resample_1hz(feat_hrf)
         np.save(args.output_dir+'/'+basename+'_hrf.npy', feat_out)
-    if args.directory:
+    elif args.directory:
         print(args.feat_in + "*.npy")
         file_list = glob.glob(args.feat_in + "*.npy")
         for f in file_list:
