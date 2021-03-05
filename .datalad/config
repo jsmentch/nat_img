@@ -3,6 +3,3 @@
 [datalad "containers.analysis"]
 	image = .datalad/environments/analysis/image
 	cmdexec = singularity exec {img} {cmd}
-[datalad "containers.feature-extraction"]
-	image = .datalad/environments/feature-extraction/image
-	cmdexec = singularity exec {img} {cmd}
