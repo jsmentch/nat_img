@@ -1,10 +1,10 @@
 # -----------------------------------------------------------
 # script to extract basic audio features from audio files
 #
-# first time using argparse believe it or not
+# 
 # -----------------------------------------------------------
 """
-script to extract a few basic audio features from an audio file.
+script to extract a few basic audio features from an audio file at 10hz
 pycochleagram is required to get cochleagrams
 tensorflow and tensorflow_hub required for yamnet/audioset
 other dependencies: librosa, soundfile
@@ -57,7 +57,7 @@ def extract_cochleagram(args,basename,y,sr):
     pc = cochleagram(signal=y, sr=sr, n=40,low_lim=186, hi_lim=6817, sample_factor=1)
     #np.save("/om2/user/jsmentch/data/audio_features/merlin_pycochleagram.npy",pc)
     from pycochleagram.cochleagram import apply_envelope_downsample
-    pc_downsampled = apply_envelope_downsample(pc, mode='poly', audio_sr=sr, env_sr=22, )
+    pc_downsampled = apply_envelope_downsample(pc, mode='poly', audio_sr=sr, env_sr=16, )
     np.save(args.output_dir+'/'+basename+"_pycochleagram.npy",pc_downsampled)
     
 def extract_voxel_decomp_cochleagram(args,basename,y,sr):
@@ -67,7 +67,7 @@ def extract_voxel_decomp_cochleagram(args,basename,y,sr):
     # the first and last must be high and low pass filters (for reconstruction) that can be discarded
     from pycochleagram.cochleagram import apply_envelope_downsample
     pc_downsampled = apply_envelope_downsample(pc, mode='poly', audio_sr=sr, env_sr=16, )
-    np.save(args.output_dir+'/'+basename+"_pycochleagram_6.npy",pc_downsampled)
+    np.save(args.output_dir+basename+"_pycochleagram_6.npy",pc_downsampled)
     
 def extract_audioset(args,basename,y,sr):
     import tensorflow as tf
