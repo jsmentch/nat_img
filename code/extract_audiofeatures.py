@@ -14,6 +14,8 @@ import argparse
 from pathlib import Path
 import numpy as np
 #import soundfile as sf
+import os
+os.environ[ 'NUMBA_CACHE_DIR' ] = '/tmp/' #this fixes a numba bug to allow librosa import
 import librosa
 
 def main():
