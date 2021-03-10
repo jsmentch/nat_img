@@ -6,3 +6,7 @@
 	path = sourcedata/data/HCP_7T_movie_FIX/stimuli/hcp-7T_Movies
 	url = https://github.com/datalad-datasets/hcp-7T_Movies.git
 	datalad-id = 4757cbbb-3d98-48a2-a298-9dbf17d9b394
+[submodule "sourcedata/data/human-connectome-project-openaccess"]
+	path = sourcedata/data/human-connectome-project-openaccess
+	url = /om2/user/jsmentch/data/datalad/human-connectome-project-openaccess/
+	datalad-id = 2e2a8a70-3eaa-11ea-a9a5-b4969157768c
