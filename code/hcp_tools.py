@@ -58,4 +58,27 @@ def load_data(subject,feature,n_movies):
     Y=np.vstack(y_l)
     X=np.vstack(x_l)
     X = scaler.fit_transform(X)
-    return X,Y
+    vertex_info = hcp.get_HCP_vertex_info(img)
+    return X,Y,vertex_info
+
+def load_flatmaps_59k():
+    from nilearn import surface
+    from sklearn.utils import Bunch
+    surf_path_msm = '../sourcedata/data/human-connectome-project-openaccess/HCP1200/100610/T1w/fsaverage_LR59k/100610.L.inflated_1.6mm_MSMAll.59k_fs_LR.surf.gii'
+    meshes = Bunch()
+    for hemisphere, hemisphere_name in [('L', 'left'), ('R', 'right')]:
+        coord, faces = surface.load_surf_mesh(surf_path_msm)
+        coordnew = np.zeros_like(coord)
+        coordnew[:, 1] = coord[:, 0]
+        coordnew[:, 2] = coord[:, 1]
+        coordnew[:, 0] = 0
+        coord = coordnew
+        meshes['flat'+'_'+hemisphere_name] = coord, faces
+    coordl, facesl = meshes['flat_left']
+    coordr, facesr = meshes['flat_right']
+    coordlnew = coordl.copy()
+    coordlnew[:, 1] = coordl[:, 1] - 250.0
+    coordrnew = coordr.copy()
+    coordrnew[:, 1] = coordr[:, 1] + 250.0
+    meshes['flat'] = hcp.combine_meshes( (coordlnew, facesl), (coordrnew, facesr) )
+    return meshes
