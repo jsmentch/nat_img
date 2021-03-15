@@ -64,10 +64,11 @@ def load_data(subject,feature,n_movies):
 def load_flatmaps_59k():
     from nilearn import surface
     from sklearn.utils import Bunch
-    surf_path_msm = '../sourcedata/data/human-connectome-project-openaccess/HCP1200/100610/T1w/fsaverage_LR59k/100610.L.inflated_1.6mm_MSMAll.59k_fs_LR.surf.gii'
+    surf_path_msm_L = '../sourcedata/data/human-connectome-project-openaccess/HCP1200/100610/MNINonLinear/fsaverage_LR59k/100610.L.flat.59k_fs_LR.surf.gii'
+    surf_path_msm_R = '../sourcedata/data/human-connectome-project-openaccess/HCP1200/100610/MNINonLinear/fsaverage_LR59k/100610.R.flat.59k_fs_LR.surf.gii'
     meshes = Bunch()
-    for hemisphere, hemisphere_name in [('L', 'left'), ('R', 'right')]:
-        coord, faces = surface.load_surf_mesh(surf_path_msm)
+    for hemisphere, hemisphere_name, hemisphere_path in [('L', 'left', surf_path_msm_L), ('R', 'right', surf_path_msm_R)]:
+        coord, faces = surface.load_surf_mesh(hemisphere_path)
         coordnew = np.zeros_like(coord)
         coordnew[:, 1] = coord[:, 0]
         coordnew[:, 2] = coord[:, 1]
