@@ -83,8 +83,8 @@ def extract_audioset(args,basename,y,sr,dur_10hz):
     import numpy as np
     model = hub.load('https://tfhub.dev/google/yamnet/1')
     scores, embeddings, log_mel_spectrogram = model(y)
-    np.save(args.output_dir+'/'+basename+"_as_scores.npy",scores.numpy())
-    np.save(args.output_dir+'/'+basename+"_as_embed.npy",embeddings.numpy())
+    np.save(args.output_dir+'/'+basename+"_as_scores.npy",scores.numpy().T)
+    np.save(args.output_dir+'/'+basename+"_as_embed.npy",embeddings.numpy().T)
     
 if __name__ == "__main__":
     main()
