@@ -14,6 +14,8 @@ import argparse
 from pathlib import Path
 import numpy as np
 #import soundfile as sf
+import os
+os.environ[ 'NUMBA_CACHE_DIR' ] = '/tmp/' #this fixes a numba bug to allow librosa import
 import librosa
 
 def main():
@@ -80,7 +82,7 @@ def extract_audioset(args,basename,y,sr,dur_10hz):
     import tensorflow_hub as hub
     import numpy as np
     model = hub.load('https://tfhub.dev/google/yamnet/1')
-    scores, embeddings, log_mel_spectrogram = model(waveform)
+    scores, embeddings, log_mel_spectrogram = model(y)
     np.save(args.output_dir+'/'+basename+"_as_scores.npy",scores.numpy())
     np.save(args.output_dir+'/'+basename+"_as_embed.npy",scores.embeddings())
     
