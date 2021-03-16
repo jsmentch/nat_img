@@ -48,7 +48,7 @@ def load_wav(wav_in):
     return y,sr,dur_10hz
 
 def extract_low_level(args,basename,y,sr,dur_10hz):
-    rms = librosa.feature.rms(y=y, sr=sr, hop_length=1600)[:dur_10hz]
+    rms = librosa.feature.rms(y=y, hop_length=1600)[:dur_10hz]
     chroma = librosa.feature.chroma_stft(y=y, sr=sr, hop_length=1600)[:dur_10hz]
     mfs = librosa.feature.melspectrogram(y=y, sr=sr, n_mels=128,fmax=8000, hop_length=1600)[:dur_10hz]
     mfcc = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=13, hop_length=1600)[:dur_10hz]
