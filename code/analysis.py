@@ -7,14 +7,12 @@ from nilearn_plotting_custom import plot_surf
 from PIL import Image
 import hcp_utils as hcp
 import os
-    
 import matplotlib.pyplot as plt
 import seaborn as sns
 sns.set("paper", "white")
-%matplotlib inline
+#%matplotlib inline
 plt.rcParams['axes.facecolor'] = 'white'
 plt.rcParams['figure.facecolor'] = 'white'
-    
 def load_data(subject,feature,n_movies):
     from sklearn.preprocessing import StandardScaler
     # Inputs: subject = HCP id eg 100610
