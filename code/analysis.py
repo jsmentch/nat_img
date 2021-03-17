@@ -45,7 +45,7 @@ def load_data(subject,feature,n_movies):
         img_y = scaler.fit_transform(img_y)
         #load feature
         feat_x = np.load(f'../sourcedata/data/HCP_7T_movie_FIX/features_hrf/{stim_feat[i]}_{feature}_hrf.npy')
-        feat_x=feat_x.T
+        #feat_x=feat_x.T
         for ii,sl in enumerate(slice_starts[i]):
             y_l.append(img_y[sl:slice_stops[i][ii],:])
             x_l.append(feat_x[sl:slice_stops[i][ii],:])
