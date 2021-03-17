@@ -6,6 +6,8 @@ from sklearn.metrics import r2_score
 from nilearn_plotting_custom import plot_surf
 from PIL import Image
 import hcp_utils as hcp
+from hcp_tools import load_flatmaps_59k
+from hcp_tools import load_meshes
 import os
 import matplotlib.pyplot as plt
 import seaborn as sns

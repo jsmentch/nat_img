@@ -48,13 +48,15 @@ def load_wav(wav_in):
     return y,sr,dur_10hz
 
 def extract_low_level(args,basename,y,sr,dur_10hz):
+    rms = librosa.feature.rms(y=y, hop_length=1600)[:dur_10hz]
     chroma = librosa.feature.chroma_stft(y=y, sr=sr, hop_length=1600)[:dur_10hz]
     mfs = librosa.feature.melspectrogram(y=y, sr=sr, n_mels=128,fmax=8000, hop_length=1600)[:dur_10hz]
     mfcc = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=13, hop_length=1600)[:dur_10hz]
-    np.save(args.output_dir+'/'+basename+'_chroma.npy', chroma)
-    np.save(args.output_dir+'/'+basename+'_mfcc.npy', mfcc)
-    np.save(args.output_dir+'/'+basename+'_mfs.npy', mfs)
-    
+    np.save(args.output_dir+'/'+basename+'_chroma.npy', chroma.T)
+    np.save(args.output_dir+'/'+basename+'_mfcc.npy', mfcc.T)
+    np.save(args.output_dir+'/'+basename+'_mfs.npy', mfs.T)
+    np.save(args.output_dir+'/'+basename+'_rms.npy', rms.T)
+
 def extract_cochleagram(args,basename,y,sr,dur_10hz):
     #requires pycochleagram
     from pycochleagram.cochleagram import cochleagram
@@ -67,6 +69,8 @@ def extract_cochleagram(args,basename,y,sr,dur_10hz):
     np.save(args.output_dir+'/'+basename+"_pycochleagram.npy",pc_downsampled)
     
 def extract_voxel_decomp_cochleagram(args,basename,y,sr,dur_10hz):
+    break
+    %double chek the dimensions it should be 2d output time x feature
     from pycochleagram.cochleagram import cochleagram
     from scipy.signal import resample
     #y=y[:-(y.size % sr)] #trim end of audio
@@ -83,8 +87,8 @@ def extract_audioset(args,basename,y,sr,dur_10hz):
     import numpy as np
     model = hub.load('https://tfhub.dev/google/yamnet/1')
     scores, embeddings, log_mel_spectrogram = model(y)
-    np.save(args.output_dir+'/'+basename+"_as_scores.npy",scores.numpy().T)
-    np.save(args.output_dir+'/'+basename+"_as_embed.npy",embeddings.numpy().T)
+    np.save(args.output_dir+'/'+basename+"_as_scores.npy",scores.numpy())
+    np.save(args.output_dir+'/'+basename+"_as_embed.npy",embeddings.numpy())
     
 if __name__ == "__main__":
     main()
