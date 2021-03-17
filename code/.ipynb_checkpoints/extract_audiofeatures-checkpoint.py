@@ -59,6 +59,8 @@ def extract_low_level(args,basename,y,sr,dur_10hz):
 
 def extract_cochleagram(args,basename,y,sr,dur_10hz):
     #requires pycochleagram
+    print('double chek the dimensions!!! it should be 2d output time x feature')
+
     from pycochleagram.cochleagram import cochleagram
     from scipy.signal import resample
     #y=y[:-(y.size % sr)] #trim end of audio
@@ -69,8 +71,7 @@ def extract_cochleagram(args,basename,y,sr,dur_10hz):
     np.save(args.output_dir+'/'+basename+"_pycochleagram.npy",pc_downsampled)
     
 def extract_voxel_decomp_cochleagram(args,basename,y,sr,dur_10hz):
-    break
-    %double chek the dimensions it should be 2d output time x feature
+    print('double chek the dimensions!!! it should be 2d output time x feature')
     from pycochleagram.cochleagram import cochleagram
     from scipy.signal import resample
     #y=y[:-(y.size % sr)] #trim end of audio
