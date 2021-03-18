@@ -21,23 +21,24 @@ import librosa
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("wav_in", type=str, help="input wav file")
-    parser.add_argument("output_dir", type=str, help="path to dir to save output")
+    parser.add_argument("wav_in", type=str, help="input wav file", nargs='+')
+    parser.add_argument("-o", "--output_dir", type=str, help="path to dir to save output", required=True)
     parser.add_argument("-c", "--cochleagram", action='store_true', help="extract 40 band cochleagram with pycochleagram")
     parser.add_argument("-c6", "--cochleagram6", action='store_true', help="extract 6 band cochleagram with pycochleagram")
     parser.add_argument("-l", "--low", action='store_true', help="extract low level features")
     parser.add_argument("-a", "--audioset", action='store_true', help="extract audioset features and embeddings")
     args = parser.parse_args()
-    basename = Path(args.wav_in).stem
-    y,sr,dur_10hz=load_wav(args.wav_in)
-    if args.low:
-        extract_low_level(args,basename,y,sr,dur_10hz)
-    if args.cochleagram:
-        extract_cochleagram(args,basename,y,sr,dur_10hz)
-    if args.cochleagram6:
-        extract_voxel_decomp_cochleagram(args,basename,y,sr,dur_10hz)
-    if args.audioset:
-        extract_audioset(args,basename,y,sr,dur_10hz)
+    for wav in args.wav_in:
+        basename = Path(wav).stem
+        y,sr,dur_10hz=load_wav(wav)
+        if args.low:
+            extract_low_level(args,basename,y,sr,dur_10hz)
+        if args.cochleagram:
+            extract_cochleagram(args,basename,y,sr,dur_10hz)
+        if args.cochleagram6:
+            extract_voxel_decomp_cochleagram(args,basename,y,sr,dur_10hz)
+        if args.audioset:
+            extract_audioset(args,basename,y,sr,dur_10hz)
 
 def load_wav(wav_in):
     #wav_data, sr = sf.read(wav_in, dtype=np.int16)
