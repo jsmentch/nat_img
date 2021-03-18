@@ -6,8 +6,7 @@ from sklearn.metrics import r2_score
 from nilearn_plotting_custom import plot_surf
 from PIL import Image
 from PIL import ImageDraw
-from PIL import ImageFont
-
+import npp
 import hcp_utils as hcp
 from hcp_tools import load_flatmaps_59k
 from hcp_tools import load_meshes
@@ -63,6 +62,7 @@ def simple_ridgeCV(X,Y):
     estimator = RidgeCV(alphas=[0.1, 1.0, 10.0, 100])
     cv = KFold(n_splits=5)
     scores = []
+    corr = []
     weights=[]
     for train, test in cv.split(X=X):
         train = train[2:-2] #remove the first and last 3 seconds of each test and train partition
@@ -75,10 +75,12 @@ def simple_ridgeCV(X,Y):
         # we compute how much variance our encoding model explains in each voxel
         scores.append(r2_score(Y[test], predictions,
                                multioutput='raw_values'))
+        corr.append(npp.mcorr(Y[test], predictions))
         weights.append(estimator.coef_)
     scores_mean = np.mean(scores, axis=0)
+    corr_mean = np.mean(corr, axis=0)
     weights_mean = np.mean(weights, axis=0)
-    return scores_mean,weights_mean
+    return scores_mean,corr_mean,weights_mean
 
 def plot_59k_results(scores_mean,vertex_info,subject,feature):
     figpath='../outputs/figures/HCP_7T/r2'
@@ -108,7 +110,7 @@ def plot_59k_results(scores_mean,vertex_info,subject,feature):
                 bg_map=sulc, colorbar=True, vmin=0, vmax=0.1, hemi=hemi, \
                 data_alpha=np.where(data>0,1,0),\
                 data_remove=np.zeros(data.shape),output_file=f'{save_dir}/{name}.png')
-    
+
     #combine saved maps into one with PIL
     area = (75, 140, 635, 560) #area to crop from each image
 
@@ -136,5 +138,10 @@ def plot_59k_results(scores_mean,vertex_info,subject,feature):
     new_im.paste(iL,(0,0))
     new_im.paste(iR,(w,0))
     new_im.paste(cbar,(w*2,int(round(h/4))))
+
+    w,h=new_im.size
+
+    draw = ImageDraw.Draw(new_im)
+    draw.text((0,0),f"{subject}_{feature}",(0,0,0))
 
     new_im.save(f'{save_dir}/../{subject}_{feature}.png')
