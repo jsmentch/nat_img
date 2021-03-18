@@ -10,6 +10,7 @@ tensorflow and tensorflow_hub required for yamnet/audioset
 other dependencies: librosa, soundfile
 Standard usage: extract_audiofeatures.py '/user/home/test.wav' '/user/home/exports/' -l
 """
+#output: 2d array [time, features]
 import argparse
 from pathlib import Path
 import numpy as np
