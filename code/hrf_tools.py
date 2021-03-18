@@ -48,9 +48,9 @@ def apply_optimal_hrf_10hz(feat_in):
     return feat_in
 
 def resample_1hz(feat_in):
-    # input: 2d array [feat,time]
-    # output: 2d array [feat,time downsampled by factor of 10 eg from 10 hz to 1 hz]
-    feat_in = feat_in[:,::10] 
+    # input: 2d array [time,feat]
+    # output: 2d array [time,feat] time downsampled by factor of 10 eg from 10 hz to 1 hz]
+    feat_in = feat_in[::10,:] 
     return feat_in
 
 # SPM's HRF

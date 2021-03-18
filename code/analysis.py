@@ -96,8 +96,8 @@ def simple_ridgeCV(X,Y):
     corr = []
     weights=[]
     for train, test in cv.split(X=X):
-        train = train[2:-2] #remove the first and last 3 seconds of each test and train partition
-        test = test[2:-2]
+        train = train[3:-3] #remove the first and last 3 seconds of each test and train partition
+        test = test[3:-3]
         # print(f'training... {train}')
         # we train the Ridge estimator on the training set
         # and predict the fMRI activity for the test set
