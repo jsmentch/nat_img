@@ -32,14 +32,14 @@ def main():
             np.save(args.output_dir+'/'+basename+'_hrf.npy', feat_out)
             
     
-def apply_optimal_hrf_10hz(feat_in):
+def apply_optimal_hrf_10hz(feat_in,hz):
     #applies optimal hrf from merlin study to a 10hz feature 
-    t=np.arange(320)
+    t=np.arange(round(32*hz))
     optimal_hrf=spm_hrf_compat(t,
-                   peak_delay=60,
-                   under_delay=180,
-                   peak_disp=14,
-                   under_disp=15,
+                   peak_delay=round(6*hz),
+                   under_delay=round(18*hz),
+                   peak_disp=round(1.4*hz),
+                   under_disp=round(1.5*hz),
                    p_u_ratio = 4,
                    normalize=False,)
     n_to_remove = optimal_hrf.shape[0]-1 #how much to trim from end after convolution

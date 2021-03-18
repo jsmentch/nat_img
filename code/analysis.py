@@ -104,8 +104,7 @@ def simple_ridgeCV(X,Y):
         predictions = estimator.fit(X.reshape(-1, X.shape[1])[train], Y[train]).predict(
             X.reshape(-1, X.shape[1])[test])
         # we compute how much variance our encoding model explains in each voxel
-        scores.append(r2_score(Y[test], predictions,
-                               multioutput='raw_values'))
+        scores.append(r2_score(Y[test], predictions,multioutput='raw_values'))
         corr.append(npp.mcorr(Y[test], predictions))
         weights.append(estimator.coef_)
     scores_mean = np.mean(scores, axis=0)
