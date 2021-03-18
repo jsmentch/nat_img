@@ -12,7 +12,7 @@ def main():
     parser.add_argument("output_dir", type=str, help="path to dir to save output")
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("-f", "--file", action='store_true', help="run on a file")
-    group.add_argument("-d", "--directory", action='store_true', help="run on all .npy files in a directory directory")
+    group.add_argument("-d", "--directory", action='store_true', help="run on all .npy files in a directory")
     #parser.set_defaults(file=True, directory=False)
     args = parser.parse_args()
     if args.file:
@@ -48,6 +48,8 @@ def apply_optimal_hrf_10hz(feat_in):
     return feat_in
 
 def resample_1hz(feat_in):
+    # input: 2d array [feat,time]
+    # output: 2d array [feat,time downsampled by factor of 10 eg from 10 hz to 1 hz]
     feat_in = feat_in[:,::10] 
     return feat_in
 

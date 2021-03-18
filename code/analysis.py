@@ -5,6 +5,9 @@ from sklearn.model_selection import KFold
 from sklearn.metrics import r2_score
 from nilearn_plotting_custom import plot_surf
 from PIL import Image
+from PIL import ImageDraw
+from PIL import ImageFont
+
 import hcp_utils as hcp
 from hcp_tools import load_flatmaps_59k
 from hcp_tools import load_meshes
@@ -15,6 +18,7 @@ sns.set("paper", "white")
 #%matplotlib inline
 plt.rcParams['axes.facecolor'] = 'white'
 plt.rcParams['figure.facecolor'] = 'white'
+
 def load_data(subject,feature,n_movies):
     from sklearn.preprocessing import StandardScaler
     # Inputs: subject = HCP id eg 100610
