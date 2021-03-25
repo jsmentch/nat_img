@@ -112,17 +112,41 @@ def simple_ridgeCV(X,Y):
     weights_mean = np.mean(weights, axis=0)
     return scores_mean,corr_mean,weights_mean
 
-def plot_59k_results(scores_mean,vertex_info,subject,feature):
-    figpath='../outputs/figures/HCP_7T/r2'
-    save_dir=f'{figpath}/{str(subject)}_{feature}'
+def plot_59k_results(scores,score_type,vertex_info,subject,feature,title):
+    if score_type == 'r2':
+        v=[0,0.1]
+        threshold=None
+        symmetric_cmap=False
+        cmap='inferno'
+    if score_type == 'p':
+        v=[0,0.05]
+        symmetric_cmap=False
+        cmap='inferno'
+    if score_type == 'z':
+        v=[-10,10]
+        threshold=3
+        symmetric_cmap=True
+        cmap='cold_hot'
+    if score_type == 'd':
+        v=[0,10]
+        threshold=3
+        symmetric_cmap=True
+        cmap='inferno'
+    if score_type == 'raw':
+        v=[-10,10]
+        threshold=1
+        symmetric_cmap=True
+        cmap='cold_hot'
+    figpath=f'../outputs/figures/HCP_7T/{score_type}'
+    save_dir=f'{figpath}/{title}{str(subject)}_{feature}'
     if not os.path.exists(save_dir):
         os.mkdir(save_dir)
     flatmeshes=load_flatmaps_59k() #load flatmaps
     surf_path_msm = '../sourcedata/data/human-connectome-project-openaccess/HCP1200/100610/T1w/fsaverage_LR59k/100610.L.inflated_1.6mm_MSMAll.59k_fs_LR.surf.gii'
     mesh59k_msm = load_meshes(example_filename=surf_path_msm) #load other meshes
     # get data from results in plotting format
-    score_cortex_dataL = hcp.left_cortex_data(scores_mean, fill=0, vertex_info=vertex_info)
-    score_cortex_dataR = hcp.right_cortex_data(scores_mean, fill=0, vertex_info=vertex_info)
+    score_cortex_dataL = hcp.left_cortex_data(scores, fill=0, vertex_info=vertex_info)
+    score_cortex_dataR = hcp.right_cortex_data(scores, fill=0, vertex_info=vertex_info)
     # sulcal depth paths
     sulc_left = '../sourcedata/data/human-connectome-project-openaccess/HCP1200/100610/MNINonLinear/fsaverage_LR59k/100610.L.sulc.59k_fs_LR.shape.gii'
     sulc_right = '../sourcedata/data/human-connectome-project-openaccess/HCP1200/100610/MNINonLinear/fsaverage_LR59k/100610.R.sulc.59k_fs_LR.shape.gii'
@@ -136,8 +160,8 @@ def plot_59k_results(scores_mean,vertex_info,subject,feature):
     for name, data, mesh, sulc, hemi in params:
         plot_surf(mesh,\
                 data, \
-                  cmap='inferno',symmetric_cmap=False, avg_method='median',#figure=fig,\
-                bg_map=sulc, colorbar=True, vmin=0, vmax=0.1, hemi=hemi, \
+                  cmap=cmap,symmetric_cmap=symmetric_cmap, avg_method='median',#figure=fig,\
+                bg_map=sulc, colorbar=True, vmin=v[0], vmax=v[1], threshold=threshold, hemi=hemi, \
                 data_alpha=np.where(data>0,1,0),\
                 data_remove=np.zeros(data.shape),output_file=f'{save_dir}/{name}.png')
 
@@ -172,6 +196,6 @@ def plot_59k_results(scores_mean,vertex_info,subject,feature):
     w,h=new_im.size
 
     draw = ImageDraw.Draw(new_im)
-    draw.text((0,0),f"{subject}_{feature}",(0,0,0))
+    draw.text((0,0),f"{title}_{subject}_{feature}",(0,0,0))
 
-    new_im.save(f'{save_dir}/../{subject}_{feature}.png')
+    new_im.save(f'{save_dir}/../{title}_{subject}_{feature}.png')
