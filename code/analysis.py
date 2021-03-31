@@ -169,7 +169,8 @@ def plot_59k_results(scores,score_type,vertex_info,subject,feature,title):
     area = (75, 140, 635, 560) #area to crop from each image
 
     img = Image.open(f'{save_dir}/flat_L.png')
-    fL = img.crop(area)
+    cropped = img.crop(area)
+    fL=cropped.transpose(Image.FLIP_LEFT_RIGHT)
     w,h = img.size
     c_area = (690, 0, w-10, h) # area of colorbar to crop
     cbar = img.crop(c_area)
@@ -179,7 +180,7 @@ def plot_59k_results(scores,score_type,vertex_info,subject,feature,title):
 
     img = Image.open(f'{save_dir}/vinf_L.png')
     cropped = img.crop(area)
-    iL=cropped.transpose(Image.FLIP_LEFT_RIGHT)
+    #iL=cropped.transpose(Image.FLIP_LEFT_RIGHT)
 
     img = Image.open(f'{save_dir}/vinf_R.png')
     iR = img.crop(area)
