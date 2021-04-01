@@ -179,7 +179,7 @@ def plot_59k_results(scores,score_type,vertex_info,subject,feature,title):
     fR = img.crop(area)
 
     img = Image.open(f'{save_dir}/vinf_L.png')
-    cropped = img.crop(area)
+    iL = img.crop(area)
     #iL=cropped.transpose(Image.FLIP_LEFT_RIGHT)
 
     img = Image.open(f'{save_dir}/vinf_R.png')
