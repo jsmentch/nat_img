@@ -114,7 +114,12 @@ def simple_ridgeCV(X,Y):
 
 def plot_59k_results(scores,score_type,vertex_info,subject,feature,title):
     if score_type == 'r2':
-        v=[0,0.1]
+        v=[0,0.5]
+        threshold=None
+        symmetric_cmap=False
+        cmap='inferno'
+    if score_type == 'r':
+        v=[0,1]
         threshold=None
         symmetric_cmap=False
         cmap='inferno'
