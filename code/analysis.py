@@ -14,13 +14,13 @@ import os
 import matplotlib.pyplot as plt
 import seaborn as sns
 from scipy.signal import resample
+from sklearn.preprocessing import StandardScaler
 sns.set("paper", "white")
 #%matplotlib inline
 plt.rcParams['axes.facecolor'] = 'white'
 plt.rcParams['figure.facecolor'] = 'white'
 
 def load_data_HCP(subject,feature,n_movies):
-    from sklearn.preprocessing import StandardScaler
     # Inputs: subject = HCP id eg 100610
     #         feature='mfs'
     #         n_movies is a list of movie indices 1 thru 4
@@ -72,6 +72,8 @@ def load_data_HCP_MMP(subject,feature,n_movies):
     #         n_movies is a list of movie indices 1 thru 4
     # Returns: X feature data (2D; time x feature)
     #          Y brain data (2D; time x grayordinate)
+    scaler = StandardScaler()
+
     y_l=[]
     x_l=[]
     stim = ['tfMRI_MOVIE1_7T_AP','tfMRI_MOVIE2_7T_PA','tfMRI_MOVIE3_7T_PA','tfMRI_MOVIE4_7T_AP']
@@ -93,6 +95,8 @@ def load_data_HCP_MMP(subject,feature,n_movies):
         im_file = f'../sourcedata/data/HCP_7T_movie_FIX/brain/parcellations/parcellated/sub{str(subject)}_{stim[i]}.ptseries.nii'
         img = nb.load(im_file)
         img_y = img.get_fdata()
+        img_y = scaler.fit_transform(img_y)
+
         #load feature
         feat_x = np.load(f'../sourcedata/data/HCP_7T_movie_FIX/features/{stim_feat[i]}_{feature}.npy')
         feat_x = resample(feat_x, img_y.shape[0], axis=0) #resample to 1hz for now 
@@ -105,8 +109,8 @@ def load_data_HCP_MMP(subject,feature,n_movies):
     Y=np.vstack(y_l)
     X=np.vstack(x_l)
     #X = scaler.fit_transform(X)
-    vertex_info = hcp.get_HCP_vertex_info(img)
-    return X,Y,vertex_info
+    #vertex_info = hcp.get_HCP_vertex_info(img)
+    return X,Y
 
 
 
