@@ -13,6 +13,7 @@ from hcp_tools import load_meshes
 import os
 import matplotlib.pyplot as plt
 import seaborn as sns
+from scipy.signal import resample
 sns.set("paper", "white")
 #%matplotlib inline
 plt.rcParams['axes.facecolor'] = 'white'
@@ -22,7 +23,7 @@ def load_data(subject,feature,n_movies):
     from sklearn.preprocessing import StandardScaler
     # Inputs: subject = HCP id eg 100610
     #         feature='mfs'
-    #         n_movies is a number 1-4
+    #         n_movies is a list of movie indices 1 thru 4
     # Returns: X feature data (2D; time x feature)
     #          Y brain data (2D; time x grayordinate)
     scaler = StandardScaler()
@@ -30,8 +31,19 @@ def load_data(subject,feature,n_movies):
     x_l=[]
     stim = ['tfMRI_MOVIE1_7T_AP','tfMRI_MOVIE2_7T_PA','tfMRI_MOVIE3_7T_PA','tfMRI_MOVIE4_7T_AP']
     stim_feat = ['7T_MOVIE1_CC1_v2', '7T_MOVIE2_HO1_v2', '7T_MOVIE3_CC2_v2', '7T_MOVIE4_HO2_v2']
-    
-    for i in np.arange(n_movies):
+    slice_starts = [
+        [20,284, 526,734],
+        [20,267,545],
+        [20,221,425,649],
+        [20,272,522]]
+    slice_stops =  [
+        [264,506,714,798],
+        [247,525,795],
+        [201,405,629,792],
+        [252,502,777]]
+    for i in n_movies:
+        i=i-1
+        exclude_final=slice_stops[i][-1] #trim the final movie since it is in all scans
         #load brain image
         im_file = f'../sourcedata/data/HCP_7T_movie_FIX/brain/HCP_7T_movie_FIX/{str(subject)}/MNINonLinear/Results/{stim[i]}/{stim[i]}_Atlas_1.6mm_MSMAll_hp2000_clean.dtseries.nii'
         img = nb.load(im_file)
@@ -39,12 +51,16 @@ def load_data(subject,feature,n_movies):
         img_y = scaler.fit_transform(img_y)
         #load feature
         feat_x = np.load(f'../sourcedata/data/HCP_7T_movie_FIX/features/{stim_feat[i]}_{feature}.npy')
+        feat_x = resample(feat_x, img_y.shape[0], axis=0) #resample to 1hz for now 
         #feat_x=feat_x.T
+        #trim final movies
+        img_y = img_y[:exclude_final,:]
+        feat_x = feat_x[:exclude_final,:]
         y_l.append(img_y)
         x_l.append(feat_x)
     Y=np.vstack(y_l)
     X=np.vstack(x_l)
-    X = scaler.fit_transform(X)
+    #X = scaler.fit_transform(X)
     vertex_info = hcp.get_HCP_vertex_info(img)
     return X,Y,vertex_info
 
@@ -52,7 +68,7 @@ def load_data_no_rest(subject,feature,n_movies):
     from sklearn.preprocessing import StandardScaler
     # Inputs: subject = HCP id eg 100610
     #         feature='mfs'
-    #         n_movies is a number 1-4
+    #         n_movies is a list of movie indices 1 thru 4
     # Returns: X feature data (2D; time x feature)
     #          Y brain data (2D; time x grayordinate)
     #          where the rest time periods have been removed
@@ -71,8 +87,8 @@ def load_data_no_rest(subject,feature,n_movies):
         [247,525,795],
         [201,405,629,792],
         [252,502,777]]
-    for i in np.arange(n_movies):
-        #load brain image
+    for i in n_movies:
+        i=i-1
         im_file = f'../sourcedata/data/HCP_7T_movie_FIX/brain/HCP_7T_movie_FIX/{str(subject)}/MNINonLinear/Results/{stim[i]}/{stim[i]}_Atlas_1.6mm_MSMAll_hp2000_clean.dtseries.nii'
         img = nb.load(im_file)
         img_y = img.get_fdata()
@@ -85,7 +101,7 @@ def load_data_no_rest(subject,feature,n_movies):
             x_l.append(feat_x[sl:slice_stops[i][ii],:])
     Y=np.vstack(y_l)
     X=np.vstack(x_l)
-    X = scaler.fit_transform(X)
+    #X = scaler.fit_transform(X)
     vertex_info = hcp.get_HCP_vertex_info(img)
     return X,Y,vertex_info
 
