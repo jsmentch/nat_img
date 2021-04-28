@@ -72,6 +72,8 @@ def load_data_HCP_MMP(subject,feature,n_movies):
     #         n_movies is a list of movie indices 1 thru 4
     # Returns: X feature data (2D; time x feature)
     #          Y brain data (2D; time x grayordinate)
+    from sklearn.preprocessing import StandardScaler
+
     scaler = StandardScaler()
 
     y_l=[]
