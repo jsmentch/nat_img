@@ -5,8 +5,8 @@ import nibabel as nb
 import hrf_tools
 import hcp_utils as hcp
 from analysis import plot_59k_results
-
 import matplotlib.pyplot as plt
+
 subject=100610
 feature='raw'
 n_movies=4
