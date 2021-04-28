@@ -419,14 +419,9 @@ def plot_results(scores,score_type,data_type,vertex_info,subject,feature,dataset
         threshold=1
         symmetric_cmap=True
         cmap='cold_hot'
-    if not os.path.exists(f'../outputs/figures/{dataset}/'):
-        os.mkdir(f'../outputs/figures/{dataset}/')
-    figpath=f'../outputs/figures/{dataset}/{score_type}'
-    if not os.path.exists(figpath):
-        os.mkdir(figpath)
-    save_dir=f'{figpath}/{title}{str(subject)}_{feature}'
+    save_dir=f'../outputs/figures/{dataset}/'
     if not os.path.exists(save_dir):
-        os.mkdir(save_dir)
+        os.mkdir(save_dir)    
     if data_type == '59k':
         flatmeshes=load_flatmaps_59k() #load flatmaps
         surf_path_msm = '../sourcedata/data/human-connectome-project-openaccess/HCP1200/100610/T1w/fsaverage_LR59k/100610.L.inflated_1.6mm_MSMAll.59k_fs_LR.surf.gii'
@@ -497,4 +492,4 @@ def plot_results(scores,score_type,data_type,vertex_info,subject,feature,dataset
     draw = ImageDraw.Draw(new_im)
     draw.text((0,0),f"{title}_{subject}_{feature}_{score_type}",(0,0,0))
 
-    new_im.save(f'{save_dir}/../{title}_{subject}_{feature}_{score_type}.png')
+    new_im.save(f'{save_dir}/{title}_{subject}_{feature}_{score_type}.png')
