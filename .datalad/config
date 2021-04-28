@@ -6,6 +6,3 @@
 [datalad "containers.feature-extraction"]
 	image = .datalad/environments/feature-extraction/image
 	cmdexec = singularity exec -B {{dspath}} {img} {cmd}
-[datalad "containers.analysis-gpu"]
-	image = .datalad/environments/analysis-gpu/image
-	cmdexec = singularity exec {img} {cmd}
