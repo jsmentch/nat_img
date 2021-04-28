@@ -179,7 +179,7 @@ def simple_ridgeCV(X,Y):
     weights_mean = np.mean(weights, axis=0)
     return scores_mean,corr_mean,weights_mean
 
-def plot_59k_results(scores,score_type,vertex_info,subject,feature,title):
+def plot_59k_results(scores,score_type,vertex_info,subject,feature,dataset,title):
     if score_type == 'r2':
         v=[0,0.5]
         threshold=None
@@ -209,7 +209,11 @@ def plot_59k_results(scores,score_type,vertex_info,subject,feature,title):
         threshold=1
         symmetric_cmap=True
         cmap='cold_hot'
-    figpath=f'../outputs/figures/HCP_7T/{score_type}'
+    if not os.path.exists(f'../outputs/figures/{dataset}/'):
+        os.mkdir(f'../outputs/figures/{dataset}/')
+    figpath=f'../outputs/figures/{dataset}/{score_type}'
+    if not os.path.exists(figpath):
+        os.mkdir(figpath)
     save_dir=f'{figpath}/{title}{str(subject)}_{feature}'
     if not os.path.exists(save_dir):
         os.mkdir(save_dir)
@@ -274,7 +278,7 @@ def plot_59k_results(scores,score_type,vertex_info,subject,feature,title):
     new_im.save(f'{save_dir}/../{title}_{subject}_{feature}.png')
     
     
-def plot_32k_results(scores,score_type,subject,feature,title):
+def plot_32k_results(scores,score_type,subject,feature,dataset,title):
     if score_type == 'r2':
         v=[0,0.5]
         threshold=None
@@ -304,7 +308,11 @@ def plot_32k_results(scores,score_type,subject,feature,title):
         threshold=1
         symmetric_cmap=True
         cmap='cold_hot'
-    figpath=f'../outputs/figures/merlin/{score_type}'
+    if not os.path.exists(f'../outputs/figures/{dataset}/'):
+        os.mkdir(f'../outputs/figures/{dataset}/')
+    figpath=f'../outputs/figures/{dataset}/{score_type}'
+    if not os.path.exists(figpath):
+        os.mkdir(figpath)
     save_dir=f'{figpath}/{title}{str(subject)}_{feature}'
     if not os.path.exists(save_dir):
         os.mkdir(save_dir)
