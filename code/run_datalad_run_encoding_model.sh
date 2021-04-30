@@ -16,4 +16,6 @@ while IFS= read -r sub; do
     -o "../outputs/figures/HCP_7T/ridgeCV_${sub}_$2_r2.png" \
     -o "../tmp/*" \
     "python ./run_encoding_model.py $sub $2"
+    datalad save -m 'clean dataset after run'
 done < "subjects.txt"
+
