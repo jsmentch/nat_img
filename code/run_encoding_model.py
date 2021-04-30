@@ -24,7 +24,7 @@ def main():
     #np.save(f'{temp_dir}/r2_{subject}_{feature}.npy',scores_mean)
     #np.save(f'{temp_dir}/r_{subject}_{feature}.npy',corr_mean)
     #np.save(f'{temp_dir}/w_{subject}_{feature}.npy',weights_mean)
-    analysis.plot_results(scores_mean,'r2','59k',vertex_info,100610,'as_scores','HCP_7T','ridgeCV')
+    analysis.plot_results(scores_mean,'r2','59k',vertex_info,subject,'as_scores','HCP_7T','ridgeCV')
 
 if __name__ == "__main__":
     main()
