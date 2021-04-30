@@ -17,7 +17,7 @@ def main():
     #if not os.path.exists(temp_dir):
     #    os.mkdir(temp_dir)
         
-    n_movies=[1]
+    n_movies=[1,2,3,4]
     X,Y,vertex_info = analysis.load_data_HCP(subject,feature,n_movies)
     X = hrf_tools.apply_optimal_hrf_10hz(X,1)
     scores_mean,corr_mean,weights_mean = analysis.simple_ridgeCV(X,Y)
