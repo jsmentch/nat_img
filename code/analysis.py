@@ -1,4 +1,4 @@
-dimport numpy as np
+import numpy as np
 import nibabel as nb
 from sklearn.linear_model import RidgeCV
 from sklearn.model_selection import KFold
