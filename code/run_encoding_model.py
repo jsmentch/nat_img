@@ -13,9 +13,9 @@ def main():
     args = parser.parse_args()
     subject = args.subject
     feature = args.feature
-    temp_dir = '../../tmp'
-    if not os.path.exists(temp_dir):
-        os.mkdir(temp_dir)
+    #temp_dir = '../../tmp'
+    #if not os.path.exists(temp_dir):
+    #    os.mkdir(temp_dir)
         
     n_movies=[1]
     X,Y,vertex_info = analysis.load_data_HCP(subject,feature,n_movies)
