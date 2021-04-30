@@ -308,3 +308,7 @@ def plot_results(scores,score_type,data_type,vertex_info,subject,feature,dataset
     draw.text((0,0),f"{title}_{subject}_{feature}_{score_type}",(0,0,0))
 
     new_im.save(f'{save_dir}{title}_{subject}_{feature}_{score_type}.png')
+    os.remove(f'{scratch_dir}/flat_L.png')
+    os.remove(f'{scratch_dir}/flat_R.png')
+    os.remove(f'{scratch_dir}/vinf_L.png')
+    os.remove(f'{scratch_dir}/vinf_R.png')
