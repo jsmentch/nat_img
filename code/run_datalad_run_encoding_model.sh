@@ -13,7 +13,7 @@ while IFS= read -r sub; do
     -i "../sourcedata/data/HCP_7T_movie_FIX/brain/HCP_7T_movie_FIX/$sub/MNINonLinear/Results/*/*" \
     -i "../sourcedata/data/HCP_7T_movie_FIX/features/" \
     -i "../sourcedata/data/human-connectome-project-openaccess/HCP1200/100610/T1w/fsaverage_LR59k/*" \
-    -o "../outputs/figures/HCP_7T/ridgeCV_$sub_$2_r2.png" \
+    -o "../outputs/figures/HCP_7T/ridgeCV_${sub}_$2_r2.png" \
     -o "../tmp/*" \
     "python ./run_encoding_model.py $sub $2"
 done < "subjects.txt"
