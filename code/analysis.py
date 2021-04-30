@@ -306,4 +306,4 @@ def plot_results(scores,score_type,data_type,vertex_info,subject,feature,dataset
     draw = ImageDraw.Draw(new_im)
     draw.text((0,0),f"{title}_{subject}_{feature}_{score_type}",(0,0,0))
 
-    new_im.save(f'{save_dir}/{title}_{subject}_{feature}_{score_type}.png')
+    new_im.save(f'{save_dir}{title}_{subject}_{feature}_{score_type}.png')
