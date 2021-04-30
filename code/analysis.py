@@ -193,9 +193,10 @@ def plot_results(scores,score_type,data_type,vertex_info,subject,feature,dataset
         dataset = eg merlin or HCP_7T which dataset?
         title = 
     '''
-    scratch_dir = '/scratch/scratch/Fri/jsmentch/tmp'
-    if not os.path.exists(scratch_dir):
-        os.mkdir(scratch_dir)
+    scratch_dir = '../tmp'
+#     scratch_dir = '/scratch/scratch/Fri/jsmentch/tmp'
+#     if not os.path.exists(scratch_dir):
+#         os.mkdir(scratch_dir)
     if score_type == 'r2':
         v=[0,0.5]
         threshold=None
