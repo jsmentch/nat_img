@@ -22,14 +22,14 @@ def main():
     #if not os.path.exists(temp_dir):
     #    os.mkdir(temp_dir)
     if dataset == 'HCP_7T':
-        n_movies=[1,2,3,4]
+        n_movies=[1]
         X,Y,vertex_info = analysis.load_data_HCP(subject,feature,n_movies)
         X = hrf_tools.apply_optimal_hrf_10hz(X,1)
         scores_mean,corr_mean,weights_mean = analysis.simple_ridgeCV(X,Y)
         #np.save(f'{temp_dir}/r2_{subject}_{feature}.npy',scores_mean)
         #np.save(f'{temp_dir}/r_{subject}_{feature}.npy',corr_mean)
         #np.save(f'{temp_dir}/w_{subject}_{feature}.npy',weights_mean)
-        analysis.plot_results(scores_mean,'r2','59k',vertex_info,subject,'as_scores',dataset,'ridgeCV')
+        analysis.plot_results(scores_mean,'r2','59k',vertex_info,subject,'as_scores',dataset,'ridgeCV_movie1')
     elif dataset == 'merlin':
         X,Y,vertex_info = analysis.load_data_merlin(subject,feature)
         X = hrf_tools.apply_optimal_hrf_10hz(X,(1/1.5))
