@@ -8,10 +8,11 @@ echo "subject = " $1
 echo "feature = " $2
 
 while IFS= read -r sub; do
-    FILE=../outputs/figures/HCP_7T/RidgeCV_${sub}_$2_r2.png
+    FILE= "../outputs/figures/HCP_7T/RidgeCV_${sub}_$2_r2.png"
     if test -f "$FILE"; then
         echo "$FILE exists, skipping."
-
+    else
+        echo "running ${sub} $2"
         datalad containers-run -m "run ridgecv subject $sub" \
         --container-name analysis \
         -i "../sourcedata/data/HCP_7T_movie_FIX/brain/HCP_7T_movie_FIX/$sub/MNINonLinear/Results/*/*" \
