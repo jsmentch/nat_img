@@ -201,6 +201,25 @@ def load_data_no_rest(subject,feature,n_movies):
     vertex_info = hcp.get_HCP_vertex_info(img)
     return X,Y,vertex_info
 
+def load_data_merlin(subject,feature):
+    # Inputs: subject = id eg 'sub-19'
+    #         feature='as_scores'
+    # Returns: X feature data (2D; time x feature)
+    #          Y brain data (2D; time x grayordinate)
+    im_file = f'../sourcedata/data/merlin/brain/merlin_cifti_clean_smooth/{str(subject)}_clean_smooth_task-MerlinMovie_space-fsLR_den-91k_bold.dtseries.nii'
+    img = nb.load(im_file)
+    Y = img.get_fdata()
+    Y = Y[17:] #trim beginning, first 17 TRs
+    Y = Y[:1009] #trim end to end of film    braintrain.append(s_brain[:-200,:]) #roughly 80 20 split, trim the last 200 TRs of each subject to save as test set
+    Y = np.nan_to_num(Y)
+    #load feature
+    X = np.load(f'../sourcedata/data/merlin/features/Merlin_{feature}.npy')
+    X = resample(X, Y.shape[0], axis=0) #resample to 1hz for now 
+    #feat_x=feat_x.T
+    #trim final movies
+    vertex_info = hcp.get_HCP_vertex_info(img)
+    return X,Y,vertex_info
+
 def simple_ridgeCV(X,Y):
     estimator = RidgeCV(alphas=[0.1, 1.0, 10.0, 100])
     cv = KFold(n_splits=5)
