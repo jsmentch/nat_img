@@ -9,7 +9,7 @@ echo "feature = " $2
 
 while IFS= read -r sub; do
     FILE= "../outputs/figures/HCP_7T/ridgeCV_${sub}_$2_r2.png"
-    if test -f "$FILE"; then
+    if test -e "$FILE"; then
         echo "$FILE exists, skipping."
     else
         echo "running ${sub} $2"
