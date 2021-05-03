@@ -7,7 +7,7 @@ echo "running datalad containers-run on the encoding model python script"
 echo "feature = " $1
 echo "dataset = " $2
 
-title= "ridgeCV_movie1"
+title=ridgeCV_movie1
 
 while IFS= read -r sub; do
     FILE="../outputs/figures/$2/${title}_${sub}_$1_r2.png"
