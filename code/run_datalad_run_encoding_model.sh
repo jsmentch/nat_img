@@ -1,5 +1,5 @@
 #!/bin/bash
-# given a subject id and feature string, run datalad containers-run the encoding model python script
+# given an HCP 7t subject id and feature string, run datalad containers-run the encoding model python script
 #inputs: subject id (str), feature name (str)
 #usage: ./run_datalad_run_encoding_model.sh 100610 as_scores
 

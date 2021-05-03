@@ -11,3 +11,7 @@
 	url = /om2/user/jsmentch/data/datalad/human-connectome-project-openaccess/
 	datalad-id = 2e2a8a70-3eaa-11ea-a9a5-b4969157768c
 	datalad-url = /om2/user/jsmentch/data/datalad/human-connectome-project-openaccess/
+[submodule "sourcedata/data/merlin/brain/merlin_cifti_clean_smooth"]
+	path = sourcedata/data/merlin/brain/merlin_cifti_clean_smooth
+	url = /om4/group/gablab/data/jsmentch/merlin/merlin_cifti_clean_smooth
+	datalad-id = 0fb34333-4140-42c3-b96a-e2b992f0cdfb
