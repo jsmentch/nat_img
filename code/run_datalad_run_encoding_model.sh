@@ -12,7 +12,7 @@ while IFS= read -r sub; do
     if test -e "$FILE"; then
         echo "$FILE exists, skipping."
     else
-        echo "$FILE does not exist, skipping."
+        echo "$FILE does not exist."
         echo "running ${sub} $2"
         datalad containers-run -m "run ridgecv subject $sub" \
         --container-name analysis \
