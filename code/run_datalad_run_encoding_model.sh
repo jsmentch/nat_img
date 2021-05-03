@@ -15,7 +15,7 @@ while IFS= read -r sub; do
         echo "$FILE does not exist."
         echo "running ${sub} $1"
         
-        if [$2 = "HCP_7T"]; then
+        if [ "$2" = "HCP_7T" ]; then
             datalad containers-run -m "run $2 ridgecv subject $sub" \
             --container-name analysis \
             -i "../sourcedata/data/HCP_7T_movie_FIX/brain/HCP_7T_movie_FIX/$sub/MNINonLinear/Results/*/*" \
@@ -24,7 +24,7 @@ while IFS= read -r sub; do
             -o "../outputs/figures/HCP_7T/ridgeCV_${sub}_$1_r2.png" \
             -o "../tmp/*" \
             "python ./run_encoding_model.py $sub $1 $2"
-        elif [$2 = "merlin"]; then
+        elif [ "$2" = "merlin" ]; then
             datalad containers-run -m "run $2 ridgecv subject $sub" \
             --container-name analysis \
             -i "../sourcedata/data/$2/brain/merlin_cifti_clean_smooth/${sub}_clean_smooth_task-MerlinMovie_space-fsLR_den-91k_bold.dtseries.nii" \
