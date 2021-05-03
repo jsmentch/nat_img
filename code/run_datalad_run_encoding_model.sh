@@ -8,7 +8,7 @@ echo "subject = " $1
 echo "feature = " $2
 
 while IFS= read -r sub; do
-    FILE= "../outputs/figures/HCP_7T/RidgeCV_${sub}_$2_r2.png"
+    FILE= "../outputs/figures/HCP_7T/ridgeCV_${sub}_$2_r2.png"
     if test -f "$FILE"; then
         echo "$FILE exists, skipping."
     else
