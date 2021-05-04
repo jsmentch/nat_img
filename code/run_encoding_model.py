@@ -29,7 +29,7 @@ def main():
         #np.save(f'{temp_dir}/r2_{subject}_{feature}.npy',scores_mean)
         #np.save(f'{temp_dir}/r_{subject}_{feature}.npy',corr_mean)
         #np.save(f'{temp_dir}/w_{subject}_{feature}.npy',weights_mean)
-        analysis.plot_results(scores_mean,'r2','59k',vertex_info,subject,'as_scores',dataset,'ridgeCV_movie1')
+        analysis.plot_results(scores_mean,'r2','59k',vertex_info,subject,'as_scores',dataset,'ridgeCV')
     elif dataset == 'merlin':
         X,Y,vertex_info = analysis.load_data_merlin(subject,feature)
         X = hrf_tools.apply_optimal_hrf_10hz(X,(1/1.5))
