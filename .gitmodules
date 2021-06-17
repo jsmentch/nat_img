@@ -15,3 +15,7 @@
 	path = sourcedata/data/merlin/brain/merlin_cifti_clean_smooth
 	url = /om4/group/gablab/data/jsmentch/merlin/merlin_cifti_clean_smooth
 	datalad-id = 0fb34333-4140-42c3-b96a-e2b992f0cdfb
+[submodule "ds003017"]
+	path = ds003017
+	url = https://github.com/OpenNeuroDatasets/ds003017.git
+	datalad-id = 322f5aac-c52c-11ea-8255-96be0168836a
