@@ -1,0 +1,5 @@
+Submitted job for: sid000024
+Command :
+singularity run --cleanenv -B /om2 -B /om/scratch/Mon/jsmentch/fmriprep:/workdir -B /om4/group/gablab/data/jsmentch/ds003017/ /om2/user/jsmentch/fmriprep.simg /om4/group/gablab/data/jsmentch/ds003017/ /om4/group/gablab/data/jsmentch/ds003017//derivatives participant -w /workdir --participant-label sid000024 --cifti-output --nthreads 8 --output-spaces MNI152NLin6Asym:res-2 --resource-monitor --skip_bids_validation --omp-nthreads 8 --mem_mb 24000 --fs-license-file /om2/user/jsmentch/data/freesurfer_license.txt
+/usr/local/miniconda/lib/python3.7/site-packages/bids/layout/validation.py:46: UserWarning: The ability to pass arguments to BIDSLayout that control indexing is likely to be removed in future; possibly as early as PyBIDS 0.14. This includes the `config_filename`, `ignore`, `force_index`, and `index_metadata` arguments. The recommended usage pattern is to initialize a new BIDSLayoutIndexer with these arguments, and pass it to the BIDSLayout via the `indexer` argument.
+  warnings.warn("The ability to pass arguments to BIDSLayout that control "

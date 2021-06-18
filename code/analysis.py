@@ -220,6 +220,8 @@ def load_data_merlin(subject,feature):
     vertex_info = hcp.get_HCP_vertex_info(img)
     return X,Y,vertex_info
 
+
+
 def simple_ridgeCV(X,Y):
     estimator = RidgeCV(alphas=[0.1, 1.0, 10.0, 100])
     cv = KFold(n_splits=5)

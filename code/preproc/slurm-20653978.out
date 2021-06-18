@@ -1,0 +1,3 @@
+Submitted job for: sid000013
+Command :
+singularity run --cleanenv -B /om2 -B /om/scratch/Mon/jsmentch/fmriprep:/workdir -B /om4/group/gablab/data/jsmentch/ds003017/ /om2/user/jsmentch/fmriprep.simg /om4/group/gablab/data/jsmentch/ds003017/ /om4/group/gablab/data/jsmentch/ds003017//derivatives participant -w /workdir --participant-label sid000013 --cifti-output --nthreads 8 --output-spaces MNI152NLin6Asym:res-2 --resource-monitor --skip_bids_validation --omp-nthreads 8 --mem_mb 24000 --fs-license-file /om2/user/jsmentch/data/freesurfer_license.txt
