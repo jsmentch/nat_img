@@ -1655,3 +1655,513 @@ fslmaths -dt char /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_
 	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.bold_hmc_wf.fsl2itk" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/bold_hmc_wf/fsl2itk".
 210618-10:34:01,622 nipype.workflow INFO:
 	 [Node] Running "fsl2itk" ("niworkflows.interfaces.itk.MCFLIRT2ITK")
+210618-10:34:52,769 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.bold_hmc_wf.fsl2itk".
+210618-10:34:54,856 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_02_wf.final_boldref_wf.enhance_and_skullstrip_bold_wf.n4_correct" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_02_wf/final_boldref_wf/enhance_and_skullstrip_bold_wf/n4_correct".
+210618-10:34:54,972 nipype.workflow INFO:
+	 [Node] Running "n4_correct" ("niworkflows.interfaces.fixes.FixN4BiasFieldCorrection"), a CommandLine Interface with command:
+N4BiasFieldCorrection --bspline-fitting [ 200 ] -d 3 --input-image /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_02_wf/final_boldref_wf/enhance_and_skullstrip_bold_wf/n4_correct/ref_bold_scaled.nii.gz --mask-image /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_02_wf/final_boldref_wf/enhance_and_skullstrip_bold_wf/check_hdr/tpl-MNI152NLin2009cAsym_res-01_label-brain_probseg_trans_mask_dil_hdr.nii.gz --output ref_bold_corrected.nii.gz -r
+210618-10:34:58,45 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_02_wf.final_boldref_wf.enhance_and_skullstrip_bold_wf.n4_correct".
+210618-10:34:58,866 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_02_wf.final_boldref_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_pass" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_02_wf/final_boldref_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass".
+210618-10:34:58,880 nipype.workflow INFO:
+	 [Node] Running "skullstrip_first_pass" ("nipype.interfaces.fsl.preprocess.BET"), a CommandLine Interface with command:
+bet /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_02_wf/final_boldref_wf/enhance_and_skullstrip_bold_wf/n4_correct/ref_bold_corrected.nii.gz /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_02_wf/final_boldref_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass/ref_bold_corrected_brain.nii.gz -f 0.20 -m
+210618-10:35:00,514 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_02_wf.final_boldref_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_pass".
+210618-10:35:00,859 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_02_wf.final_boldref_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_dilate" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_02_wf/final_boldref_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_dilate".
+210618-10:35:00,876 nipype.workflow INFO:
+	 [Node] Running "skullstrip_first_dilate" ("nipype.interfaces.fsl.maths.DilateImage"), a CommandLine Interface with command:
+fslmaths -dt char /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_02_wf/final_boldref_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass/ref_bold_corrected_brain_mask.nii.gz -kernel sphere 6.0000 -dilF /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_02_wf/final_boldref_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_dilate/ref_bold_corrected_brain_mask_dil.nii.gz
+210618-10:35:02,316 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_02_wf.final_boldref_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_dilate".
+210618-10:35:02,858 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_02_wf.final_boldref_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_mask" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_02_wf/final_boldref_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_mask".
+210618-10:35:02,875 nipype.workflow INFO:
+	 [Node] Running "skullstrip_first_mask" ("nipype.interfaces.fsl.maths.ApplyMask"), a CommandLine Interface with command:
+fslmaths /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_02_wf/final_boldref_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass/ref_bold_corrected_brain.nii.gz -mas /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_02_wf/final_boldref_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_dilate/ref_bold_corrected_brain_mask_dil.nii.gz /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_02_wf/final_boldref_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_mask/ref_bold_corrected_brain_masked.nii.gz
+210618-10:35:03,70 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_02_wf.final_boldref_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_mask".
+210618-10:35:04,862 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_02_wf.final_boldref_wf.enhance_and_skullstrip_bold_wf.unifize" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_02_wf/final_boldref_wf/enhance_and_skullstrip_bold_wf/unifize".
+210618-10:35:04,876 nipype.workflow INFO:
+	 [Node] Running "unifize" ("nipype.interfaces.afni.utils.Unifize"), a CommandLine Interface with command:
+3dUnifize -clfrac 0.2 -rbt 18.3 65.0 90.0 -prefix uni.nii.gz -T2 -input /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_02_wf/final_boldref_wf/enhance_and_skullstrip_bold_wf/unifize/ref_bold_corrected_brain_masked.nii.gz
+210618-10:35:08,240 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_02_wf.final_boldref_wf.enhance_and_skullstrip_bold_wf.unifize".
+210618-10:35:08,867 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_02_wf.final_boldref_wf.enhance_and_skullstrip_bold_wf.fixhdr_unifize" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_02_wf/final_boldref_wf/enhance_and_skullstrip_bold_wf/fixhdr_unifize".
+210618-10:35:08,881 nipype.workflow INFO:
+	 [Node] Running "fixhdr_unifize" ("niworkflows.interfaces.utils.CopyXForm")
+210618-10:35:08,997 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_02_wf.final_boldref_wf.enhance_and_skullstrip_bold_wf.fixhdr_unifize".
+210618-10:35:10,897 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_02_wf.final_boldref_wf.enhance_and_skullstrip_bold_wf.skullstrip_second_pass" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_02_wf/final_boldref_wf/enhance_and_skullstrip_bold_wf/skullstrip_second_pass".
+210618-10:35:10,914 nipype.workflow INFO:
+	 [Node] Running "skullstrip_second_pass" ("nipype.interfaces.afni.preprocess.Automask"), a CommandLine Interface with command:
+3dAutomask -apply_prefix uni_xform_masked.nii.gz -dilate 1 -prefix uni_xform_mask.nii.gz /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_02_wf/final_boldref_wf/enhance_and_skullstrip_bold_wf/skullstrip_second_pass/uni_xform.nii.gz
+210618-10:35:11,358 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_02_wf.final_boldref_wf.enhance_and_skullstrip_bold_wf.skullstrip_second_pass".
+210618-10:35:12,899 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_02_wf.final_boldref_wf.enhance_and_skullstrip_bold_wf.fixhdr_skullstrip2" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_02_wf/final_boldref_wf/enhance_and_skullstrip_bold_wf/fixhdr_skullstrip2".
+210618-10:35:12,912 nipype.workflow INFO:
+	 [Node] Running "fixhdr_skullstrip2" ("niworkflows.interfaces.utils.CopyXForm")
+210618-10:35:12,962 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_02_wf.final_boldref_wf.enhance_and_skullstrip_bold_wf.fixhdr_skullstrip2".
+210618-10:35:14,892 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_02_wf.final_boldref_wf.enhance_and_skullstrip_bold_wf.combine_masks" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_02_wf/final_boldref_wf/enhance_and_skullstrip_bold_wf/combine_masks".
+210618-10:35:14,911 nipype.workflow INFO:
+	 [Node] Running "combine_masks" ("nipype.interfaces.fsl.maths.BinaryMaths"), a CommandLine Interface with command:
+fslmaths /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_02_wf/final_boldref_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass/ref_bold_corrected_brain_mask.nii.gz -mul /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_02_wf/final_boldref_wf/enhance_and_skullstrip_bold_wf/fixhdr_skullstrip2/uni_xform_mask_xform.nii.gz /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_02_wf/final_boldref_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_brain_mask_maths.nii.gz
+210618-10:35:15,72 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_02_wf.final_boldref_wf.enhance_and_skullstrip_bold_wf.combine_masks".
+210618-10:35:16,905 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_02_wf.bold_confounds_wf.dvars" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_02_wf/bold_confounds_wf/dvars".
+210618-10:35:16,905 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_02_wf.bold_confounds_wf.tcompcor" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_02_wf/bold_confounds_wf/tcompcor".
+210618-10:35:16,907 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_02_wf.final_boldref_wf.enhance_and_skullstrip_bold_wf.apply_mask" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_02_wf/final_boldref_wf/enhance_and_skullstrip_bold_wf/apply_mask".
+210618-10:35:16,927 nipype.workflow INFO:
+	 [Node] Running "apply_mask" ("nipype.interfaces.fsl.maths.ApplyMask"), a CommandLine Interface with command:
+fslmaths /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_02_wf/final_boldref_wf/enhance_and_skullstrip_bold_wf/fixhdr_unifize/uni_xform.nii.gz -mas /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_02_wf/final_boldref_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_brain_mask_maths.nii.gz /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_02_wf/final_boldref_wf/enhance_and_skullstrip_bold_wf/apply_mask/uni_xform_masked.nii.gz
+210618-10:35:16,928 nipype.workflow INFO:
+	 [Node] Running "tcompcor" ("niworkflows.interfaces.patches.RobustTCompCor")
+210618-10:35:16,982 nipype.workflow INFO:
+	 [Node] Running "dvars" ("nipype.algorithms.confounds.ComputeDVARS")
+210618-10:35:17,164 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_02_wf.final_boldref_wf.enhance_and_skullstrip_bold_wf.apply_mask".
+210618-10:35:26,242 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_02_wf.bold_confounds_wf.tcompcor".
+210618-10:35:26,910 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_02_wf.bold_confounds_wf.tcc_metadata_fmt" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_02_wf/bold_confounds_wf/tcc_metadata_fmt".
+210618-10:35:26,925 nipype.workflow INFO:
+	 [Node] Running "tcc_metadata_fmt" ("niworkflows.interfaces.utils.TSV2JSON")
+210618-10:35:26,993 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_02_wf.bold_confounds_wf.tcc_metadata_fmt".
+210618-10:35:56,703 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_02_wf.bold_confounds_wf.dvars".
+210618-10:36:00,65 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.initial_boldref_wf.enhance_and_skullstrip_bold_wf.init_aff" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/init_aff".
+210618-10:36:00,82 nipype.workflow INFO:
+	 [Node] Running "init_aff" ("nipype.interfaces.ants.utils.AI"), a CommandLine Interface with command:
+antsAI -c [10,1e-06,10] -d 3 -x /home/jsmentch/.cache/templateflow/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-02_desc-brain_mask.nii.gz -m Mattes[/home/jsmentch/.cache/templateflow/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-02_desc-fMRIPrep_boldref.nii.gz,/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/gen_ref/ref_bold.nii.gz,32,Regular,0.2] -o initialization.mat -p 0 -s [20,0.12] -g [40.0,0x40x40] -t Affine[0.1] -v 1
+210618-10:36:57,574 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.initial_boldref_wf.enhance_and_skullstrip_bold_wf.init_aff".
+210618-10:36:58,966 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.initial_boldref_wf.enhance_and_skullstrip_bold_wf.norm" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/norm".
+210618-10:36:58,995 nipype.workflow INFO:
+	 [Node] Running "norm" ("niworkflows.interfaces.fixes.FixHeaderRegistration"), a CommandLine Interface with command:
+antsRegistration --collapse-output-transforms 1 --dimensionality 3 --float 1 --initial-moving-transform [ /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/init_aff/initialization.mat, 0 ] --initialize-transforms-per-stage 0 --interpolation Linear --output transform --transform Affine[ 0.1 ] --metric Mattes[ /home/jsmentch/.cache/templateflow/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-02_desc-fMRIPrep_boldref.nii.gz, /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/gen_ref/ref_bold.nii.gz, 1, 64, Random, 0.2 ] --convergence [ 200, 1e-09, 10 ] --smoothing-sigmas 2.0mm --shrink-factors 2 --use-estimate-learning-rate-once 1 --use-histogram-matching 1 --winsorize-image-intensities [ 0.05, 0.98 ]  --write-composite-transform 0
+210618-10:37:00,659 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.initial_boldref_wf.enhance_and_skullstrip_bold_wf.norm".
+210618-10:37:00,999 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.initial_boldref_wf.enhance_and_skullstrip_bold_wf.map_brainmask" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/map_brainmask".
+210618-10:37:01,30 nipype.workflow INFO:
+	 [Node] Running "map_brainmask" ("niworkflows.interfaces.fixes.FixHeaderApplyTransforms"), a CommandLine Interface with command:
+antsApplyTransforms --default-value 0 --float 1 --input /home/jsmentch/.cache/templateflow/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-01_label-brain_probseg.nii.gz --interpolation BSpline --output tpl-MNI152NLin2009cAsym_res-01_label-brain_probseg_trans.nii.gz --reference-image /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/gen_ref/ref_bold.nii.gz --transform [ /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/norm/transform0GenericAffine.mat, 1 ]
+210618-10:37:02,84 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.initial_boldref_wf.enhance_and_skullstrip_bold_wf.map_brainmask".
+210618-10:37:02,975 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.initial_boldref_wf.enhance_and_skullstrip_bold_wf.binarize_mask" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/binarize_mask".
+210618-10:37:02,988 nipype.workflow INFO:
+	 [Node] Running "binarize_mask" ("niworkflows.interfaces.nibabel.Binarize")
+210618-10:37:03,665 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.initial_boldref_wf.enhance_and_skullstrip_bold_wf.binarize_mask".
+210618-10:37:04,979 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.initial_boldref_wf.enhance_and_skullstrip_bold_wf.pre_mask_dilate" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/pre_mask_dilate".
+210618-10:37:05,2 nipype.workflow INFO:
+	 [Node] Running "pre_mask_dilate" ("nipype.interfaces.fsl.maths.DilateImage"), a CommandLine Interface with command:
+fslmaths -dt char /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/binarize_mask/tpl-MNI152NLin2009cAsym_res-01_label-brain_probseg_trans_mask.nii.gz -kernel sphere 3.0000 -dilF /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/pre_mask_dilate/tpl-MNI152NLin2009cAsym_res-01_label-brain_probseg_trans_mask_dil.nii.gz
+210618-10:37:05,467 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.initial_boldref_wf.enhance_and_skullstrip_bold_wf.pre_mask_dilate".
+210618-10:37:07,561 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_04_wf.sdc_estimate_wf.phdiff_wf.magnitude_wf.n4_correct" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_04_wf/sdc_estimate_wf/phdiff_wf/magnitude_wf/n4_correct".
+210618-10:37:07,580 nipype.workflow INFO:
+	 [Node] Running "n4_correct" ("nipype.interfaces.ants.segmentation.N4BiasFieldCorrection"), a CommandLine Interface with command:
+N4BiasFieldCorrection -d 3 --input-image /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_04_wf/sdc_estimate_wf/phdiff_wf/magnitude_wf/magmrg/sub-sid000278_acq-25mm_magnitude1_avg.nii.gz --output sub-sid000278_acq-25mm_magnitude1_avg_corrected.nii.gz
+210618-10:37:09,852 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_04_wf.sdc_estimate_wf.phdiff_wf.magnitude_wf.n4_correct".
+210618-10:37:10,978 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_04_wf.sdc_estimate_wf.phdiff_wf.magnitude_wf.bet" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_04_wf/sdc_estimate_wf/phdiff_wf/magnitude_wf/bet".
+210618-10:37:10,978 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.initial_boldref_wf.enhance_and_skullstrip_bold_wf.n4_correct" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/n4_correct".
+210618-10:37:10,998 nipype.workflow INFO:
+	 [Node] Running "bet" ("niworkflows.interfaces.masks.BETRPT"), a CommandLine Interface with command:
+bet /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_04_wf/sdc_estimate_wf/phdiff_wf/magnitude_wf/n4_correct/sub-sid000278_acq-25mm_magnitude1_avg_corrected.nii.gz /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_04_wf/sdc_estimate_wf/phdiff_wf/magnitude_wf/bet/sub-sid000278_acq-25mm_magnitude1_avg_corrected_brain.nii.gz -f 0.60 -m
+210618-10:37:11,36 nipype.workflow INFO:
+	 [Node] Running "n4_correct" ("niworkflows.interfaces.fixes.FixN4BiasFieldCorrection"), a CommandLine Interface with command:
+N4BiasFieldCorrection --bspline-fitting [ 200 ] -d 3 --input-image /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/gen_ref/ref_bold.nii.gz --mask-image /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/check_hdr/tpl-MNI152NLin2009cAsym_res-01_label-brain_probseg_trans_mask_dil_hdr.nii.gz --output ref_bold_corrected.nii.gz -r
+210618-10:37:14,289 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.initial_boldref_wf.enhance_and_skullstrip_bold_wf.n4_correct".
+210618-10:37:15,10 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.initial_boldref_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_pass" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass".
+210618-10:37:15,10 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.fmap2field_wf.get_ees" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/fmap2field_wf/get_ees".
+210618-10:37:15,32 nipype.workflow INFO:
+	 [Node] Running "skullstrip_first_pass" ("nipype.interfaces.fsl.preprocess.BET"), a CommandLine Interface with command:
+bet /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/n4_correct/ref_bold_corrected.nii.gz /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass/ref_bold_corrected_brain.nii.gz -f 0.20 -m
+210618-10:37:15,551 nipype.workflow INFO:
+	 [Node] Running "get_ees" ("nipype.interfaces.utility.wrappers.Function")
+210618-10:37:15,611 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.fmap2field_wf.get_ees".
+210618-10:37:15,940 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_04_wf.sdc_estimate_wf.phdiff_wf.magnitude_wf.bet".
+210618-10:37:16,690 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.initial_boldref_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_pass".
+210618-10:37:16,997 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_04_wf.sdc_estimate_wf.phdiff_wf.fmap_postproc_wf.cleanup_wf.MskErode" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_04_wf/sdc_estimate_wf/phdiff_wf/fmap_postproc_wf/cleanup_wf/MskErode".
+210618-10:37:16,997 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.initial_boldref_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_dilate" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_dilate".
+210618-10:37:16,998 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_04_wf.sdc_estimate_wf.phdiff_wf.prelude" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_04_wf/sdc_estimate_wf/phdiff_wf/prelude".
+210618-10:37:17,16 nipype.workflow INFO:
+	 [Node] Running "skullstrip_first_dilate" ("nipype.interfaces.fsl.maths.DilateImage"), a CommandLine Interface with command:
+fslmaths -dt char /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass/ref_bold_corrected_brain_mask.nii.gz -kernel sphere 6.0000 -dilF /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_dilate/ref_bold_corrected_brain_mask_dil.nii.gz
+210618-10:37:17,16 nipype.workflow INFO:
+	 [Node] Running "MskErode" ("nipype.interfaces.fsl.maths.MathsCommand"), a CommandLine Interface with command:
+fslmaths /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_04_wf/sdc_estimate_wf/phdiff_wf/magnitude_wf/bet/sub-sid000278_acq-25mm_magnitude1_avg_corrected_brain_mask.nii.gz -nan -kernel 2D -ero /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_04_wf/sdc_estimate_wf/phdiff_wf/fmap_postproc_wf/cleanup_wf/MskErode/sub-sid000278_acq-25mm_magnitude1_avg_corrected_brain_mask_maths.nii.gz
+210618-10:37:17,20 nipype.workflow INFO:
+	 [Node] Running "prelude" ("nipype.interfaces.fsl.preprocess.PRELUDE"), a CommandLine Interface with command:
+prelude --abs=/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_04_wf/sdc_estimate_wf/phdiff_wf/magnitude_wf/bet/sub-sid000278_acq-25mm_magnitude1_avg_corrected_brain.nii.gz --mask=/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_04_wf/sdc_estimate_wf/phdiff_wf/magnitude_wf/bet/sub-sid000278_acq-25mm_magnitude1_avg_corrected_brain_mask.nii.gz --phase=/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_04_wf/sdc_estimate_wf/phdiff_wf/phmap2rads/mapflow/_phmap2rads0/sub-sid000278_acq-25mm_phasediff_rads.nii.gz --unwrap=/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_04_wf/sdc_estimate_wf/phdiff_wf/prelude/sub-sid000278_acq-25mm_phasediff_rads_unwrapped.nii.gz
+210618-10:37:17,413 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_04_wf.sdc_estimate_wf.phdiff_wf.fmap_postproc_wf.cleanup_wf.MskErode".
+210618-10:37:17,523 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_04_wf.sdc_estimate_wf.phdiff_wf.prelude".
+210618-10:37:18,508 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.initial_boldref_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_dilate".
+210618-10:37:18,998 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.initial_boldref_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_mask" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_mask".
+210618-10:37:18,999 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_04_wf.sdc_estimate_wf.phdiff_wf.fmap_postproc_wf.cleanup_wf.NewMask" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_04_wf/sdc_estimate_wf/phdiff_wf/fmap_postproc_wf/cleanup_wf/NewMask".
+210618-10:37:19,18 nipype.workflow INFO:
+	 [Node] Running "NewMask" ("nipype.interfaces.fsl.maths.MultiImageMaths"), a CommandLine Interface with command:
+fslmaths /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_04_wf/sdc_estimate_wf/phdiff_wf/magnitude_wf/bet/sub-sid000278_acq-25mm_magnitude1_avg_corrected_brain_mask.nii.gz -sub /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_04_wf/sdc_estimate_wf/phdiff_wf/fmap_postproc_wf/cleanup_wf/MskErode/sub-sid000278_acq-25mm_magnitude1_avg_corrected_brain_mask_maths.nii.gz -thr 0.5 -bin /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_04_wf/sdc_estimate_wf/phdiff_wf/fmap_postproc_wf/cleanup_wf/NewMask/sub-sid000278_acq-25mm_magnitude1_avg_corrected_brain_mask_maths.nii.gz
+210618-10:37:19,19 nipype.workflow INFO:
+	 [Node] Running "skullstrip_first_mask" ("nipype.interfaces.fsl.maths.ApplyMask"), a CommandLine Interface with command:
+fslmaths /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass/ref_bold_corrected_brain.nii.gz -mas /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_dilate/ref_bold_corrected_brain_mask_dil.nii.gz /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_mask/ref_bold_corrected_brain_masked.nii.gz
+210618-10:37:19,186 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_04_wf.sdc_estimate_wf.phdiff_wf.fmap_postproc_wf.cleanup_wf.NewMask".
+210618-10:37:19,246 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.initial_boldref_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_mask".
+210618-10:37:21,20 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.initial_boldref_wf.enhance_and_skullstrip_bold_wf.unifize" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/unifize".
+210618-10:37:21,20 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_04_wf.sdc_estimate_wf.phdiff_wf.fmap_postproc_wf.denoise" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_04_wf/sdc_estimate_wf/phdiff_wf/fmap_postproc_wf/denoise".
+210618-10:37:21,36 nipype.workflow INFO:
+	 [Node] Running "denoise" ("nipype.interfaces.fsl.maths.SpatialFilter"), a CommandLine Interface with command:
+fslmaths /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_04_wf/sdc_estimate_wf/phdiff_wf/fmap_postproc_wf/recenter/sub-sid000278_acq-25mm_phasediff_rads_unwrapped_recentered.nii.gz -kernel sphere 5.0000 -fmedian /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_04_wf/sdc_estimate_wf/phdiff_wf/fmap_postproc_wf/denoise/sub-sid000278_acq-25mm_phasediff_rads_unwrapped_recentered_filt.nii.gz
+210618-10:37:21,38 nipype.workflow INFO:
+	 [Node] Running "unifize" ("nipype.interfaces.afni.utils.Unifize"), a CommandLine Interface with command:
+3dUnifize -clfrac 0.2 -rbt 18.3 65.0 90.0 -prefix uni.nii.gz -T2 -input /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/unifize/ref_bold_corrected_brain_masked.nii.gz
+210618-10:37:22,248 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_04_wf.sdc_estimate_wf.phdiff_wf.fmap_postproc_wf.denoise".
+210618-10:37:22,983 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_04_wf.sdc_estimate_wf.phdiff_wf.fmap_postproc_wf.demean" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_04_wf/sdc_estimate_wf/phdiff_wf/fmap_postproc_wf/demean".
+210618-10:37:22,997 nipype.workflow INFO:
+	 [Node] Running "demean" ("nipype.interfaces.utility.wrappers.Function")
+210618-10:37:24,469 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_04_wf.sdc_estimate_wf.phdiff_wf.fmap_postproc_wf.demean".
+210618-10:37:24,669 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.initial_boldref_wf.enhance_and_skullstrip_bold_wf.unifize".
+210618-10:37:24,965 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.initial_boldref_wf.enhance_and_skullstrip_bold_wf.fixhdr_unifize" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/fixhdr_unifize".
+210618-10:37:24,966 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_04_wf.sdc_estimate_wf.phdiff_wf.fmap_postproc_wf.cleanup_wf.Despike" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_04_wf/sdc_estimate_wf/phdiff_wf/fmap_postproc_wf/cleanup_wf/Despike".
+210618-10:37:24,978 nipype.workflow INFO:
+	 [Node] Running "fixhdr_unifize" ("niworkflows.interfaces.utils.CopyXForm")
+210618-10:37:24,989 nipype.workflow INFO:
+	 [Node] Running "Despike" ("nipype.interfaces.fsl.preprocess.FUGUE"), a CommandLine Interface with command:
+fugue --despike --despikethreshold=2.1 --loadfmap=/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_04_wf/sdc_estimate_wf/phdiff_wf/fmap_postproc_wf/demean/sub-sid000278_acq-25mm_phasediff_rads_unwrapped_recentered_filt_demean.nii.gz --savefmap=sub-sid000278_acq-25mm_phasediff_rads_unwrapped_recentered_filt_demean_fieldmap.nii.gz --mask=/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_04_wf/sdc_estimate_wf/phdiff_wf/magnitude_wf/bet/sub-sid000278_acq-25mm_magnitude1_avg_corrected_brain_mask.nii.gz
+210618-10:37:25,57 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.initial_boldref_wf.enhance_and_skullstrip_bold_wf.fixhdr_unifize".
+210618-10:37:25,604 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_04_wf.sdc_estimate_wf.phdiff_wf.fmap_postproc_wf.cleanup_wf.Despike".
+210618-10:37:26,984 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.initial_boldref_wf.enhance_and_skullstrip_bold_wf.skullstrip_second_pass" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/skullstrip_second_pass".
+210618-10:37:26,984 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_04_wf.sdc_estimate_wf.phdiff_wf.fmap_postproc_wf.cleanup_wf.ApplyMask" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_04_wf/sdc_estimate_wf/phdiff_wf/fmap_postproc_wf/cleanup_wf/ApplyMask".
+210618-10:37:27,16 nipype.workflow INFO:
+	 [Node] Running "skullstrip_second_pass" ("nipype.interfaces.afni.preprocess.Automask"), a CommandLine Interface with command:
+3dAutomask -apply_prefix uni_xform_masked.nii.gz -dilate 1 -prefix uni_xform_mask.nii.gz /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/skullstrip_second_pass/uni_xform.nii.gz
+210618-10:37:27,22 nipype.workflow INFO:
+	 [Node] Running "ApplyMask" ("nipype.interfaces.fsl.maths.ApplyMask"), a CommandLine Interface with command:
+fslmaths /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_04_wf/sdc_estimate_wf/phdiff_wf/fmap_postproc_wf/cleanup_wf/Despike/sub-sid000278_acq-25mm_phasediff_rads_unwrapped_recentered_filt_demean_fieldmap.nii.gz -nan -mas /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_04_wf/sdc_estimate_wf/phdiff_wf/fmap_postproc_wf/cleanup_wf/NewMask/sub-sid000278_acq-25mm_magnitude1_avg_corrected_brain_mask_maths.nii.gz /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_04_wf/sdc_estimate_wf/phdiff_wf/fmap_postproc_wf/cleanup_wf/ApplyMask/sub-sid000278_acq-25mm_phasediff_rads_unwrapped_recentered_filt_demean_fieldmap_masked.nii.gz
+210618-10:37:27,189 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_04_wf.sdc_estimate_wf.phdiff_wf.fmap_postproc_wf.cleanup_wf.ApplyMask".
+210618-10:37:27,494 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.initial_boldref_wf.enhance_and_skullstrip_bold_wf.skullstrip_second_pass".
+210618-10:37:28,999 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.initial_boldref_wf.enhance_and_skullstrip_bold_wf.fixhdr_skullstrip2" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/fixhdr_skullstrip2".
+210618-10:37:29,0 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_04_wf.sdc_estimate_wf.phdiff_wf.fmap_postproc_wf.cleanup_wf.Merge" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_04_wf/sdc_estimate_wf/phdiff_wf/fmap_postproc_wf/cleanup_wf/Merge".
+210618-10:37:29,20 nipype.workflow INFO:
+	 [Node] Running "fixhdr_skullstrip2" ("niworkflows.interfaces.utils.CopyXForm")
+210618-10:37:29,28 nipype.workflow INFO:
+	 [Node] Running "Merge" ("nipype.interfaces.utility.base.Merge")
+210618-10:37:29,91 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.initial_boldref_wf.enhance_and_skullstrip_bold_wf.fixhdr_skullstrip2".
+210618-10:37:29,818 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_04_wf.sdc_estimate_wf.phdiff_wf.fmap_postproc_wf.cleanup_wf.Merge".
+210618-10:37:31,27 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.initial_boldref_wf.enhance_and_skullstrip_bold_wf.combine_masks" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/combine_masks".
+210618-10:37:31,28 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_04_wf.sdc_estimate_wf.phdiff_wf.fmap_postproc_wf.cleanup_wf.AddEdge" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_04_wf/sdc_estimate_wf/phdiff_wf/fmap_postproc_wf/cleanup_wf/AddEdge".
+210618-10:37:31,43 nipype.workflow INFO:
+	 [Node] Running "combine_masks" ("nipype.interfaces.fsl.maths.BinaryMaths"), a CommandLine Interface with command:
+fslmaths /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass/ref_bold_corrected_brain_mask.nii.gz -mul /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/fixhdr_skullstrip2/uni_xform_mask_xform.nii.gz /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_brain_mask_maths.nii.gz
+210618-10:37:31,55 nipype.workflow INFO:
+	 [Node] Running "AddEdge" ("nipype.interfaces.fsl.maths.MultiImageMaths"), a CommandLine Interface with command:
+fslmaths /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_04_wf/sdc_estimate_wf/phdiff_wf/fmap_postproc_wf/demean/sub-sid000278_acq-25mm_phasediff_rads_unwrapped_recentered_filt_demean.nii.gz -mas /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_04_wf/sdc_estimate_wf/phdiff_wf/fmap_postproc_wf/cleanup_wf/MskErode/sub-sid000278_acq-25mm_magnitude1_avg_corrected_brain_mask_maths.nii.gz -add /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_04_wf/sdc_estimate_wf/phdiff_wf/fmap_postproc_wf/cleanup_wf/ApplyMask/sub-sid000278_acq-25mm_phasediff_rads_unwrapped_recentered_filt_demean_fieldmap_masked.nii.gz /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_04_wf/sdc_estimate_wf/phdiff_wf/fmap_postproc_wf/cleanup_wf/AddEdge/sub-sid000278_acq-25mm_phasediff_rads_unwrapped_recentered_filt_demean_maths.nii.gz
+210618-10:37:31,199 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.initial_boldref_wf.enhance_and_skullstrip_bold_wf.combine_masks".
+210618-10:37:31,257 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_04_wf.sdc_estimate_wf.phdiff_wf.fmap_postproc_wf.cleanup_wf.AddEdge".
+210618-10:37:33,1 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_04_wf.sdc_estimate_wf.phdiff_wf.compfmap" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_04_wf/sdc_estimate_wf/phdiff_wf/compfmap".
+210618-10:37:33,1 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.initial_boldref_wf.enhance_and_skullstrip_bold_wf.apply_mask" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/apply_mask".
+210618-10:37:33,27 nipype.workflow INFO:
+	 [Node] Running "apply_mask" ("nipype.interfaces.fsl.maths.ApplyMask"), a CommandLine Interface with command:
+fslmaths /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/fixhdr_unifize/uni_xform.nii.gz -mas /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_brain_mask_maths.nii.gz /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/apply_mask/uni_xform_masked.nii.gz
+210618-10:37:33,41 nipype.workflow INFO:
+	 [Node] Running "compfmap" ("sdcflows.interfaces.fmap.Phasediff2Fieldmap")
+210618-10:37:33,108 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_04_wf.sdc_estimate_wf.phdiff_wf.compfmap".
+210618-10:37:33,240 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.initial_boldref_wf.enhance_and_skullstrip_bold_wf.apply_mask".
+210618-10:37:35,1 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.fmap2field_wf.fmap2ref_reg" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/fmap2field_wf/fmap2ref_reg".
+210618-10:37:35,30 nipype.workflow INFO:
+	 [Node] Running "fmap2ref_reg" ("niworkflows.interfaces.registration.ANTSRegistrationRPT"), a CommandLine Interface with command:
+antsRegistration --collapse-output-transforms 1 --dimensionality 3 --float 1 --initialize-transforms-per-stage 0 --interpolation LanczosWindowedSinc --output [ transform, transform_Warped.nii.gz, transform_InverseWarped.nii.gz ] --transform Translation[ 0.05 ] --metric Mattes[ /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/apply_mask/uni_xform_masked.nii.gz, /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/phdiff_wf/magnitude_wf/bet/sub-sid000278_acq-25mm_magnitude1_avg_corrected_brain.nii.gz, 1, 64, Random, 0.5 ] --convergence [ 500, 1e-07, 200 ] --smoothing-sigmas 8.0mm --shrink-factors 2 --use-estimate-learning-rate-once 1 --use-histogram-matching 1 --transform Affine[ 0.01 ] --metric Mattes[ /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/apply_mask/uni_xform_masked.nii.gz, /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/phdiff_wf/magnitude_wf/bet/sub-sid000278_acq-25mm_magnitude1_avg_corrected_brain.nii.gz, 1, 64, Random, 0.5 ] --convergence [ 200, 1e-08, 100 ] --smoothing-sigmas 2.0mm --shrink-factors 1 --use-estimate-learning-rate-once 1 --use-histogram-matching 1 --winsorize-image-intensities [ 0.005, 0.998 ]  --write-composite-transform 1
+210618-10:38:03,823 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.fmap2field_wf.fmap2ref_reg".
+210618-10:38:05,58 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.fmap2field_wf.fmap2ref_apply" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/fmap2field_wf/fmap2ref_apply".
+210618-10:38:05,58 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.fmap2field_wf.fmap_mask2ref_apply" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/fmap2field_wf/fmap_mask2ref_apply".
+210618-10:38:05,72 nipype.workflow INFO:
+	 [Node] Running "fmap2ref_apply" ("niworkflows.interfaces.registration.ANTSApplyTransformsRPT"), a CommandLine Interface with command:
+antsApplyTransforms --default-value 0 --dimensionality 3 --float 1 --input /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/phdiff_wf/compfmap/sub-sid000278_acq-25mm_phasediff_rads_unwrapped_recentered_filt_demean_maths_fmap.nii.gz --interpolation BSpline --output sub-sid000278_acq-25mm_phasediff_rads_unwrapped_recentered_filt_demean_maths_fmap_trans.nii.gz --reference-image /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/n4_correct/ref_bold_corrected.nii.gz --transform /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/fmap2field_wf/fmap2ref_reg/transformComposite.h5
+210618-10:38:05,81 nipype.workflow INFO:
+	 [Node] Running "fmap_mask2ref_apply" ("niworkflows.interfaces.registration.ANTSApplyTransformsRPT"), a CommandLine Interface with command:
+antsApplyTransforms --default-value 0 --dimensionality 3 --float 1 --input /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/phdiff_wf/magnitude_wf/bet/sub-sid000278_acq-25mm_magnitude1_avg_corrected_brain_mask.nii.gz --interpolation MultiLabel --output sub-sid000278_acq-25mm_magnitude1_avg_corrected_brain_mask_trans.nii.gz --reference-image /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/n4_correct/ref_bold_corrected.nii.gz --transform /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/fmap2field_wf/fmap2ref_reg/transformComposite.h5
+210618-10:38:05,829 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.fmap2field_wf.fmap2ref_apply".
+210618-10:38:07,63 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.fmap2field_wf.torads" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/fmap2field_wf/torads".
+210618-10:38:07,76 nipype.workflow INFO:
+	 [Node] Running "torads" ("sdcflows.interfaces.fmap.FieldToRadS")
+210618-10:38:07,243 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.fmap2field_wf.torads".
+210618-10:38:10,432 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.fmap2field_wf.fmap_mask2ref_apply".
+210618-10:38:11,37 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.fmap2field_wf.gen_vsm" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/fmap2field_wf/gen_vsm".
+210618-10:38:11,60 nipype.workflow INFO:
+	 [Node] Running "gen_vsm" ("nipype.interfaces.fsl.preprocess.FUGUE"), a CommandLine Interface with command:
+fugue --dwell=0.0005500110 --loadfmap=/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/fmap2field_wf/torads/sub-sid000278_acq-25mm_phasediff_rads_unwrapped_recentered_filt_demean_maths_fmap_trans_rad.nii.gz --mask=/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/fmap2field_wf/fmap_mask2ref_apply/sub-sid000278_acq-25mm_magnitude1_avg_corrected_brain_mask_trans.nii.gz --unmaskshift --saveshift=sub-sid000278_acq-25mm_phasediff_rads_unwrapped_recentered_filt_demean_maths_fmap_trans_rad_vsm_unmasked.nii.gz --unwarpdir=y-
+210618-10:38:11,588 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.fmap2field_wf.gen_vsm".
+210618-10:38:13,65 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.fmap2field_wf.vsm2dfm" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/fmap2field_wf/vsm2dfm".
+210618-10:38:13,79 nipype.workflow INFO:
+	 [Node] Running "vsm2dfm" ("sdcflows.interfaces.fmap.FUGUEvsm2ANTSwarp")
+210618-10:38:13,231 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.fmap2field_wf.vsm2dfm".
+210618-10:38:15,609 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.sdc_unwarp_wf.unwarp_mask" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/sdc_unwarp_wf/unwarp_mask".
+210618-10:38:15,609 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.sdc_unwarp_wf.unwarp_reference" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/sdc_unwarp_wf/unwarp_reference".
+210618-10:38:15,611 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.fmap2field_wf.fmap_rpt" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/fmap2field_wf/fmap_rpt".
+210618-10:38:15,628 nipype.workflow INFO:
+	 [Node] Running "fmap_rpt" ("sdcflows.interfaces.reportlets.FieldmapReportlet")
+210618-10:38:15,629 nipype.workflow INFO:
+	 [Node] Running "unwarp_mask" ("niworkflows.interfaces.registration.ANTSApplyTransformsRPT"), a CommandLine Interface with command:
+antsApplyTransforms --default-value 0 --dimensionality 3 --float 1 --input /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_brain_mask_maths.nii.gz --interpolation NearestNeighbor --output ref_bold_corrected_brain_mask_maths_trans.nii.gz --reference-image /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_brain_mask_maths.nii.gz --transform /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/fmap2field_wf/vsm2dfm/sub-sid000278_acq-25mm_phasediff_rads_unwrapped_recentered_filt_demean_maths_fmap_trans_rad_vsm_unmasked_desc-field_sdcwarp.nii.gz
+210618-10:38:15,630 nipype.workflow INFO:
+	 [Node] Running "unwarp_reference" ("niworkflows.interfaces.registration.ANTSApplyTransformsRPT"), a CommandLine Interface with command:
+antsApplyTransforms --default-value 0 --dimensionality 3 --float 1 --input /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/n4_correct/ref_bold_corrected.nii.gz --interpolation LanczosWindowedSinc --output ref_bold_corrected_trans.nii.gz --reference-image /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/enhance_and_skullstrip_bold_wf/n4_correct/ref_bold_corrected.nii.gz --transform /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/fmap2field_wf/vsm2dfm/sub-sid000278_acq-25mm_phasediff_rads_unwrapped_recentered_filt_demean_maths_fmap_trans_rad_vsm_unmasked_desc-field_sdcwarp.nii.gz
+210618-10:38:15,934 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.sdc_unwarp_wf.unwarp_mask".
+210618-10:38:17,43 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.sdc_unwarp_wf.enhance_and_skullstrip_bold_wf.pre_mask_dilate" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/sdc_unwarp_wf/enhance_and_skullstrip_bold_wf/pre_mask_dilate".
+210618-10:38:17,57 nipype.workflow INFO:
+	 [Node] Running "pre_mask_dilate" ("nipype.interfaces.fsl.maths.DilateImage"), a CommandLine Interface with command:
+fslmaths -dt char /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/sdc_unwarp_wf/unwarp_mask/ref_bold_corrected_brain_mask_maths_trans.nii.gz -kernel sphere 3.0000 -dilF /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/sdc_unwarp_wf/enhance_and_skullstrip_bold_wf/pre_mask_dilate/ref_bold_corrected_brain_mask_maths_trans_dil.nii.gz
+210618-10:38:17,461 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.sdc_unwarp_wf.enhance_and_skullstrip_bold_wf.pre_mask_dilate".
+210618-10:38:18,506 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.sdc_unwarp_wf.unwarp_reference".
+210618-10:38:21,68 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.sdc_unwarp_wf.enhance_and_skullstrip_bold_wf.n4_correct" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/sdc_unwarp_wf/enhance_and_skullstrip_bold_wf/n4_correct".
+210618-10:38:21,222 nipype.workflow INFO:
+	 [Node] Running "n4_correct" ("niworkflows.interfaces.fixes.FixN4BiasFieldCorrection"), a CommandLine Interface with command:
+N4BiasFieldCorrection --bspline-fitting [ 200 ] -d 3 --input-image /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/sdc_unwarp_wf/enhance_and_skullstrip_bold_wf/n4_correct/ref_bold_corrected_trans_scaled.nii.gz --mask-image /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/sdc_unwarp_wf/enhance_and_skullstrip_bold_wf/check_hdr/ref_bold_corrected_brain_mask_maths_trans_dil_hdr.nii.gz --output ref_bold_corrected_trans_corrected.nii.gz -r
+210618-10:38:24,724 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.sdc_unwarp_wf.enhance_and_skullstrip_bold_wf.n4_correct".
+210618-10:38:25,76 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.sdc_unwarp_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_pass" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/sdc_unwarp_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass".
+210618-10:38:25,93 nipype.workflow INFO:
+	 [Node] Running "skullstrip_first_pass" ("nipype.interfaces.fsl.preprocess.BET"), a CommandLine Interface with command:
+bet /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/sdc_unwarp_wf/enhance_and_skullstrip_bold_wf/n4_correct/ref_bold_corrected_trans_corrected.nii.gz /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/sdc_unwarp_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass/ref_bold_corrected_trans_corrected_brain.nii.gz -f 0.20 -m
+210618-10:38:27,110 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.sdc_unwarp_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_pass".
+210618-10:38:27,125 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.fmap2field_wf.fmap_rpt".
+210618-10:38:29,82 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.sdc_unwarp_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_dilate" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/sdc_unwarp_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_dilate".
+210618-10:38:29,97 nipype.workflow INFO:
+	 [Node] Running "skullstrip_first_dilate" ("nipype.interfaces.fsl.maths.DilateImage"), a CommandLine Interface with command:
+fslmaths -dt char /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/sdc_unwarp_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass/ref_bold_corrected_trans_corrected_brain_mask.nii.gz -kernel sphere 6.0000 -dilF /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/sdc_unwarp_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_dilate/ref_bold_corrected_trans_corrected_brain_mask_dil.nii.gz
+210618-10:38:30,557 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.sdc_unwarp_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_dilate".
+210618-10:38:31,78 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.sdc_unwarp_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_mask" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/sdc_unwarp_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_mask".
+210618-10:38:31,97 nipype.workflow INFO:
+	 [Node] Running "skullstrip_first_mask" ("nipype.interfaces.fsl.maths.ApplyMask"), a CommandLine Interface with command:
+fslmaths /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/sdc_unwarp_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass/ref_bold_corrected_trans_corrected_brain.nii.gz -mas /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/sdc_unwarp_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_dilate/ref_bold_corrected_trans_corrected_brain_mask_dil.nii.gz /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/sdc_unwarp_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_mask/ref_bold_corrected_trans_corrected_brain_masked.nii.gz
+210618-10:38:31,293 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.sdc_unwarp_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_mask".
+210618-10:38:33,80 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.sdc_unwarp_wf.enhance_and_skullstrip_bold_wf.unifize" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/sdc_unwarp_wf/enhance_and_skullstrip_bold_wf/unifize".
+210618-10:38:33,103 nipype.workflow INFO:
+	 [Node] Running "unifize" ("nipype.interfaces.afni.utils.Unifize"), a CommandLine Interface with command:
+3dUnifize -clfrac 0.2 -rbt 18.3 65.0 90.0 -prefix uni.nii.gz -T2 -input /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/sdc_unwarp_wf/enhance_and_skullstrip_bold_wf/unifize/ref_bold_corrected_trans_corrected_brain_masked.nii.gz
+210618-10:38:36,513 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.sdc_unwarp_wf.enhance_and_skullstrip_bold_wf.unifize".
+210618-10:38:37,83 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.sdc_unwarp_wf.enhance_and_skullstrip_bold_wf.fixhdr_unifize" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/sdc_unwarp_wf/enhance_and_skullstrip_bold_wf/fixhdr_unifize".
+210618-10:38:37,99 nipype.workflow INFO:
+	 [Node] Running "fixhdr_unifize" ("niworkflows.interfaces.utils.CopyXForm")
+210618-10:38:37,202 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.sdc_unwarp_wf.enhance_and_skullstrip_bold_wf.fixhdr_unifize".
+210618-10:38:39,90 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.sdc_unwarp_wf.enhance_and_skullstrip_bold_wf.skullstrip_second_pass" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/sdc_unwarp_wf/enhance_and_skullstrip_bold_wf/skullstrip_second_pass".
+210618-10:38:39,110 nipype.workflow INFO:
+	 [Node] Running "skullstrip_second_pass" ("nipype.interfaces.afni.preprocess.Automask"), a CommandLine Interface with command:
+3dAutomask -apply_prefix uni_xform_masked.nii.gz -dilate 1 -prefix uni_xform_mask.nii.gz /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/sdc_unwarp_wf/enhance_and_skullstrip_bold_wf/skullstrip_second_pass/uni_xform.nii.gz
+210618-10:38:39,550 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.sdc_unwarp_wf.enhance_and_skullstrip_bold_wf.skullstrip_second_pass".
+210618-10:38:41,92 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.sdc_unwarp_wf.enhance_and_skullstrip_bold_wf.fixhdr_skullstrip2" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/sdc_unwarp_wf/enhance_and_skullstrip_bold_wf/fixhdr_skullstrip2".
+210618-10:38:41,118 nipype.workflow INFO:
+	 [Node] Running "fixhdr_skullstrip2" ("niworkflows.interfaces.utils.CopyXForm")
+210618-10:38:41,183 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.sdc_unwarp_wf.enhance_and_skullstrip_bold_wf.fixhdr_skullstrip2".
+210618-10:38:43,90 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.sdc_unwarp_wf.enhance_and_skullstrip_bold_wf.combine_masks" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/sdc_unwarp_wf/enhance_and_skullstrip_bold_wf/combine_masks".
+210618-10:38:43,104 nipype.workflow INFO:
+	 [Node] Running "combine_masks" ("nipype.interfaces.fsl.maths.BinaryMaths"), a CommandLine Interface with command:
+fslmaths /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/sdc_unwarp_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass/ref_bold_corrected_trans_corrected_brain_mask.nii.gz -mul /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/sdc_unwarp_wf/enhance_and_skullstrip_bold_wf/fixhdr_skullstrip2/uni_xform_mask_xform.nii.gz /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/sdc_unwarp_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_trans_corrected_brain_mask_maths.nii.gz
+210618-10:38:43,253 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.sdc_unwarp_wf.enhance_and_skullstrip_bold_wf.combine_masks".
+210618-10:38:45,94 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.sdc_unwarp_wf.enhance_and_skullstrip_bold_wf.apply_mask" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/sdc_unwarp_wf/enhance_and_skullstrip_bold_wf/apply_mask".
+210618-10:38:45,133 nipype.workflow INFO:
+	 [Node] Running "apply_mask" ("nipype.interfaces.fsl.maths.ApplyMask"), a CommandLine Interface with command:
+fslmaths /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/sdc_unwarp_wf/enhance_and_skullstrip_bold_wf/fixhdr_unifize/uni_xform.nii.gz -mas /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/sdc_unwarp_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_trans_corrected_brain_mask_maths.nii.gz /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/sdc_unwarp_wf/enhance_and_skullstrip_bold_wf/apply_mask/uni_xform_masked.nii.gz
+210618-10:38:45,362 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.sdc_unwarp_wf.enhance_and_skullstrip_bold_wf.apply_mask".
+210618-10:38:47,95 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.bold_bold_trans_wf.bold_transform" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/bold_bold_trans_wf/bold_transform".
+210618-10:38:47,371 nipype.workflow INFO:
+	 [Node] Running "bold_transform" ("niworkflows.interfaces.itk.MultiApplyTransforms")
+210618-10:43:37,207 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.bold_bold_trans_wf.bold_transform".
+210618-10:43:39,438 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.bold_bold_trans_wf.merge" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/bold_bold_trans_wf/merge".
+210618-10:43:39,573 nipype.workflow INFO:
+	 [Node] Running "merge" ("niworkflows.interfaces.nilearn.Merge")
+210618-10:44:46,937 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.bold_bold_trans_wf.merge".
+210618-10:44:47,451 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.final_boldref_wf.val_bold" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/final_boldref_wf/val_bold".
+210618-10:44:47,464 nipype.workflow INFO:
+	 [Node] Setting-up "_val_bold0" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/final_boldref_wf/val_bold/mapflow/_val_bold0".
+210618-10:44:47,474 nipype.workflow INFO:
+	 [Node] Running "_val_bold0" ("niworkflows.interfaces.images.ValidateImage")
+210618-10:44:47,522 nipype.workflow INFO:
+	 [Node] Finished "_val_bold0".
+210618-10:44:47,528 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.final_boldref_wf.val_bold".
+210618-10:44:50,573 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.final_boldref_wf.gen_ref" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/final_boldref_wf/gen_ref".
+210618-10:44:50,586 nipype.workflow INFO:
+	 [Node] Running "gen_ref" ("niworkflows.interfaces.registration.EstimateReferenceImage")
+210618-10:44:56,769 nipype.interface INFO:
+	 stderr 2021-06-18T10:44:56.769735:++ 3dvolreg: AFNI version=Debian-16.2.07~dfsg.1-5~nd16.04+1 (Jun 12 2017) [64-bit]
+210618-10:44:56,770 nipype.interface INFO:
+	 stderr 2021-06-18T10:44:56.769735:++ Authored by: RW Cox
+210618-10:44:56,771 nipype.interface INFO:
+	 stderr 2021-06-18T10:44:56.771333:** AFNI converts NIFTI_datatype=4 (INT16) in file /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/final_boldref_wf/gen_ref/slice.nii.gz to FLOAT32
+210618-10:44:56,771 nipype.interface INFO:
+	 stderr 2021-06-18T10:44:56.771333:     Warnings of this type will be muted for this session.
+210618-10:44:56,771 nipype.interface INFO:
+	 stderr 2021-06-18T10:44:56.771333:     Set AFNI_NIFTI_TYPE_WARN to YES to see them all, NO to see none.
+210618-10:44:56,772 nipype.interface INFO:
+	 stderr 2021-06-18T10:44:56.772661:[7m*+ WARNING:[0m   If you are performing spatial transformations on an oblique dset, 
+210618-10:44:56,772 nipype.interface INFO:
+	 stderr 2021-06-18T10:44:56.772661:  such as /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/final_boldref_wf/gen_ref/slice.nii.gz,
+210618-10:44:56,772 nipype.interface INFO:
+	 stderr 2021-06-18T10:44:56.772661:  or viewing/combining it with volumes of differing obliquity,
+210618-10:44:56,772 nipype.interface INFO:
+	 stderr 2021-06-18T10:44:56.772661:  you should consider running: 
+210618-10:44:56,772 nipype.interface INFO:
+	 stderr 2021-06-18T10:44:56.772661:     3dWarp -deoblique 
+210618-10:44:56,772 nipype.interface INFO:
+	 stderr 2021-06-18T10:44:56.772661:  on this and  other oblique datasets in the same session.
+210618-10:44:56,772 nipype.interface INFO:
+	 stderr 2021-06-18T10:44:56.772661: See 3dWarp -help for details.
+210618-10:44:56,772 nipype.interface INFO:
+	 stderr 2021-06-18T10:44:56.772661:++ Oblique dataset:/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/final_boldref_wf/gen_ref/slice.nii.gz is 5.560879 degrees from plumb.
+210618-10:44:56,773 nipype.interface INFO:
+	 stderr 2021-06-18T10:44:56.773018:++ Coarse del was 10, replaced with 5
+210618-10:45:33,399 nipype.interface INFO:
+	 stderr 2021-06-18T10:45:33.399775:++ Max displacement in automask = 0.10 (mm) at sub-brick 3
+210618-10:45:33,400 nipype.interface INFO:
+	 stderr 2021-06-18T10:45:33.399775:++ Max delta displ  in automask = 0.10 (mm) at sub-brick 4
+210618-10:45:36,889 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.final_boldref_wf.gen_ref".
+210618-10:45:37,455 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.final_boldref_wf.enhance_and_skullstrip_bold_wf.init_aff" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/final_boldref_wf/enhance_and_skullstrip_bold_wf/init_aff".
+210618-10:45:37,472 nipype.workflow INFO:
+	 [Node] Running "init_aff" ("nipype.interfaces.ants.utils.AI"), a CommandLine Interface with command:
+antsAI -c [10,1e-06,10] -d 3 -x /home/jsmentch/.cache/templateflow/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-02_desc-brain_mask.nii.gz -m Mattes[/home/jsmentch/.cache/templateflow/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-02_desc-fMRIPrep_boldref.nii.gz,/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/final_boldref_wf/gen_ref/ref_bold.nii.gz,32,Regular,0.2] -o initialization.mat -p 0 -s [20,0.12] -g [40.0,0x40x40] -t Affine[0.1] -v 1
+210618-10:46:32,884 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.final_boldref_wf.enhance_and_skullstrip_bold_wf.init_aff".
+210618-10:46:33,544 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.final_boldref_wf.enhance_and_skullstrip_bold_wf.norm" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/final_boldref_wf/enhance_and_skullstrip_bold_wf/norm".
+210618-10:46:33,567 nipype.workflow INFO:
+	 [Node] Running "norm" ("niworkflows.interfaces.fixes.FixHeaderRegistration"), a CommandLine Interface with command:
+antsRegistration --collapse-output-transforms 1 --dimensionality 3 --float 1 --initial-moving-transform [ /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/final_boldref_wf/enhance_and_skullstrip_bold_wf/init_aff/initialization.mat, 0 ] --initialize-transforms-per-stage 0 --interpolation Linear --output transform --transform Affine[ 0.1 ] --metric Mattes[ /home/jsmentch/.cache/templateflow/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-02_desc-fMRIPrep_boldref.nii.gz, /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/final_boldref_wf/gen_ref/ref_bold.nii.gz, 1, 64, Random, 0.2 ] --convergence [ 200, 1e-09, 10 ] --smoothing-sigmas 2.0mm --shrink-factors 2 --use-estimate-learning-rate-once 1 --use-histogram-matching 1 --winsorize-image-intensities [ 0.05, 0.98 ]  --write-composite-transform 0
+210618-10:46:35,138 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.final_boldref_wf.enhance_and_skullstrip_bold_wf.norm".
+210618-10:46:35,518 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.final_boldref_wf.enhance_and_skullstrip_bold_wf.map_brainmask" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/final_boldref_wf/enhance_and_skullstrip_bold_wf/map_brainmask".
+210618-10:46:35,535 nipype.workflow INFO:
+	 [Node] Running "map_brainmask" ("niworkflows.interfaces.fixes.FixHeaderApplyTransforms"), a CommandLine Interface with command:
+antsApplyTransforms --default-value 0 --float 1 --input /home/jsmentch/.cache/templateflow/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-01_label-brain_probseg.nii.gz --interpolation BSpline --output tpl-MNI152NLin2009cAsym_res-01_label-brain_probseg_trans.nii.gz --reference-image /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/final_boldref_wf/gen_ref/ref_bold.nii.gz --transform [ /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/final_boldref_wf/enhance_and_skullstrip_bold_wf/norm/transform0GenericAffine.mat, 1 ]
+210618-10:46:36,503 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.final_boldref_wf.enhance_and_skullstrip_bold_wf.map_brainmask".
+210618-10:46:37,518 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.final_boldref_wf.enhance_and_skullstrip_bold_wf.binarize_mask" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/final_boldref_wf/enhance_and_skullstrip_bold_wf/binarize_mask".
+210618-10:46:37,532 nipype.workflow INFO:
+	 [Node] Running "binarize_mask" ("niworkflows.interfaces.nibabel.Binarize")
+210618-10:46:37,733 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.final_boldref_wf.enhance_and_skullstrip_bold_wf.binarize_mask".
+210618-10:46:39,519 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.final_boldref_wf.enhance_and_skullstrip_bold_wf.pre_mask_dilate" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/final_boldref_wf/enhance_and_skullstrip_bold_wf/pre_mask_dilate".
+210618-10:46:39,535 nipype.workflow INFO:
+	 [Node] Running "pre_mask_dilate" ("nipype.interfaces.fsl.maths.DilateImage"), a CommandLine Interface with command:
+fslmaths -dt char /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/final_boldref_wf/enhance_and_skullstrip_bold_wf/binarize_mask/tpl-MNI152NLin2009cAsym_res-01_label-brain_probseg_trans_mask.nii.gz -kernel sphere 3.0000 -dilF /workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_03_wf/final_boldref_wf/enhance_and_skullstrip_bold_wf/pre_mask_dilate/tpl-MNI152NLin2009cAsym_res-01_label-brain_probseg_trans_mask_dil.nii.gz
+210618-10:46:39,986 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_03_wf.final_boldref_wf.enhance_and_skullstrip_bold_wf.pre_mask_dilate".
+210618-10:46:42,66 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000278_wf.func_preproc_task_movie_run_04_wf.bold_hmc_wf.fsl2itk" in "/workdir/fmriprep_wf/single_subject_sid000278_wf/func_preproc_task_movie_run_04_wf/bold_hmc_wf/fsl2itk".
+210618-10:46:42,318 nipype.workflow INFO:
+	 [Node] Running "fsl2itk" ("niworkflows.interfaces.itk.MCFLIRT2ITK")
