@@ -19,3 +19,11 @@
 	path = sourcedata/data/budapest/brain/ds003017
 	url = https://github.com/OpenNeuroDatasets/ds003017.git
 	datalad-id = 322f5aac-c52c-11ea-8255-96be0168836a
+[submodule "sourcedata/data/HBN/stimuli/hbn_stimuli"]
+	path = sourcedata/data/HBN/stimuli/hbn_stimuli
+	url = /om4/group/gablab/data/jsmentch/hbn_stimuli
+	datalad-id = 4c6b39ef-4a69-4309-aee1-f92ccf413063
+[submodule "sourcedata/data/budapest/stimuli/budapest_stimuli"]
+	path = sourcedata/data/budapest/stimuli/budapest_stimuli
+	url = /om4/group/gablab/data/jsmentch/budapest_stimuli
+	datalad-id = 08fb73a1-573a-4af6-8bb0-5ac6bb4609f6

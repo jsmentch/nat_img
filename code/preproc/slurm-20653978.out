@@ -1,3 +1,334 @@
 Submitted job for: sid000013
 Command :
 singularity run --cleanenv -B /om2 -B /om/scratch/Mon/jsmentch/fmriprep:/workdir -B /om4/group/gablab/data/jsmentch/ds003017/ /om2/user/jsmentch/fmriprep.simg /om4/group/gablab/data/jsmentch/ds003017/ /om4/group/gablab/data/jsmentch/ds003017//derivatives participant -w /workdir --participant-label sid000013 --cifti-output --nthreads 8 --output-spaces MNI152NLin6Asym:res-2 --resource-monitor --skip_bids_validation --omp-nthreads 8 --mem_mb 24000 --fs-license-file /om2/user/jsmentch/data/freesurfer_license.txt
+/usr/local/miniconda/lib/python3.7/site-packages/bids/layout/validation.py:46: UserWarning: The ability to pass arguments to BIDSLayout that control indexing is likely to be removed in future; possibly as early as PyBIDS 0.14. This includes the `config_filename`, `ignore`, `force_index`, and `index_metadata` arguments. The recommended usage pattern is to initialize a new BIDSLayoutIndexer with these arguments, and pass it to the BIDSLayout via the `indexer` argument.
+  warnings.warn("The ability to pass arguments to BIDSLayout that control "
+210618-11:38:59,554 nipype.workflow IMPORTANT:
+	 
+    Running fMRIPREP version 20.2.1:
+      * BIDS dataset path: /om4/group/gablab/data/jsmentch/ds003017.
+      * Participant list: ['sid000013'].
+      * Run identifier: 20210618-095820_37751c24-477b-4592-9860-487cac58f7ad.
+      * Output spaces: MNI152NLin6Asym:res-2.
+      * Pre-run FreeSurfer's SUBJECTS_DIR: /om4/group/gablab/data/jsmentch/ds003017/derivatives/freesurfer.
+210618-11:41:41,369 nipype.workflow INFO:
+	 No single-band-reference found for sub-sid000013_task-movie_run-01_bold.nii.gz.
+210618-11:43:31,347 nipype.workflow IMPORTANT:
+	 Slice-timing correction will be included.
+210618-11:43:43,310 nipype.interface INFO:
+	 We advise you to upgrade DIPY version. This upgrade will open access to more function
+210618-11:43:43,316 nipype.interface INFO:
+	 We advise you to upgrade DIPY version. This upgrade will open access to more function
+210618-11:43:43,318 nipype.interface INFO:
+	 We advise you to upgrade DIPY version. This upgrade will open access to more models
+210618-11:44:43,345 nipype.workflow INFO:
+	 No single-band-reference found for sub-sid000013_task-movie_run-02_bold.nii.gz.
+210618-11:44:53,587 nipype.workflow IMPORTANT:
+	 Slice-timing correction will be included.
+210618-11:45:00,128 nipype.workflow INFO:
+	 No single-band-reference found for sub-sid000013_task-movie_run-03_bold.nii.gz.
+210618-11:45:43,366 nipype.workflow IMPORTANT:
+	 Slice-timing correction will be included.
+210618-11:45:54,264 nipype.workflow INFO:
+	 No single-band-reference found for sub-sid000013_task-movie_run-04_bold.nii.gz.
+210618-11:46:15,424 nipype.workflow IMPORTANT:
+	 Slice-timing correction will be included.
+210618-11:46:27,576 nipype.workflow INFO:
+	 No single-band-reference found for sub-sid000013_task-movie_run-05_bold.nii.gz.
+210618-11:47:05,86 nipype.workflow IMPORTANT:
+	 Slice-timing correction will be included.
+210618-12:04:53,367 nipype.workflow INFO:
+	 fMRIPrep workflow graph with 1553 nodes built successfully.
+Could not generate CITATION.html file:
+pandoc -s --bibliography /usr/local/miniconda/lib/python3.7/site-packages/fmriprep/data/boilerplate.bib --filter pandoc-citeproc --metadata pagetitle="fMRIPrep citation boilerplate" /om4/group/gablab/data/jsmentch/ds003017/derivatives/fmriprep/logs/CITATION.md -o /om4/group/gablab/data/jsmentch/ds003017/derivatives/fmriprep/logs/CITATION.html
+Could not generate CITATION.tex file:
+pandoc -s --bibliography /usr/local/miniconda/lib/python3.7/site-packages/fmriprep/data/boilerplate.bib --natbib /om4/group/gablab/data/jsmentch/ds003017/derivatives/fmriprep/logs/CITATION.md -o /om4/group/gablab/data/jsmentch/ds003017/derivatives/fmriprep/logs/CITATION.tex
+210618-12:26:30,909 nipype.workflow IMPORTANT:
+	 fMRIPrep started!
+210618-12:37:31,647 nipype.workflow WARNING:
+	 Some nodes exceed the total amount of memory available (24.00GB).
+210618-12:53:20,418 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_01_wf.func_derivatives_wf.raw_sources" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_01_wf/func_derivatives_wf/raw_sources".
+210618-12:53:20,407 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_02_wf.func_derivatives_wf.raw_sources" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_02_wf/func_derivatives_wf/raw_sources".
+210618-12:53:40,397 nipype.workflow INFO:
+	 [Node] Running "raw_sources" ("nipype.interfaces.utility.wrappers.Function")
+210618-12:53:40,377 nipype.workflow INFO:
+	 [Node] Running "raw_sources" ("nipype.interfaces.utility.wrappers.Function")
+210618-12:53:52,468 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_01_wf.func_derivatives_wf.raw_sources".
+210618-12:53:53,339 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_02_wf.func_derivatives_wf.raw_sources".
+210618-12:54:02,415 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_03_wf.func_derivatives_wf.raw_sources" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_03_wf/func_derivatives_wf/raw_sources".
+210618-12:54:11,351 nipype.workflow INFO:
+	 [Node] Running "raw_sources" ("nipype.interfaces.utility.wrappers.Function")
+210618-12:54:23,393 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_03_wf.func_derivatives_wf.raw_sources".
+210618-13:01:57,396 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_01_wf.initial_boldref_wf.val_bold" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_01_wf/initial_boldref_wf/val_bold".
+210618-13:01:57,398 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_02_wf.initial_boldref_wf.val_bold" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_02_wf/initial_boldref_wf/val_bold".
+210618-13:01:57,459 nipype.workflow INFO:
+	 [Node] Setting-up "_val_bold0" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_01_wf/initial_boldref_wf/val_bold/mapflow/_val_bold0".
+210618-13:01:57,468 nipype.workflow INFO:
+	 [Node] Running "_val_bold0" ("niworkflows.interfaces.images.ValidateImage")
+210618-13:02:03,330 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_02_wf.sdc_estimate_wf.phdiff_wf.magnitude_wf.magmrg" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_02_wf/sdc_estimate_wf/phdiff_wf/magnitude_wf/magmrg".
+210618-13:02:03,331 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.phdiff_wf.magnitude_wf.magmrg" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_03_wf/sdc_estimate_wf/phdiff_wf/magnitude_wf/magmrg".
+210618-13:02:03,330 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_01_wf.sdc_estimate_wf.phdiff_wf.magnitude_wf.magmrg" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_01_wf/sdc_estimate_wf/phdiff_wf/magnitude_wf/magmrg".
+210618-13:02:03,397 nipype.workflow INFO:
+	 [Node] Running "magmrg" ("niworkflows.interfaces.images.IntraModalMerge")
+210618-13:02:03,398 nipype.workflow INFO:
+	 [Node] Running "magmrg" ("niworkflows.interfaces.images.IntraModalMerge")
+210618-13:02:03,402 nipype.workflow INFO:
+	 [Node] Running "magmrg" ("niworkflows.interfaces.images.IntraModalMerge")
+210618-13:02:03,416 nipype.workflow INFO:
+	 [Node] Setting-up "_val_bold0" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_02_wf/initial_boldref_wf/val_bold/mapflow/_val_bold0".
+210618-13:02:03,426 nipype.workflow INFO:
+	 [Node] Running "_val_bold0" ("niworkflows.interfaces.images.ValidateImage")
+210618-13:04:08,274 nipype.workflow INFO:
+	 [Node] Finished "_val_bold0".
+210618-13:04:08,275 nipype.workflow INFO:
+	 [Node] Finished "_val_bold0".
+210618-13:04:08,301 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_01_wf.initial_boldref_wf.val_bold".
+210618-13:04:08,301 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_02_wf.initial_boldref_wf.val_bold".
+210618-13:04:08,450 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_01_wf.sdc_estimate_wf.phdiff_wf.magnitude_wf.magmrg".
+210618-13:04:09,327 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_02_wf.sdc_estimate_wf.phdiff_wf.magnitude_wf.magmrg".
+210618-13:04:09,327 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_03_wf.sdc_estimate_wf.phdiff_wf.magnitude_wf.magmrg".
+210618-13:05:17,358 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_04_wf.func_derivatives_wf.raw_sources" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_04_wf/func_derivatives_wf/raw_sources".
+210618-13:05:20,380 nipype.workflow INFO:
+	 [Node] Running "raw_sources" ("nipype.interfaces.utility.wrappers.Function")
+210618-13:05:21,437 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_04_wf.func_derivatives_wf.raw_sources".
+210618-13:06:38,365 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_01_wf.initial_boldref_wf.gen_ref" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_01_wf/initial_boldref_wf/gen_ref".
+210618-13:06:40,364 nipype.workflow INFO:
+	 [Node] Running "gen_ref" ("niworkflows.interfaces.registration.EstimateReferenceImage")
+210618-13:09:15,411 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_02_wf.initial_boldref_wf.gen_ref" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_02_wf/initial_boldref_wf/gen_ref".
+210618-13:09:35,368 nipype.workflow INFO:
+	 [Node] Running "gen_ref" ("niworkflows.interfaces.registration.EstimateReferenceImage")
+210618-13:19:21,727 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_04_wf.initial_boldref_wf.val_bold" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_04_wf/initial_boldref_wf/val_bold".
+210618-13:19:22,169 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_05_wf.func_derivatives_wf.raw_sources" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_05_wf/func_derivatives_wf/raw_sources".
+210618-13:19:36,279 nipype.workflow INFO:
+	 [Node] Setting-up "_val_bold0" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_04_wf/initial_boldref_wf/val_bold/mapflow/_val_bold0".
+210618-13:19:40,557 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_05_wf.sdc_estimate_wf.phdiff_wf.magnitude_wf.magmrg" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_05_wf/sdc_estimate_wf/phdiff_wf/magnitude_wf/magmrg".
+210618-13:19:41,490 nipype.workflow INFO:
+	 [Node] Running "magmrg" ("niworkflows.interfaces.images.IntraModalMerge")
+210618-13:19:41,460 nipype.workflow INFO:
+	 [Node] Running "raw_sources" ("nipype.interfaces.utility.wrappers.Function")
+210618-13:19:41,530 nipype.workflow INFO:
+	 [Node] Running "_val_bold0" ("niworkflows.interfaces.images.ValidateImage")
+210618-13:20:21,389 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_05_wf.func_derivatives_wf.raw_sources".
+210618-13:21:03,195 nipype.interface INFO:
+	 stderr 2021-06-18T13:21:03.194344:++ 3dvolreg: AFNI version=Debian-16.2.07~dfsg.1-5~nd16.04+1 (Jun 12 2017) [64-bit]
+210618-13:21:03,205 nipype.interface INFO:
+	 stderr 2021-06-18T13:21:03.194344:++ Authored by: RW Cox
+210618-13:21:03,291 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_05_wf.sdc_estimate_wf.phdiff_wf.magnitude_wf.magmrg".
+210618-13:21:03,311 nipype.interface INFO:
+	 stderr 2021-06-18T13:21:03.310983:** AFNI converts NIFTI_datatype=4 (INT16) in file /workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_01_wf/initial_boldref_wf/gen_ref/slice.nii.gz to FLOAT32
+210618-13:21:03,311 nipype.interface INFO:
+	 stderr 2021-06-18T13:21:03.311288:     Warnings of this type will be muted for this session.
+210618-13:21:03,311 nipype.interface INFO:
+	 stderr 2021-06-18T13:21:03.311288:     Set AFNI_NIFTI_TYPE_WARN to YES to see them all, NO to see none.
+210618-13:21:03,418 nipype.interface INFO:
+	 stderr 2021-06-18T13:21:03.418416:[7m*+ WARNING:[0m   If you are performing spatial transformations on an oblique dset, 
+210618-13:21:03,418 nipype.interface INFO:
+	 stderr 2021-06-18T13:21:03.418416:  such as /workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_01_wf/initial_boldref_wf/gen_ref/slice.nii.gz,
+210618-13:21:03,419 nipype.interface INFO:
+	 stderr 2021-06-18T13:21:03.418416:  or viewing/combining it with volumes of differing obliquity,
+210618-13:21:03,419 nipype.interface INFO:
+	 stderr 2021-06-18T13:21:03.418416:  you should consider running: 
+210618-13:21:03,419 nipype.interface INFO:
+	 stderr 2021-06-18T13:21:03.418416:     3dWarp -deoblique 
+210618-13:21:03,420 nipype.interface INFO:
+	 stderr 2021-06-18T13:21:03.418416:  on this and  other oblique datasets in the same session.
+210618-13:21:03,420 nipype.interface INFO:
+	 stderr 2021-06-18T13:21:03.418416: See 3dWarp -help for details.
+210618-13:21:03,420 nipype.interface INFO:
+	 stderr 2021-06-18T13:21:03.418416:++ Oblique dataset:/workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_01_wf/initial_boldref_wf/gen_ref/slice.nii.gz is 8.989442 degrees from plumb.
+210618-13:21:03,424 nipype.interface INFO:
+	 stderr 2021-06-18T13:21:03.423969:++ Coarse del was 10, replaced with 5
+210618-13:21:03,560 nipype.interface INFO:
+	 stderr 2021-06-18T13:21:03.560542:++ 3dvolreg: AFNI version=Debian-16.2.07~dfsg.1-5~nd16.04+1 (Jun 12 2017) [64-bit]
+210618-13:21:03,561 nipype.interface INFO:
+	 stderr 2021-06-18T13:21:03.561401:++ Authored by: RW Cox
+210618-13:21:03,729 nipype.workflow INFO:
+	 [Node] Finished "_val_bold0".
+210618-13:21:03,738 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_04_wf.initial_boldref_wf.val_bold".
+210618-13:21:03,877 nipype.interface INFO:
+	 stderr 2021-06-18T13:21:03.877181:** AFNI converts NIFTI_datatype=4 (INT16) in file /workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_02_wf/initial_boldref_wf/gen_ref/slice.nii.gz to FLOAT32
+210618-13:21:03,877 nipype.interface INFO:
+	 stderr 2021-06-18T13:21:03.877181:     Warnings of this type will be muted for this session.
+210618-13:21:03,877 nipype.interface INFO:
+	 stderr 2021-06-18T13:21:03.877181:     Set AFNI_NIFTI_TYPE_WARN to YES to see them all, NO to see none.
+210618-13:21:03,878 nipype.interface INFO:
+	 stderr 2021-06-18T13:21:03.878937:[7m*+ WARNING:[0m   If you are performing spatial transformations on an oblique dset, 
+210618-13:21:03,879 nipype.interface INFO:
+	 stderr 2021-06-18T13:21:03.878937:  such as /workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_02_wf/initial_boldref_wf/gen_ref/slice.nii.gz,
+210618-13:21:03,879 nipype.interface INFO:
+	 stderr 2021-06-18T13:21:03.878937:  or viewing/combining it with volumes of differing obliquity,
+210618-13:21:03,879 nipype.interface INFO:
+	 stderr 2021-06-18T13:21:03.878937:  you should consider running: 
+210618-13:21:03,879 nipype.interface INFO:
+	 stderr 2021-06-18T13:21:03.878937:     3dWarp -deoblique 
+210618-13:21:03,879 nipype.interface INFO:
+	 stderr 2021-06-18T13:21:03.878937:  on this and  other oblique datasets in the same session.
+210618-13:21:03,879 nipype.interface INFO:
+	 stderr 2021-06-18T13:21:03.878937: See 3dWarp -help for details.
+210618-13:21:03,879 nipype.interface INFO:
+	 stderr 2021-06-18T13:21:03.878937:++ Oblique dataset:/workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_02_wf/initial_boldref_wf/gen_ref/slice.nii.gz is 8.989442 degrees from plumb.
+210618-13:21:03,879 nipype.interface INFO:
+	 stderr 2021-06-18T13:21:03.879884:++ Coarse del was 10, replaced with 5
+210618-13:21:04,87 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_04_wf.sdc_estimate_wf.phdiff_wf.magnitude_wf.magmrg" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_04_wf/sdc_estimate_wf/phdiff_wf/magnitude_wf/magmrg".
+210618-13:21:04,109 nipype.workflow INFO:
+	 [Node] Running "magmrg" ("niworkflows.interfaces.images.IntraModalMerge")
+210618-13:21:04,159 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_03_wf.initial_boldref_wf.val_bold" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/val_bold".
+210618-13:21:04,311 nipype.workflow INFO:
+	 [Node] Setting-up "_val_bold0" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/val_bold/mapflow/_val_bold0".
+210618-13:21:04,320 nipype.workflow INFO:
+	 [Node] Running "_val_bold0" ("niworkflows.interfaces.images.ValidateImage")
+210618-13:21:04,583 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_04_wf.sdc_estimate_wf.phdiff_wf.magnitude_wf.magmrg".
+210618-13:21:04,846 nipype.workflow INFO:
+	 [Node] Finished "_val_bold0".
+210618-13:21:04,854 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_03_wf.initial_boldref_wf.val_bold".
+210618-13:21:27,325 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_05_wf.initial_boldref_wf.val_bold" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_05_wf/initial_boldref_wf/val_bold".
+210618-13:21:27,413 nipype.workflow INFO:
+	 [Node] Setting-up "_val_bold0" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_05_wf/initial_boldref_wf/val_bold/mapflow/_val_bold0".
+210618-13:21:27,422 nipype.workflow INFO:
+	 [Node] Running "_val_bold0" ("niworkflows.interfaces.images.ValidateImage")
+210618-13:22:39,715 nipype.workflow INFO:
+	 [Node] Finished "_val_bold0".
+210618-13:22:39,722 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_05_wf.initial_boldref_wf.val_bold".
+210618-13:22:42,258 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_04_wf.initial_boldref_wf.gen_ref" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_04_wf/initial_boldref_wf/gen_ref".
+210618-13:22:42,285 nipype.workflow INFO:
+	 [Node] Running "gen_ref" ("niworkflows.interfaces.registration.EstimateReferenceImage")
+210618-13:22:43,41 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000013_wf.anat_preproc_wf.brain_extraction_wf.lap_tmpl" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/anat_preproc_wf/brain_extraction_wf/lap_tmpl".
+210618-13:22:43,42 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000013_wf.anat_preproc_wf.brain_extraction_wf.full_wm" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/anat_preproc_wf/brain_extraction_wf/full_wm".
+210618-13:22:43,59 nipype.workflow INFO:
+	 [Node] Running "full_wm" ("nipype.interfaces.utility.wrappers.Function")
+210618-13:22:43,63 nipype.workflow INFO:
+	 [Node] Running "lap_tmpl" ("nipype.interfaces.ants.utils.ImageMath"), a CommandLine Interface with command:
+ImageMath 3 tpl-OASIS30ANTs_res-01_T1w_maths.nii.gz Laplacian /home/jsmentch/.cache/templateflow/tpl-OASIS30ANTs/tpl-OASIS30ANTs_res-01_T1w.nii.gz 1.5 1
+210618-13:22:43,971 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000013_wf.anat_preproc_wf.brain_extraction_wf.full_wm".
+210618-13:22:45,612 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_03_wf.initial_boldref_wf.gen_ref" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/gen_ref".
+210618-13:22:45,629 nipype.workflow INFO:
+	 [Node] Running "gen_ref" ("niworkflows.interfaces.registration.EstimateReferenceImage")
+210618-13:22:48,82 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_04_wf.initial_boldref_wf.gen_ref".
+210618-13:22:50,553 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_03_wf.initial_boldref_wf.gen_ref".
+210618-13:22:51,211 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_05_wf.initial_boldref_wf.gen_ref" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_05_wf/initial_boldref_wf/gen_ref".
+210618-13:22:51,215 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000013_wf.anat_preproc_wf.brain_extraction_wf.res_tmpl" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/anat_preproc_wf/brain_extraction_wf/res_tmpl".
+210618-13:22:51,237 nipype.workflow INFO:
+	 [Node] Running "res_tmpl" ("niworkflows.interfaces.images.RegridToZooms")
+210618-13:22:51,242 nipype.workflow INFO:
+	 [Node] Running "gen_ref" ("niworkflows.interfaces.registration.EstimateReferenceImage")
+210618-13:22:52,434 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_03_wf.bold_hmc_wf.mcflirt" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_03_wf/bold_hmc_wf/mcflirt".
+210618-13:22:52,479 nipype.workflow INFO:
+	 [Node] Running "mcflirt" ("nipype.interfaces.fsl.preprocess.MCFLIRT"), a CommandLine Interface with command:
+mcflirt -in /om4/group/gablab/data/jsmentch/ds003017/sub-sid000013/func/sub-sid000013_task-movie_run-03_bold.nii.gz -out /workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_03_wf/bold_hmc_wf/mcflirt/sub-sid000013_task-movie_run-03_bold_mcf.nii.gz -reffile /workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_03_wf/initial_boldref_wf/gen_ref/ref_bold.nii.gz -mats -plots -rmsabs -rmsrel
+210618-13:22:53,442 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000013_wf.anat_preproc_wf.brain_extraction_wf.res_tmpl".
+210618-13:22:53,627 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_04_wf.bold_hmc_wf.mcflirt" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_04_wf/bold_hmc_wf/mcflirt".
+210618-13:22:54,241 nipype.workflow INFO:
+	 [Node] Running "mcflirt" ("nipype.interfaces.fsl.preprocess.MCFLIRT"), a CommandLine Interface with command:
+mcflirt -in /om4/group/gablab/data/jsmentch/ds003017/sub-sid000013/func/sub-sid000013_task-movie_run-04_bold.nii.gz -out /workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_04_wf/bold_hmc_wf/mcflirt/sub-sid000013_task-movie_run-04_bold_mcf.nii.gz -reffile /workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_04_wf/initial_boldref_wf/gen_ref/ref_bold.nii.gz -mats -plots -rmsabs -rmsrel
+210618-13:23:00,211 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_03_wf.bold_stc_wf.slice_timing_correction" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_03_wf/bold_stc_wf/slice_timing_correction".
+210618-13:23:00,331 nipype.workflow INFO:
+	 [Node] Running "slice_timing_correction" ("nipype.interfaces.afni.preprocess.TShift"), a CommandLine Interface with command:
+3dTshift -ignore 2 -prefix sub-sid000013_task-movie_run-03_bold_tshift.nii.gz -tpattern @slice_timing.1D -TR 1s /workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_03_wf/bold_stc_wf/slice_timing_correction/sub-sid000013_task-movie_run-03_bold.nii.gz
+210618-13:23:00,424 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000013_wf.bidssrc" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/bidssrc".
+210618-13:23:00,677 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000013_wf.anat_preproc_wf.brain_extraction_wf.lap_tmpl".
+210618-13:23:00,931 nipype.workflow INFO:
+	 [Node] Running "bidssrc" ("niworkflows.interfaces.bids.BIDSDataGrabber")
+210618-13:23:00,931 nipype.interface INFO:
+	 No "t2w" images found for sub-sid000013
+210618-13:23:00,931 nipype.interface INFO:
+	 No "flair" images found for sub-sid000013
+210618-13:23:00,931 nipype.interface INFO:
+	 No "sbref" images found for sub-sid000013
+210618-13:23:00,931 nipype.interface INFO:
+	 No "roi" images found for sub-sid000013
+210618-13:23:00,946 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000013_wf.bidssrc".
+210618-13:23:02,192 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000013_wf.anat_preproc_wf.brain_extraction_wf.mrg_tmpl" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/anat_preproc_wf/brain_extraction_wf/mrg_tmpl".
+210618-13:23:02,192 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_04_wf.bold_stc_wf.slice_timing_correction" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_04_wf/bold_stc_wf/slice_timing_correction".
+210618-13:23:02,208 nipype.workflow INFO:
+	 [Node] Running "mrg_tmpl" ("nipype.interfaces.utility.base.Merge")
+210618-13:23:02,251 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000013_wf.anat_preproc_wf.brain_extraction_wf.mrg_tmpl".
+210618-13:23:02,256 nipype.workflow INFO:
+	 [Node] Running "slice_timing_correction" ("nipype.interfaces.afni.preprocess.TShift"), a CommandLine Interface with command:
+3dTshift -ignore 1 -prefix sub-sid000013_task-movie_run-04_bold_tshift.nii.gz -tpattern @slice_timing.1D -TR 1s /workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_04_wf/bold_stc_wf/slice_timing_correction/sub-sid000013_task-movie_run-04_bold.nii.gz
+210618-13:23:02,861 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_05_wf.initial_boldref_wf.gen_ref".
+210618-13:23:04,196 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_05_wf.bold_hmc_wf.mcflirt" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_05_wf/bold_hmc_wf/mcflirt".
+210618-13:23:04,218 nipype.workflow INFO:
+	 [Node] Running "mcflirt" ("nipype.interfaces.fsl.preprocess.MCFLIRT"), a CommandLine Interface with command:
+mcflirt -in /om4/group/gablab/data/jsmentch/ds003017/sub-sid000013/func/sub-sid000013_task-movie_run-05_bold.nii.gz -out /workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_05_wf/bold_hmc_wf/mcflirt/sub-sid000013_task-movie_run-05_bold_mcf.nii.gz -reffile /workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_05_wf/initial_boldref_wf/gen_ref/ref_bold.nii.gz -mats -plots -rmsabs -rmsrel
+210618-13:23:04,888 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000013_wf.anat_preproc_wf.anat_template_wf.t1w_ref_dimensions" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/anat_preproc_wf/anat_template_wf/t1w_ref_dimensions".
+210618-13:23:05,689 nipype.workflow INFO:
+	 [Node] Running "t1w_ref_dimensions" ("niworkflows.interfaces.images.TemplateDimensions")
+210618-13:23:06,34 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000013_wf.anat_preproc_wf.anat_template_wf.t1w_ref_dimensions".
+210618-13:23:08,255 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_05_wf.bold_stc_wf.slice_timing_correction" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_05_wf/bold_stc_wf/slice_timing_correction".
+210618-13:23:08,288 nipype.workflow INFO:
+	 [Node] Running "slice_timing_correction" ("nipype.interfaces.afni.preprocess.TShift"), a CommandLine Interface with command:
+3dTshift -ignore 1 -prefix sub-sid000013_task-movie_run-05_bold_tshift.nii.gz -tpattern @slice_timing.1D -TR 1s /workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_05_wf/bold_stc_wf/slice_timing_correction/sub-sid000013_task-movie_run-05_bold.nii.gz
+210618-13:34:21,352 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_04_wf.bold_stc_wf.slice_timing_correction".
+210618-13:34:21,355 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_03_wf.bold_stc_wf.slice_timing_correction".
+210618-13:38:19,428 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_03_wf.bold_stc_wf.copy_xform" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_03_wf/bold_stc_wf/copy_xform".
+210618-13:38:19,441 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_04_wf.bold_stc_wf.copy_xform" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_04_wf/bold_stc_wf/copy_xform".
+210618-13:38:45,95 nipype.workflow INFO:
+	 [Node] Running "copy_xform" ("niworkflows.interfaces.utils.CopyXForm")
+210618-13:38:45,95 nipype.workflow INFO:
+	 [Node] Running "copy_xform" ("niworkflows.interfaces.utils.CopyXForm")
+210618-13:38:45,90 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_05_wf.bold_stc_wf.slice_timing_correction".
+210618-13:39:25,457 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_sid000013_wf.func_preproc_task_movie_run_05_wf.bold_stc_wf.copy_xform" in "/workdir/fmriprep_wf/single_subject_sid000013_wf/func_preproc_task_movie_run_05_wf/bold_stc_wf/copy_xform".
+210618-13:39:25,895 nipype.workflow INFO:
+	 [Node] Running "copy_xform" ("niworkflows.interfaces.utils.CopyXForm")
