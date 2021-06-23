@@ -1,0 +1,1 @@
+mris_register -curv -rusage /om4/group/gablab/data/jsmentch/ds003017/derivatives/freesurfer/sub-sid000560/touch/rusage.mris_register.lh.dat ../surf/lh.sphere /opt/freesurfer/average/lh.folding.atlas.acfb40.noaparc.i12.2016-08-02.tif ../surf/lh.sphere.reg

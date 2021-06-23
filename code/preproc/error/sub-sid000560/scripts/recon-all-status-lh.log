@@ -1,0 +1,28 @@
+status file for recon-all
+Fri Jun 18 14:22:21 EDT 2021
+#@# Tessellate lh Fri Jun 18 14:22:21 EDT 2021
+#@# Smooth1 lh Fri Jun 18 14:22:26 EDT 2021
+#@# Inflation1 lh Fri Jun 18 14:22:32 EDT 2021
+#@# QSphere lh Fri Jun 18 14:24:04 EDT 2021
+#@# Fix Topology Copy lh Fri Jun 18 14:26:16 EDT 2021
+#@# Fix Topology lh Fri Jun 18 14:26:16 EDT 2021
+
+
+
+New invocation of recon-all 
+
+
+
+status file for recon-all
+Mon Jun 21 13:49:33 EDT 2021
+#@# Make White Surf lh Mon Jun 21 13:49:33 EDT 2021
+#@# Smooth2 lh Mon Jun 21 13:55:04 EDT 2021
+#@# Inflation2 lh Mon Jun 21 13:55:11 EDT 2021
+#@# Curv .H and .K lh Mon Jun 21 13:57:00 EDT 2021
+#@# Curvature Stats lh Mon Jun 21 13:58:30 EDT 2021
+#@# Sphere lh Mon Jun 21 13:58:38 EDT 2021
+#@# Surf Reg lh Mon Jun 21 14:32:49 EDT 2021
+#@# Jacobian white lh Mon Jun 21 15:14:12 EDT 2021
+#@# AvgCurv lh Mon Jun 21 15:14:16 EDT 2021
+#@# Cortical Parc lh Mon Jun 21 15:14:20 EDT 2021
+#@# Make Pial Surf lh Mon Jun 21 15:14:40 EDT 2021
