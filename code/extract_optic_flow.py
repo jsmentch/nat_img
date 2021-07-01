@@ -25,4 +25,4 @@ ext = FarnebackOpticalFlowExtractor()
 results = ext.transform(vs)
 
 optic_flow = results.to_df(object_id='auto')
-optic_flow.to_pickle(f"{outdir}{stim}_optic_flow.pkl")
+optic_flow.to_pickle(f"{outdir}{stim}_optic_flow.pkl",protocol=4)#4 because dyneusr is in python 3.6
