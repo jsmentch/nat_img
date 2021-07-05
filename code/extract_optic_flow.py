@@ -9,6 +9,7 @@ import sys
 # usage:
 # extract_optic_flow.py ../../path/to/stim.mp4 ../path/to/outdir/
 
+# ./extract_optic_flow.py ../sourcedata/data/HBN/stimuli/hbn_stimuli/DM.mp4 ../sourcedata/data/HBN/features/
 
 #method to find the index of nearest value in an array
 def find_nearest(array, value):
