@@ -19,8 +19,8 @@ do
         echo "$now"
         wb_command -cifti-parcellate \
         $ss \
-        "../sourcedata/data/parcellations/Q1-Q6_RelatedParcellation210.CorticalAreas_dil_Final_Final_Areas_Group_Colors.59k_fs_LR.dlabel.nii" \
-        COLUMN
+        "/om2/user/jsmentch/projects/nat_img/sourcedata/data/parcellations/Q1-Q6_RelatedValidation210.CorticalAreas_dil_Final_Final_Areas_Group_Colors.32k_fs_LR.dlabel.nii" \
+        COLUMN \
         $OUTPATH$ss
     done
 done
