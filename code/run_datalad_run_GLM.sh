@@ -38,6 +38,7 @@ while IFS= read -r sub; do
             "python ./run_encoding_model.py $sub $1 $2"
         fi
         datalad save -m 'clean dataset after run'
+        datalad drop "../sourcedata/data/HCP_7T_movie_FIX/brain/HCP_7T_movie_FIX/$sub/MNINonLinear/Results/*/*"
     fi
 done < "$2_subjects.txt"
 
