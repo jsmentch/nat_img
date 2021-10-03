@@ -51,9 +51,9 @@ def main():
                                     contrast_type='t')
         vertex_info = hcp.get_HCP_vertex_info(img)
         #from analysis import plot_59k_results
-        np.save(f'../outputs/glm/HCP_7T/rms/{subject}_all',contrast.z_score())
+        np.save(f'../outputs/glm/HCP_7T/rms/glm_{subject}_rms_z.npy',contrast.z_score())
 
-        plot_results(contrast.z_score(),'z','59k',vertex_info,subject,feature,'HCP_7T',f'glm_1_rms')
+        plot_results(contrast.z_score(),'z','59k',vertex_info,subject,feature,'HCP_7T',f'glm')
 
         
         
