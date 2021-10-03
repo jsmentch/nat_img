@@ -49,7 +49,6 @@ def main():
                                     regression_result=results, \
                                     con_val=np.array([1,0]).T, \
                                     contrast_type='t')
-        vertex_info = hcp.get_HCP_vertex_info(img)
         #from analysis import plot_59k_results
         np.save(f'../outputs/glm/HCP_7T/rms/glm_{subject}_rms_z.npy',contrast.z_score())
 
