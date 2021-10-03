@@ -327,8 +327,9 @@ def plot_results(scores,score_type,data_type,vertex_info,subject,feature,dataset
                 data, \
                   cmap=cmap,symmetric_cmap=symmetric_cmap, avg_method='median',#figure=fig,\
                 bg_map=sulc, colorbar=True, vmin=v[0], vmax=v[1], threshold=threshold, hemi=hemi, \
-                data_alpha=np.where(data>0,1,0),\
-                data_remove=np.zeros(data.shape),output_file=f'{scratch_dir}/{name}.png')
+#                data_alpha=np.where(data>0,1,0),\
+                data_alpha=np.ones(data.shape),\
+                  data_remove=np.zeros(data.shape),output_file=f'{scratch_dir}/{name}.png')
 #combine saved maps into one with PIL
 #     if notebook==True:
     area = (75, 140, 635, 560) #area to crop from each image
