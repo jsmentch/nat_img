@@ -52,7 +52,7 @@ def main():
         #from analysis import plot_59k_results
         np.save(f'../outputs/glm/HCP_7T/rms/glm_{subject}_rms_z.npy',contrast.z_score())
 
-        plot_results(contrast.z_score(),'z','59k',vertex_info,subject,feature,'HCP_7T',f'glm')
+        analysis.plot_results(contrast.z_score(),'z','59k',vertex_info,subject,feature,'HCP_7T',f'glm')
 
         
         
