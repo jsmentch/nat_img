@@ -24,6 +24,7 @@ while IFS= read -r sub; do
             -i "../sourcedata/data/HCP_7T_movie_FIX/features/" \
             -i "../sourcedata/data/human-connectome-project-openaccess/HCP1200/100610/T1w/fsaverage_LR59k/*" \
             -o "../outputs/figures/HCP_7T/${title}_${sub}_$1_r2.png" \
+            -o "../outputs/encoding_model/HCP_7T/${feature}/${title}_${sub}_$1*.npy" \
             -o "../tmp/*" \
             "python ./run_encoding_model.py $sub $1 $2"
         elif [ "$2" = "merlin" ]; then
@@ -36,6 +37,7 @@ while IFS= read -r sub; do
             "python ./run_encoding_model.py $sub $1 $2"
         fi
         datalad save -m 'clean dataset after run'
+        datalad drop "../sourcedata/data/HCP_7T_movie_FIX/brain/HCP_7T_movie_FIX/$sub/MNINonLinear/Results/*/*"
     fi
 done < "$2_subjects.txt"
 

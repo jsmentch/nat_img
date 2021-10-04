@@ -1,7 +1,6 @@
 #!/bin/bash
 # given a feature, and dataset, run datalad containers-run the GLM python script
 #inputs: subject id (str), feature name (str)
-#usage: ./run_datalad_run_encoding_model.sh 100610 as_scores HCP_7T
 #usage: ./run_datalad_run_GLM.sh rms HCP_7T
 
 echo "running datalad containers-run on the encoding model python script"

@@ -25,11 +25,6 @@ def main():
         n_movies=[1,2,3,4]
         X,Y,vertex_info = analysis.load_data_HCP(subject,feature,n_movies)
         X = hrf_tools.apply_optimal_hrf_10hz(X,1)
-        
-        
-        
-        X,Y,vertex_info = analysis.load_data_HCP(subject,feature,n_movies)
-        X = hrf_tools.apply_optimal_hrf_10hz(X,1)
 
         n_scans = Y.shape[0]
         frame_times= np.arange(n_scans)
@@ -54,10 +49,6 @@ def main():
 
         analysis.plot_results(contrast.z_score(),'z','59k',vertex_info,subject,feature,'HCP_7T',f'glm')
 
-        
-        
-        
-        
         #scores_mean,corr_mean,weights_mean = analysis.simple_ridgeCV(X,Y)
         #np.save(f'{temp_dir}/r2_{subject}_{feature}.npy',scores_mean)
         #np.save(f'{temp_dir}/r_{subject}_{feature}.npy',corr_mean)
