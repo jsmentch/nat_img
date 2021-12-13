@@ -1,0 +1,9 @@
+sub-NDARMF508PA2
+<IPython.core.display.HTML object>
+checking /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARMF508PA2/sub-NDARMF508PA2_clean_task-movieDM_space-fsLR_den-91k_bold.dtseries.nii
+processing /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARMF508PA2/sub-NDARMF508PA2_clean_task-movieDM_space-fsLR_den-91k_bold.dtseries.nii
+saved ../outputs/mapper/HBN/degreelist/sub-NDARMF508PA2_DM.npy
+sub-NDARKP893TWU
+<IPython.core.display.HTML object>
+checking /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARKP893TWU/sub-NDARKP893TWU_clean_task-movieDM_space-fsLR_den-91k_bold.dtseries.nii
+sub-NDARKR391CMV

@@ -1,0 +1,6 @@
+sub-NDARMF230VEX
+<IPython.core.display.HTML object>
+checking /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARMF230VEX/sub-NDARMF230VEX_clean_task-movieDM_space-fsLR_den-91k_bold.dtseries.nii
+processing /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARMF230VEX/sub-NDARMF230VEX_clean_task-movieDM_space-fsLR_den-91k_bold.dtseries.nii
+saved ../outputs/mapper/HBN/degreelist/sub-NDARMF230VEX_DM.npy
+sub-NDARML406ZB8

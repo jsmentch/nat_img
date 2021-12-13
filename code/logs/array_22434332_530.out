@@ -1,0 +1,6 @@
+sub-NDARPW786GC4
+<IPython.core.display.HTML object>
+checking /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARPW786GC4/sub-NDARPW786GC4_clean_task-movieDM_space-fsLR_den-91k_bold.dtseries.nii
+processing /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARPW786GC4/sub-NDARPW786GC4_clean_task-movieDM_space-fsLR_den-91k_bold.dtseries.nii
+saved ../outputs/mapper/HBN/degreelist/sub-NDARPW786GC4_DM.npy
+sub-NDARPW915RGD

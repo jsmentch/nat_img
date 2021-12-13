@@ -1,7 +1,7 @@
 #!/bin/bash
 
-for i in $(seq 320 30 350);
+for i in $(seq 520 10 950);
 do
-    sbatch ./run_filter_cifti_hbn_ru.sh ${i} $((i +30))
+    sbatch ./run_filter_cifti_hbn_ru.sh ${i} $((i +10))
 done
 

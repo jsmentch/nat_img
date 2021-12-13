@@ -1,9 +1,8 @@
-from os import walk
+import os.path
 import numpy as np
 import pandas as pd
+from pathlib import Path
 
-#from nilearn.datasets import fetch_haxby
-from nilearn.input_data import NiftiMasker
 
 from kmapper import KeplerMapper, Cover
 from sklearn.manifold import TSNE
@@ -22,6 +21,8 @@ import kmapper as km
 from kmapper import jupyter # Creates custom CSS full-size Jupyter screen
 import umap
 import sklearn
+
+import sys
 
 #from dyneusr
 from sklearn.cluster import DBSCAN
@@ -61,21 +62,15 @@ def optimize_eps(X, k=3, p=100.0, **kwargs):
     eps = np.percentile(dist[:, k], p)
     return eps
 
-clean_path = '/nobackup/scratch/Mon/jsmentch/hbn_cifti_cleaned/smoothed/'
-subject_flist = list(walk(clean_path))[0][1]
-
-import os.path
-output_dir='../outputs/mapper/HBN/'
-for s in subject_flist:
-    sub = s[-16:]
-    print(sub)
-    file=f'{clean_path}{s}/{sub}_clean_task-movieDM_space-fsLR_den-91k_bold.dtseries.nii'
-    print(file)
-    if os.path.isfile(file):
-        img=load_img(file)
+input_file = str(sys.argv[1])
+output_file= str(sys.argv[2])
+print(f'checking {input_file}')
+if not Path(output_file).is_file(): # if output doesn't exist already, run it
+    if os.path.isfile(input_file):
+        print(f'processing {input_file}')
+        img=load_img(input_file)
         img_data = img.get_fdata()
         img_data[np.isnan(img_data)] = 0
-        title = 'wb_umap_HBN_'
         data = img_data
         mapper = km.KeplerMapper()
         # Fit to and transform the data
@@ -94,4 +89,5 @@ for s in subject_flist:
             for point in nodes[node]:
                 if degreelist[point]<degrees[node]:
                     degreelist[point]=degrees[node]
-        np.save(f'{output_dir}degreelist/{sub}.npy',degreelist)
+        np.save(f'{output_file}',degreelist)
+        print(f'saved {output_file}')

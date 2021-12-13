@@ -1,7 +1,9 @@
 #!/bin/bash
-#SBATCH -t 2:00:00
+#SBATCH -t 0:30:00
 #SBATCH -c 1
-#SBATCH --mem=10G
+#SBATCH --mem=15G
+#SBATCH -p use-everything
+
 
 cmd1="module load openmind/singularity/3.6.3"
 cmd2="singularity exec -B /om,/om2,/om4,/nobackup,/nese /om2/user/jsmentch/projects/nat_img/.datalad/environments/analysis/image python ./filter_cifti_hbn_ru.py $1 $2"
