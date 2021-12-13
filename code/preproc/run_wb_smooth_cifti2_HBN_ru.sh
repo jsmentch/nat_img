@@ -1,9 +1,9 @@
 #!/bin/bash
 
-WORKPATH="/nobackup/scratch/Mon/jsmentch/hbn_cifti_cleaned/"
+WORKPATH="/nobackup/scratch/Thu/jsmentch/hbn_cifti_cleaned/"
 cd $WORKPATH
 
-OUTPATH="/nobackup/scratch/Mon/jsmentch/hbn_cifti_cleaned/smoothed/"
+OUTPATH="/nobackup/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/"
 echo "mkdir $OUTPATH"
 mkdir $OUTPATH
 
