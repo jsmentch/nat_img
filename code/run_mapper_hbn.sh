@@ -1,12 +1,12 @@
 #!/bin/bash
-#SBATCH -t 0:20:00
+#SBATCH -t 0:25:00
 #SBATCH --output=logs/array_%A_%a.out
 #SBATCH --error=logs/array_%A_%a.err
 #SBATCH --array=0-945:5
 #SBATCH -c 1
-#SBATCH --mem=30G
+#SBATCH --mem=35G
 #SBATCH -p use-everything
-
+#SBATCH -x node039
 
 
 IFS=$'\n' read -d '' -r -a lines < hbn_ru_subjects.txt
@@ -21,5 +21,7 @@ do
     input_file="${input_dir}${sub}/${sub}_clean_task-movieDM_space-fsLR_den-91k_bold.dtseries.nii"
     output_dir='../outputs/mapper/HBN/'
     output_file="${output_dir}degreelist/${sub}_DM.npy"
-    python mapper_hbn.py ${input_file} ${output_file}
+    output_file2="${output_dir}corenesslist/${sub}_DM.npy"
+
+    python mapper_hbn.py ${input_file} ${output_file} ${output_file2}
 done

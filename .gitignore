@@ -8,3 +8,4 @@
 slurm*.out
 ./tmp/**
 /tmp/**
+code/logs/*

@@ -1,9 +1,0 @@
-sub-NDARHR099EWX
-<IPython.core.display.HTML object>
-checking /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARHR099EWX/sub-NDARHR099EWX_clean_task-movieDM_space-fsLR_den-91k_bold.dtseries.nii
-sub-NDARCF247TDJ
-<IPython.core.display.HTML object>
-checking /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARCF247TDJ/sub-NDARCF247TDJ_clean_task-movieDM_space-fsLR_den-91k_bold.dtseries.nii
-processing /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARCF247TDJ/sub-NDARCF247TDJ_clean_task-movieDM_space-fsLR_den-91k_bold.dtseries.nii
-saved ../outputs/mapper/HBN/degreelist/sub-NDARCF247TDJ_DM.npy
-sub-NDARCB627KDN

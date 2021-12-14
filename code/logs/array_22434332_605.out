@@ -1,9 +1,0 @@
-sub-NDARTV525XC0
-<IPython.core.display.HTML object>
-checking /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARTV525XC0/sub-NDARTV525XC0_clean_task-movieDM_space-fsLR_den-91k_bold.dtseries.nii
-sub-NDARTW456RAG
-<IPython.core.display.HTML object>
-checking /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARTW456RAG/sub-NDARTW456RAG_clean_task-movieDM_space-fsLR_den-91k_bold.dtseries.nii
-processing /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARTW456RAG/sub-NDARTW456RAG_clean_task-movieDM_space-fsLR_den-91k_bold.dtseries.nii
-saved ../outputs/mapper/HBN/degreelist/sub-NDARTW456RAG_DM.npy
-sub-NDARTW850GHU
