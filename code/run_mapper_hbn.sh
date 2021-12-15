@@ -1,10 +1,10 @@
 #!/bin/bash
-#SBATCH -t 0:25:00
+#SBATCH -t 0:15:00
 #SBATCH --output=logs/array_%A_%a.out
 #SBATCH --error=logs/array_%A_%a.err
 #SBATCH --array=0-945:5
 #SBATCH -c 1
-#SBATCH --mem=35G
+#SBATCH --mem=30G
 #SBATCH -p use-everything
 #SBATCH -x node039
 
@@ -18,10 +18,10 @@ do
     sub="${lines[x]}"
     echo $sub
     input_dir='/om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/'
-    input_file="${input_dir}${sub}/${sub}_clean_task-movieDM_space-fsLR_den-91k_bold.dtseries.nii"
-    output_dir='../outputs/mapper/HBN/'
-    output_file="${output_dir}degreelist/${sub}_DM.npy"
-    output_file2="${output_dir}corenesslist/${sub}_DM.npy"
+    input_file="${input_dir}${sub}/${sub}_clean_task-movieTP_space-fsLR_den-91k_bold.dtseries.nii"
+    output_dir='../outputs/mapper/HBN/TP/'
+    output_file="${output_dir}degreelist/${sub}_TP.npy"
+    output_file2="${output_dir}corenesslist/${sub}_TP.npy"
 
     python mapper_hbn.py ${input_file} ${output_file} ${output_file2}
 done
