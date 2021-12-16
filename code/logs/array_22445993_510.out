@@ -1,0 +1,25 @@
+sub-NDARPE056ACA
+<IPython.core.display.HTML object>
+checking /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARPE056ACA/sub-NDARPE056ACA_clean_task-movieTP_space-fsLR_den-91k_bold.dtseries.nii
+processing /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARPE056ACA/sub-NDARPE056ACA_clean_task-movieTP_space-fsLR_den-91k_bold.dtseries.nii
+saved ../outputs/mapper/HBN/TP/degreelist/sub-NDARPE056ACA_TP.npy
+sub-NDARPE830YU0
+<IPython.core.display.HTML object>
+checking /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARPE830YU0/sub-NDARPE830YU0_clean_task-movieTP_space-fsLR_den-91k_bold.dtseries.nii
+processing /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARPE830YU0/sub-NDARPE830YU0_clean_task-movieTP_space-fsLR_den-91k_bold.dtseries.nii
+saved ../outputs/mapper/HBN/TP/degreelist/sub-NDARPE830YU0_TP.npy
+sub-NDARPF395NV5
+<IPython.core.display.HTML object>
+checking /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARPF395NV5/sub-NDARPF395NV5_clean_task-movieTP_space-fsLR_den-91k_bold.dtseries.nii
+processing /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARPF395NV5/sub-NDARPF395NV5_clean_task-movieTP_space-fsLR_den-91k_bold.dtseries.nii
+saved ../outputs/mapper/HBN/TP/degreelist/sub-NDARPF395NV5_TP.npy
+sub-NDARPG847LB8
+<IPython.core.display.HTML object>
+checking /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARPG847LB8/sub-NDARPG847LB8_clean_task-movieTP_space-fsLR_den-91k_bold.dtseries.nii
+processing /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARPG847LB8/sub-NDARPG847LB8_clean_task-movieTP_space-fsLR_den-91k_bold.dtseries.nii
+saved ../outputs/mapper/HBN/TP/degreelist/sub-NDARPG847LB8_TP.npy
+sub-NDARPH834YB1
+<IPython.core.display.HTML object>
+checking /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARPH834YB1/sub-NDARPH834YB1_clean_task-movieTP_space-fsLR_den-91k_bold.dtseries.nii
+processing /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARPH834YB1/sub-NDARPH834YB1_clean_task-movieTP_space-fsLR_den-91k_bold.dtseries.nii
+saved ../outputs/mapper/HBN/TP/degreelist/sub-NDARPH834YB1_TP.npy

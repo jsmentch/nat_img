@@ -1,0 +1,25 @@
+sub-NDARFY009MNL
+<IPython.core.display.HTML object>
+checking /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARFY009MNL/sub-NDARFY009MNL_clean_task-movieTP_space-fsLR_den-91k_bold.dtseries.nii
+processing /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARFY009MNL/sub-NDARFY009MNL_clean_task-movieTP_space-fsLR_den-91k_bold.dtseries.nii
+saved ../outputs/mapper/HBN/TP/degreelist/sub-NDARFY009MNL_TP.npy
+sub-NDARZW363UGM
+<IPython.core.display.HTML object>
+checking /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARZW363UGM/sub-NDARZW363UGM_clean_task-movieTP_space-fsLR_den-91k_bold.dtseries.nii
+processing /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARZW363UGM/sub-NDARZW363UGM_clean_task-movieTP_space-fsLR_den-91k_bold.dtseries.nii
+saved ../outputs/mapper/HBN/TP/degreelist/sub-NDARZW363UGM_TP.npy
+sub-NDARJM239GN4
+<IPython.core.display.HTML object>
+checking /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARJM239GN4/sub-NDARJM239GN4_clean_task-movieTP_space-fsLR_den-91k_bold.dtseries.nii
+processing /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARJM239GN4/sub-NDARJM239GN4_clean_task-movieTP_space-fsLR_den-91k_bold.dtseries.nii
+saved ../outputs/mapper/HBN/TP/degreelist/sub-NDARJM239GN4_TP.npy
+sub-NDARZW472CCF
+<IPython.core.display.HTML object>
+checking /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARZW472CCF/sub-NDARZW472CCF_clean_task-movieTP_space-fsLR_den-91k_bold.dtseries.nii
+processing /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARZW472CCF/sub-NDARZW472CCF_clean_task-movieTP_space-fsLR_den-91k_bold.dtseries.nii
+saved ../outputs/mapper/HBN/TP/degreelist/sub-NDARZW472CCF_TP.npy
+sub-NDARZW930MF2
+<IPython.core.display.HTML object>
+checking /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARZW930MF2/sub-NDARZW930MF2_clean_task-movieTP_space-fsLR_den-91k_bold.dtseries.nii
+processing /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARZW930MF2/sub-NDARZW930MF2_clean_task-movieTP_space-fsLR_den-91k_bold.dtseries.nii
+saved ../outputs/mapper/HBN/TP/degreelist/sub-NDARZW930MF2_TP.npy

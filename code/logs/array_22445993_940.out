@@ -1,0 +1,19 @@
+sub-NDARXG108HK2
+<IPython.core.display.HTML object>
+checking /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARXG108HK2/sub-NDARXG108HK2_clean_task-movieTP_space-fsLR_den-91k_bold.dtseries.nii
+sub-NDARYJ245AAD
+<IPython.core.display.HTML object>
+checking /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARYJ245AAD/sub-NDARYJ245AAD_clean_task-movieTP_space-fsLR_den-91k_bold.dtseries.nii
+processing /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARYJ245AAD/sub-NDARYJ245AAD_clean_task-movieTP_space-fsLR_den-91k_bold.dtseries.nii
+saved ../outputs/mapper/HBN/TP/degreelist/sub-NDARYJ245AAD_TP.npy
+sub-NDARYT155NHX
+<IPython.core.display.HTML object>
+checking /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARYT155NHX/sub-NDARYT155NHX_clean_task-movieTP_space-fsLR_den-91k_bold.dtseries.nii
+sub-NDARZM580BG2
+<IPython.core.display.HTML object>
+checking /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARZM580BG2/sub-NDARZM580BG2_clean_task-movieTP_space-fsLR_den-91k_bold.dtseries.nii
+processing /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARZM580BG2/sub-NDARZM580BG2_clean_task-movieTP_space-fsLR_den-91k_bold.dtseries.nii
+saved ../outputs/mapper/HBN/TP/degreelist/sub-NDARZM580BG2_TP.npy
+sub-NDARZV983XK9
+<IPython.core.display.HTML object>
+checking /om/scratch/Thu/jsmentch/hbn_cifti_cleaned/smoothed/filtered/sub-NDARZV983XK9/sub-NDARZV983XK9_clean_task-movieTP_space-fsLR_den-91k_bold.dtseries.nii
