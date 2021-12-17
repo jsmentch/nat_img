@@ -23,3 +23,16 @@ def var_to_nan(fdata,var_thresh):
         to_nan = np.where(fdata_var<var_thresh,True,False) #nan voxels w variance less than var_thresh
     fdata[:,to_nan]=float("NaN") #set to nan
     return fdata
+
+def mask_cifti(mask,arr_in):
+    #mask and array_in should be the same shape in the second dimension and in the same space
+    mask_ind=np.argwhere(mask==1)[:,1]
+    masked=arr_in[:,mask_ind]
+    return(masked) #return a time X brainordinate array
+    
+def unmask_cifti(mask,arr_in):
+    #unmask 1d results
+    mask_ind=np.argwhere(mask==1)[:,1]
+    unmasked=np.zeros( mask.shape[1] )
+    unmasked[mask_ind]=arr_in[:]
+    return(unmasked) 
