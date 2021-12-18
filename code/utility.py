@@ -1,3 +1,5 @@
+import numpy as np
+
 def plot_folder_gif(img_dir,dur):
     from PIL import Image, ImageDraw
     import os
