@@ -178,9 +178,9 @@ def load_data_merlin(subject,feature):
 
 
 
-def simple_ridgeCV(X,Y):
+def simple_ridgeCV(X,Y,n_splits):
     estimator = RidgeCV(alphas=[0.1, 1.0, 10.0, 100])
-    cv = KFold(n_splits=5)
+    cv = KFold(n_splits=n_splits)
     scores = []
     corr = []
     weights=[]
@@ -283,8 +283,8 @@ def plot_results(scores,score_type,data_type,vertex_info,subject,feature,dataset
                 data, \
                   cmap=cmap,symmetric_cmap=symmetric_cmap, avg_method='median',#figure=fig,\
                 bg_map=sulc, colorbar=True, vmin=v[0], vmax=v[1], threshold=threshold, hemi=hemi, \
-#                data_alpha=np.where(data>0,1,0),\
-                data_alpha=np.ones(data.shape),\
+                data_alpha=np.where(data>0,1,0),\
+#                data_alpha=np.ones(data.shape),\
                   data_remove=np.zeros(data.shape),output_file=f'{scratch_dir}/{name}.png')
 #combine saved maps into one with PIL
 #     if notebook==True:
@@ -332,3 +332,12 @@ def plot_results(scores,score_type,data_type,vertex_info,subject,feature,dataset
 #     os.remove(f'{scratch_dir}/flat_R.png')
 #     os.remove(f'{scratch_dir}/vinf_L.png')
 #     os.remove(f'{scratch_dir}/vinf_R.png')
+
+
+def get_vertex_info_59k():
+#     import nibabel as nb
+#     import hcp_utils as hcp
+    im_file = f'/om2/user/jsmentch/projects/nat_img/sourcedata/data/parcellations/combined_Q1-Q6_RelatedParcellation210.CorticalAreas_dil_Final_Final_Areas_Group_Colors.59k_fs_LR.dlabel.nii'
+    img = nb.load(im_file)
+    vertex_info = hcp.get_HCP_vertex_info(img)
+    return vertex_info
