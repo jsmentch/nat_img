@@ -26,8 +26,7 @@
 	path = test_dataset
 	url = ./test_dataset
 	datalad-id = 5baa5b6f-c1a4-42ec-8df8-2d2fd947cf28
-[submodule "sourcedata/human-connectome-project-openaccess"]
-	path = sourcedata/human-connectome-project-openaccess
+[submodule "sourcedata/data/human-connectome-project-openaccess"]
+	path = sourcedata/data/human-connectome-project-openaccess
 	url = https://github.com/datalad-datasets/human-connectome-project-openaccess
 	datalad-id = 2e2a8a70-3eaa-11ea-a9a5-b4969157768c
-	datalad-url = https://github.com/datalad-datasets/human-connectome-project-openaccess
