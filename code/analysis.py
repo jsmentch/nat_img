@@ -341,3 +341,12 @@ def get_vertex_info_59k():
     img = nb.load(im_file)
     vertex_info = hcp.get_HCP_vertex_info(img)
     return vertex_info
+
+
+# def get_vertex_info_32k():
+# #     import nibabel as nb
+# #     import hcp_utils as hcp
+#     im_file = f'/om2/user/jsmentch/projects/nat_img/sourcedata/data/parcellations/combined_Q1-Q6_RelatedParcellation210.CorticalAreas_dil_Final_Final_Areas_Group_Colors.59k_fs_LR.dlabel.nii'
+#     img = nb.load(im_file)
+#     vertex_info = hcp.get_HCP_vertex_info(img)
+#     return vertex_info
