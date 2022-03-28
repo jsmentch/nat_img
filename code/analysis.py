@@ -350,3 +350,13 @@ def get_vertex_info_59k():
 #     img = nb.load(im_file)
 #     vertex_info = hcp.get_HCP_vertex_info(img)
 #     return vertex_info
+
+def model_FIR(X):
+# input: a time x feature array
+# output: a time x feature(x4) array for FIR model 
+    X1=np.insert(X,0,0,axis=0)[:-1,:]
+    X2=np.insert(X1,0,0,axis=0)[:-1,:]
+    X3=np.insert(X2,0,0,axis=0)[:-1,:]
+    X4=np.insert(X3,0,0,axis=0)[:-1,:]
+    X_FIR=np.concatenate((X1,X2,X3,X4),axis=1)
+    return X_FIR
