@@ -93,7 +93,7 @@ def load_data_HCP_MMP(subject,feature,n_movies):
         i=i-1
         exclude_final=slice_stops[i][-1] #trim the final movie since it is in all scans
         #load brain image
-        im_file = f'../sourcedata/data/HCP_7T_movie_FIX/brain/parcellations/parcellated/sub{str(subject)}_{stim[i]}.ptseries.nii'
+        im_file = f'../sourcedata/data/HCP_7T_movie_FIX/brain/parcellations/parcellated/{str(subject)}/sub{str(subject)}_{stim[i]}.ptseries.nii'
         img = nb.load(im_file)
         img_y = img.get_fdata()
         img_y = scaler.fit_transform(img_y)
