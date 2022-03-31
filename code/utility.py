@@ -1,4 +1,9 @@
 import numpy as np
+#for combine_bids_tsvs:
+import pandas as pd
+from pathlib import Path
+import os
+
 
 def plot_folder_gif(img_dir,dur):
     from PIL import Image, ImageDraw
@@ -38,3 +43,24 @@ def unmask_cifti(mask,arr_in):
     unmasked=np.zeros( mask.shape[1] )
     unmasked[mask_ind]=arr_in[:]
     return(unmasked) 
+
+
+def combine_bids_tsvs(in_dir):
+    # input = a directory of .tsv files 
+    # eg '/nobackup/scratch/Tue/jsmentch/fitlins/merlin/'
+    # with:
+        # 3 columns: onset, duration, value
+        # title=feature name
+    # output = a combined tsv with an additional column 'trial_type' with the feature name
+    files = [f for f in os.listdir(in_dir) if os.path.isfile(os.path.join(in_dir, f))]
+
+    #first make an empty df with the columns
+    df_out= pd.DataFrame(columns=['onset', 'duration', 'value', 'trial_type'])
+
+    for f in files:
+        f_base = os.path.splitext(f)[0]
+        df=pd.read_csv(f'{in_dir}/{f}', sep='\t')
+        df['trial_type'] = pd.Series([f_base for x in range(len(speech.index))])
+        df_out = df_out.append(df)
+
+    df_out.to_csv(f'{in_dir}combined.tsv', sep="\t")
