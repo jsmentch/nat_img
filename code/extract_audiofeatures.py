@@ -8,7 +8,7 @@ script to extract a few basic audio features from an audio file at 10hz
 pycochleagram is required to get cochleagrams
 tensorflow and tensorflow_hub required for yamnet/audioset
 other dependencies: librosa, soundfile
-Standard usage: extract_audiofeatures.py '/user/home/test.wav' '/user/home/exports/' -l
+Standard usage: python extract_audiofeatures.py '/user/home/test.wav' -o '/user/home/exports/' -l
 """
 #output: 2d array [time, features]
 import argparse
