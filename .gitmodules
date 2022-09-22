@@ -26,7 +26,7 @@
 	path = sourcedata/data/human-connectome-project-openaccess
 	url = https://github.com/datalad-datasets/human-connectome-project-openaccess
 	datalad-id = 2e2a8a70-3eaa-11ea-a9a5-b4969157768c
-[submodule "sourcedata/data/cneuromod/stimuli/friends.stimuli"]
-	path = sourcedata/data/cneuromod/stimuli/friends.stimuli
-	url = git@github.com:courtois-neuromod/friends.stimuli.git
+[submodule "sourcedata/data/cneuromod/friends.stimuli"]
+	path = sourcedata/data/cneuromod/friends.stimuli
+	url = /nese/mit/group/sig/projects/cneuromod/cneuromod/friends/stimuli
 	datalad-id = bbbf34b9-31aa-4e35-b1ed-36525c6d7ce3
