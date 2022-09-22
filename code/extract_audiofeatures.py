@@ -43,7 +43,7 @@ def main():
 def load_wav(wav_in):
     #wav_data, sr = sf.read(wav_in, dtype=np.int16)
     #waveform = wav_data / 32768.0 # because it is 16bit this will scale it to -1 to 1
-    y, sr = librosa.load(wav_in,sr=16000)
+    y, sr = librosa.load(wav_in,sr=16000,mono=True)
     mod = y.size%(sr/10) #remainder
     dur_10hz = int( y.size/(sr/10)-(mod/(sr/10)) ) # duration in 10hz samples w/out remainder
     y=y[:-(int(mod))] # trim y to be multiple of 10hz samples
