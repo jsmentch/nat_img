@@ -31,3 +31,7 @@
 	url = git@github.com:courtois-neuromod/cneuromod.git
 	datalad-id = 29e74738-8e09-11ea-80eb-8555360247cd
 	datalad-url = git@github.com:courtois-neuromod/cneuromod.git
+[submodule "sourcedata/data/cneuromod/stimuli/friends.stimuli"]
+	path = sourcedata/data/cneuromod/stimuli/friends.stimuli
+	url = git@github.com:courtois-neuromod/friends.stimuli.git
+	datalad-id = bbbf34b9-31aa-4e35-b1ed-36525c6d7ce3

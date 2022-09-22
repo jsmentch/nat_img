@@ -10,5 +10,5 @@ echo "dir2 = " $2
 for filename in $1; do
     b=$(basename "$filename" | cut -d. -f1)
     echo "converting " $b" to "$2$b'.wav'
-    ffmpeg -i $filename $2$b'.wav'
+    ffmpeg -i $filename -ac 1 -ar 16000 $2$b'.wav'
 done
