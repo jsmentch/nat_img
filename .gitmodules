@@ -30,3 +30,8 @@
 	path = sourcedata/data/cneuromod/friends.stimuli
 	url = /nese/mit/group/sig/projects/cneuromod/cneuromod/friends/stimuli
 	datalad-id = bbbf34b9-31aa-4e35-b1ed-36525c6d7ce3
+[submodule "sourcedata/data/cneuromod/brain"]
+	path = sourcedata/data/cneuromod/brain
+	url = /nese/mit/group/sig/projects/cneuromod/fmriprep/friends.fmriprep
+	datalad-id = cbfd6482-5670-4f39-ba1b-9623f1f460b8
+	datalad-url = /nese/mit/group/sig/projects/cneuromod/fmriprep/friends.fmriprep
