@@ -22,10 +22,6 @@
 	path = sourcedata/data/budapest/stimuli/budapest_stimuli
 	url = /om4/group/gablab/data/jsmentch/budapest_stimuli
 	datalad-id = 08fb73a1-573a-4af6-8bb0-5ac6bb4609f6
-[submodule "test_dataset"]
-	path = test_dataset
-	url = ./test_dataset
-	datalad-id = 5baa5b6f-c1a4-42ec-8df8-2d2fd947cf28
 [submodule "sourcedata/data/human-connectome-project-openaccess"]
 	path = sourcedata/data/human-connectome-project-openaccess
 	url = https://github.com/datalad-datasets/human-connectome-project-openaccess
