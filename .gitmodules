@@ -26,3 +26,8 @@
 	path = sourcedata/data/human-connectome-project-openaccess
 	url = https://github.com/datalad-datasets/human-connectome-project-openaccess
 	datalad-id = 2e2a8a70-3eaa-11ea-a9a5-b4969157768c
+[submodule "cneuromod"]
+	path = cneuromod
+	url = git@github.com:courtois-neuromod/cneuromod.git
+	datalad-id = 29e74738-8e09-11ea-80eb-8555360247cd
+	datalad-url = git@github.com:courtois-neuromod/cneuromod.git
