@@ -35,3 +35,7 @@
 	url = /nese/mit/group/sig/projects/cneuromod/fmriprep/friends.fmriprep
 	datalad-id = cbfd6482-5670-4f39-ba1b-9623f1f460b8
 	datalad-url = /nese/mit/group/sig/projects/cneuromod/fmriprep/friends.fmriprep
+[submodule "sourcedata/data/cneuromod/friends.fmriprep"]
+	path = sourcedata/data/cneuromod/friends.fmriprep
+	url = /nese/mit/group/sig/projects/cneuromod/fmriprep/friends.fmriprep
+	datalad-id = cbfd6482-5670-4f39-ba1b-9623f1f460b8
