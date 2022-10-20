@@ -1,1 +1,0 @@
-mris_sphere -rusage /om4/group/gablab/data/jsmentch/ds003017/derivatives/freesurfer/sub-sid000560/touch/rusage.mris_sphere.lh.dat -seed 1234 ../surf/lh.inflated ../surf/lh.sphere

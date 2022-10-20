@@ -1,1 +1,0 @@
-mris_inflate -rusage /om4/group/gablab/data/jsmentch/ds003017/derivatives/freesurfer/sub-sid000560/touch/rusage.mris_inflate.lh.dat -n 50 ../surf/lh.smoothwm ../surf/lh.inflated
