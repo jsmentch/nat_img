@@ -46,7 +46,7 @@ if not Path(output_file).is_file(): # if output doesn't exist already, run it
             #export
             func_cln.to_filename(output_file)
         except:
-            print('confounds missing, skip')
+            print('confounds missing or ERROR, skip')
     else:
         print('input dne ',input_file)
 else:
