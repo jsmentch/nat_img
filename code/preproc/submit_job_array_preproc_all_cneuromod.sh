@@ -18,4 +18,4 @@ len=$(expr ${#subjs[@]} - 1) # len - 1
 
 echo Spawning ${#subjs[@]} sub-jobs.
 
-sbatch --array=0-$len%500 preproc_all.sh /om2/scratch/Thu/jsmentch/cneuromod_clean ${subjs[@]}
+sbatch --array=0-$len%500 preproc_all.sh /om2/user/jsmentch/projects/nat_img/sourcedata/data/cneuromod/brain/friends_clean ${subjs[@]}

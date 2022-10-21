@@ -1,6 +1,7 @@
 #!/bin/bash
 #SBATCH -t 0:15:00
 #SBATCH -c 1
+#SBATH -x node[054-060,100-115]
 #SBATCH --mem=10G
 #SBATCH -p use-everything
 
@@ -13,7 +14,7 @@ subjs=(${args[@]:1})
 # index slurm array to grab subject
 #SLURM_ARRAY_TASK_ID=0
 IN_DIR=${subjs[${SLURM_ARRAY_TASK_ID}]}
-WRK_DIR=/om2/scratch/Wed/jsmentch/working
+WRK_DIR=/om2/scratch/Wed/jsmentch/hbn_scratch
 OUT_DIR=$1
 
 
