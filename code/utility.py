@@ -64,3 +64,11 @@ def combine_bids_tsvs(in_dir):
         df_out = df_out.append(df)
 
     df_out.to_csv(f'{in_dir}combined.tsv', sep="\t")
+
+    
+
+def downsample(array, npts):
+    from scipy.interpolate import interp1d
+    interpolated = interp1d(np.arange(len(array)), array, axis = 0, fill_value = 'extrapolate')
+    downsampled = interpolated(np.linspace(0, len(array), npts))
+    return downsampled
