@@ -204,7 +204,7 @@ def simple_ridgeCV(X,Y,n_splits):
 def plot_results(scores,score_type,data_type,vertex_info,subject,feature,dataset,title):
     '''Inputs:
         scores = data to plot
-        score_type = r2, r, p, z, d, raw
+        score_type = r2, r, p, z, d, raw, weights
         data_type = 32k (3T) or 59k (7T)
         vertex info = None or the vertex info if it is 59k data beacuse hcp_utils doesnt by default
         subject = eg 100610 subject id for file naming
@@ -244,6 +244,16 @@ def plot_results(scores,score_type,data_type,vertex_info,subject,feature,dataset
     if score_type == 'raw':
         v=[-10,10]
         threshold=1
+        symmetric_cmap=True
+        cmap='cold_hot'
+    if score_type == 'weights':
+        v=[-1,1]
+        threshold=None
+        symmetric_cmap=True
+        cmap='cold_hot'
+    if score_type == 'c_weights':
+        v=[-.003,.003]
+        threshold=None
         symmetric_cmap=True
         cmap='cold_hot'
     save_dir=f'../outputs/figures/{dataset}/'
