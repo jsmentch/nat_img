@@ -228,6 +228,7 @@ def plot_results(scores,score_type,data_type,vertex_info,subject,feature,dataset
         cmap='inferno'
     if score_type == 'p':
         v=[0,0.05]
+        threshold=None
         symmetric_cmap=False
         cmap='inferno'
     if score_type == 'z':

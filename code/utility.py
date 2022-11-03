@@ -18,8 +18,6 @@ def plot_folder_gif(img_dir,dur):
         img2 = Image.open(img_dir+img_list[i])
         append_images.append(img2)
     img1.save(f'{img_dir}.gif', save_all=True, append_images=append_images, duration=dur, loop=0)
-    
-    
 
 def var_to_nan(fdata,var_thresh):
     import numpy as np
@@ -65,10 +63,33 @@ def combine_bids_tsvs(in_dir):
 
     df_out.to_csv(f'{in_dir}combined.tsv', sep="\t")
 
-    
-
 def downsample(array, npts):
     from scipy.interpolate import interp1d
     interpolated = interp1d(np.arange(len(array)), array, axis = 0, fill_value = 'extrapolate')
     downsampled = interpolated(np.linspace(0, len(array), npts))
     return downsampled
+
+def load_yamnet_info():
+    class_names = np.load('../sourcedata/data/yamnet_class_names.npy')
+    as_classes_label = np.zeros((521),dtype='S30')
+    as_classes = np.zeros((521))
+    as_classes.shape#as_classes = [None] * 521
+
+    as_classes[0:66]=0
+    as_classes[66:132]=1
+    as_classes[132:277]=2
+    as_classes[277:294]=3
+    as_classes[294:453]=4
+    as_classes[453:500]=5
+    as_classes[500:]=6
+
+    as_classes_label[0:66]='Human Sounds'
+    as_classes_label[66:132]='Animal'
+    as_classes_label[132:277]='Music'
+    as_classes_label[277:294]='Natural Sounds'
+    as_classes_label[294:453]='Sounds of Things'
+    as_classes_label[453:500]='Source Ambiguous Sounds'
+    as_classes_label[500:]='Channel, Environment, Background'
+
+    labels=['Human Sounds','Animal','Music','Natural Sounds','Sounds of Things','Source Ambiguous Sounds','Channel, Environment, Background']
+    return class_names, as_classes_label, as_classes, labels
