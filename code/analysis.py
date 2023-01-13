@@ -346,7 +346,7 @@ def plot_results(scores,score_type,data_type,vertex_info,subject,feature,dataset
     w,h=new_im.size
 
     draw = ImageDraw.Draw(new_im)
-    draw.text((0,0),f"{title}_{subject}_{feature}_{score_type}",(0,0,0))
+    #draw.text((0,0),f"{title}_{subject}_{feature}_{score_type}",(0,0,0)) #UNCOMMENT TO PRINT TITLE TOP LEFT
 
     new_im.save(f'{save_dir}{title}_{subject}_{feature}_{score_type}.png')
 #     os.remove(f'{scratch_dir}/flat_L.png')
