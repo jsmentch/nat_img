@@ -262,10 +262,10 @@ def plot_results(scores,score_type,data_type,vertex_info,subject,feature,dataset
         symmetric_cmap=False
         cmap='inferno'
     if score_type == 'tensor_decomp':
-        v=[None,None]
+        v=[-1,1]
         threshold=None
         symmetric_cmap=True
-        cmap='cold_hot'
+        cmap='bwr'
     save_dir=f'../outputs/figures/{dataset}/'
     if not os.path.exists(save_dir):
         os.mkdir(save_dir)    
