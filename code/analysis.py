@@ -20,6 +20,27 @@ sns.set("paper", "white")
 plt.rcParams['axes.facecolor'] = 'white'
 plt.rcParams['figure.facecolor'] = 'white'
 
+
+#make colormaps
+import matplotlib.colors as mcolors
+cmap = plt.cm.get_cmap('RdBu')
+cmap.set_bad(color='gray')
+
+colors = cmap(np.linspace(-1, 1, 256))
+colors[128:] = np.array([26/256,255/256,26/256, 1])
+colors[:128] = np.array([95/256,0,185/256, 1])
+
+pigr = mcolors.ListedColormap(colors)
+pigr_r = mcolors.ListedColormap(np.flip(colors,axis=0))
+
+colors = cmap(np.linspace(-1, 1, 256))
+colors[128:] = np.array([255/256,194/256,10/256, 1])
+colors[:128] = np.array([12/256,123/256,220/256, 1])
+
+yebl = mcolors.ListedColormap(colors)
+yebl_r = mcolors.ListedColormap(np.flip(colors,axis=0))
+
+
 # rcParams = np.load('rcParams.npy', allow_pickle=True)
 # plt.rcParams = rcParams
 
@@ -265,7 +286,22 @@ def plot_results(scores,score_type,data_type,vertex_info,subject,feature,dataset
         v=[-1,1]
         threshold=None
         symmetric_cmap=True
-        cmap='bwr'
+        cmap=pigr
+    if score_type == 'tensor_decomp_inv':
+        v=[-1,1]
+        threshold=None
+        symmetric_cmap=True
+        cmap=pigr_r
+    if score_type == 'tensor_decomp_raw':
+        v=[None,None]
+        threshold=None
+        symmetric_cmap=True
+        cmap='cold_hot'
+    if score_type == 'tensor_decomp_par':
+        v=[-1,1]
+        threshold=None
+        symmetric_cmap=True
+        cmap=pigr
     save_dir=f'../outputs/figures/{dataset}/'
     if not os.path.exists(save_dir):
         os.mkdir(save_dir)    
@@ -305,7 +341,8 @@ def plot_results(scores,score_type,data_type,vertex_info,subject,feature,dataset
                   cmap=cmap,symmetric_cmap=symmetric_cmap, avg_method='median',#figure=fig,\
                 bg_map=sulc, colorbar=True, vmin=v[0], vmax=v[1], threshold=threshold, hemi=hemi, \
 #                 data_alpha=np.where(data>0,1,0),\
-                data_alpha=np.ones(data.shape),\
+#                 data_alpha=np.ones(data.shape),\
+                data_alpha=np.abs(data),\
                   data_remove=np.zeros(data.shape),output_file=f'{scratch_dir}/{name}.png')
 #combine saved maps into one with PIL
 #     if notebook==True:
@@ -333,6 +370,559 @@ def plot_results(scores,score_type,data_type,vertex_info,subject,feature,dataset
     img = Image.open(f'{scratch_dir}/vinf_R.png',mode='r')
     img = img.resize((770,720))
     iR = img.crop(area)
+
+    w,h=iR.size
+
+    new_im = Image.new('RGB', ( (w*2)+70 , h*2) ,(255, 255, 255, 1))
+    new_im.paste(fL,(0,h))
+    new_im.paste(fR,(w,h))
+    new_im.paste(iL,(0,0))
+    new_im.paste(iR,(w,0))
+    new_im.paste(cbar,(w*2,int(round(h/4))))
+
+    w,h=new_im.size
+
+    draw = ImageDraw.Draw(new_im)
+    #draw.text((0,0),f"{title}_{subject}_{feature}_{score_type}",(0,0,0)) #UNCOMMENT TO PRINT TITLE TOP LEFT
+
+    new_im.save(f'{save_dir}{title}_{subject}_{feature}_{score_type}.png')
+#     os.remove(f'{scratch_dir}/flat_L.png')
+#     os.remove(f'{scratch_dir}/flat_R.png')
+#     os.remove(f'{scratch_dir}/vinf_L.png')
+#     os.remove(f'{scratch_dir}/vinf_R.png')
+
+
+
+def plot_results_medial(scores,score_type,data_type,vertex_info,subject,feature,dataset,title):
+    '''Inputs:
+        scores = data to plot
+        score_type = r2, r, p, z, d, raw, weights
+        data_type = 32k (3T) or 59k (7T)
+        vertex info = None or the vertex info if it is 59k data beacuse hcp_utils doesnt by default
+        subject = eg 100610 subject id for file naming
+        feature = eg as_scores plotted feature for file naming
+        dataset = eg merlin or HCP_7T which dataset?
+        title = 
+    '''
+    scratch_dir = '../tmp'
+#     scratch_dir = '/scratch/scratch/Fri/jsmentch/tmp'
+#     if not os.path.exists(scratch_dir):
+#         os.mkdir(scratch_dir)
+    if score_type == 'r2':
+        v=[0,0.5]
+        threshold=None
+        symmetric_cmap=False
+        cmap='inferno'
+    if score_type == 'r':
+        v=[0,1]
+        threshold=None
+        symmetric_cmap=False
+        cmap='inferno'
+    if score_type == 'p':
+        v=[0,0.05]
+        threshold=None
+        symmetric_cmap=False
+        cmap='inferno'
+    if score_type == 'z':
+        v=[-10,10]
+        threshold=3
+        symmetric_cmap=True
+        cmap='cold_hot'
+    if score_type == 'd':
+        v=[0,10]
+        threshold=3
+        symmetric_cmap=True
+        cmap='inferno'
+    if score_type == 'raw':
+        v=[-10,10]
+        threshold=1
+        symmetric_cmap=True
+        cmap='cold_hot'
+    if score_type == 'weights':
+        v=[-1,1]
+        threshold=None
+        symmetric_cmap=True
+        cmap='cold_hot'
+    if score_type == 'c_weights':
+        v=[-.003,.003]
+        threshold=None
+        symmetric_cmap=True
+        cmap='cold_hot'
+    if score_type == 'nmf_weights':
+        v=[0,1]
+        threshold=None
+        symmetric_cmap=False
+        cmap='inferno'
+    if score_type == 'tensor_decomp':
+        v=[-1,1]
+        threshold=None
+        symmetric_cmap=True
+        cmap=pigr
+    if score_type == 'tensor_decomp_inv':
+        v=[-1,1]
+        threshold=None
+        symmetric_cmap=True
+        cmap=pigr_r
+    if score_type == 'tensor_decomp_raw':
+        v=[None,None]
+        threshold=None
+        symmetric_cmap=True
+        cmap='cold_hot'
+    if score_type == 'tensor_decomp_par':
+        v=[-1,1]
+        threshold=None
+        symmetric_cmap=True
+        cmap=pigr
+    save_dir=f'../outputs/figures/{dataset}/'
+    if not os.path.exists(save_dir):
+        os.mkdir(save_dir)    
+    if data_type == '59k':
+        flatmeshes=load_flatmaps_59k() #load flatmaps
+        surf_path_msm = '../sourcedata/data/human-connectome-project-openaccess/HCP1200/100610/T1w/fsaverage_LR59k/100610.L.inflated_1.6mm_MSMAll.59k_fs_LR.surf.gii'
+        mesh59k_msm = load_meshes(example_filename=surf_path_msm) #load other meshes
+        # get data from results in plotting format
+        score_cortex_dataL = hcp.left_cortex_data(scores, fill=0, vertex_info=vertex_info)
+        score_cortex_dataR = hcp.right_cortex_data(scores, fill=0, vertex_info=vertex_info)
+        # sulcal depth paths
+        sulc_left = '../sourcedata/data/human-connectome-project-openaccess/HCP1200/100610/MNINonLinear/fsaverage_LR59k/100610.L.sulc.59k_fs_LR.shape.gii'
+        sulc_right = '../sourcedata/data/human-connectome-project-openaccess/HCP1200/100610/MNINonLinear/fsaverage_LR59k/100610.R.sulc.59k_fs_LR.shape.gii'
+        # params for view to plot
+        params = [('flat_L',score_cortex_dataL,flatmeshes.flat_left,sulc_left,'left'),\
+         ('flat_R',score_cortex_dataR,flatmeshes.flat_right,sulc_right,'right'),\
+         ('vinf_L',score_cortex_dataL,mesh59k_msm.very_inflated_left,sulc_left,'left'),\
+         ('vinf_R',score_cortex_dataR,mesh59k_msm.very_inflated_right,sulc_right,'right'),\
+        ]
+    elif data_type == '32k':
+        score_cortex_dataL = hcp.left_cortex_data(scores, fill=0)
+        score_cortex_dataR = hcp.right_cortex_data(scores, fill=0)
+    #     # sulcal depth paths
+    #     sulc_left = '../sourcedata/data/human-connectome-project-openaccess/HCP1200/100610/MNINonLinear/fsaverage_LR59k/100610.L.sulc.59k_fs_LR.shape.gii'
+    #     sulc_right = '../sourcedata/data/human-connectome-project-openaccess/HCP1200/100610/MNINonLinear/fsaverage_LR59k/100610.R.sulc.59k_fs_LR.shape.gii'
+    #     # params for view to plot
+        params = [('flat_L',score_cortex_dataL,hcp.mesh.flat_left,hcp.mesh.sulc_left,'left'),\
+         ('flat_R',score_cortex_dataR,hcp.mesh.flat_right,hcp.mesh.sulc_right,'right'),\
+         ('vinf_L',score_cortex_dataL,hcp.mesh.very_inflated_left,hcp.mesh.sulc_left,'left'),\
+         ('vinf_R',score_cortex_dataR,hcp.mesh.very_inflated_right,hcp.mesh.sulc_right,'right'),\
+        ]
+        params = [('vinf_L',score_cortex_dataL,hcp.mesh.very_inflated_left,hcp.mesh.sulc_left,'left','lateral'),\
+         ('vinf_R',score_cortex_dataR,hcp.mesh.very_inflated_right,hcp.mesh.sulc_right,'right','lateral'),\
+         ('flat_L',score_cortex_dataL,hcp.mesh.very_inflated_left,hcp.mesh.sulc_left,'left','medial'),\
+         ('flat_R',score_cortex_dataR,hcp.mesh.very_inflated_right,hcp.mesh.sulc_right,'right','medial'),\
+        ]
+    # plot each hemi and mesh, save to outputs dir
+    for name, data, mesh, sulc, hemi, view in params:
+        #figure, axes = plt.subplots(subplot_kw=dict(projection="3d"), figsize=(6,4))
+        plot_surf(mesh,\
+                data, \
+                  cmap=cmap,symmetric_cmap=symmetric_cmap, avg_method='median',#figure=fig,\
+                bg_map=sulc, colorbar=True, vmin=v[0], vmax=v[1], threshold=threshold, hemi=hemi, \
+                  view=view, \
+#                 data_alpha=np.where(data>0,1,0),\
+                data_alpha=np.abs(data), \
+#                   data_alpha=np.ones(data.shape), \
+                  data_remove=np.zeros(data.shape),output_file=f'{scratch_dir}/{name}.png')
+#combine saved maps into one with PIL
+#     if notebook==True:
+    area = (75, 140, 635, 560) #area to crop from each image
+#     else:
+#         area = (105, 190, 880, 780)
+        
+    img = Image.open(f'{scratch_dir}/flat_L.png',mode='r')
+    img = img.resize((770,720))
+    fL = img.crop(area)
+    #fL=cropped.transpose(Image.FLIP_LEFT_RIGHT)
+    w,h = img.size
+    c_area = (690, 0, w-10, h) # area of colorbar to crop
+    cbar = img.crop(c_area)
+
+    img = Image.open(f'{scratch_dir}/flat_R.png',mode='r')
+    img = img.resize((770,720))
+    fR = img.crop(area)
+
+    img = Image.open(f'{scratch_dir}/vinf_L.png',mode='r')
+    img = img.resize((770,720))
+    iL = img.crop(area)
+    #iL=cropped.transpose(Image.FLIP_LEFT_RIGHT)
+
+    img = Image.open(f'{scratch_dir}/vinf_R.png',mode='r')
+    img = img.resize((770,720))
+    iR = img.crop(area)
+
+    w,h=iR.size
+
+    new_im = Image.new('RGB', ( (w*2)+70 , h*2) ,(255, 255, 255, 1))
+    new_im.paste(fL,(0,h))
+    new_im.paste(fR,(w,h))
+    new_im.paste(iL,(0,0))
+    new_im.paste(iR,(w,0))
+    new_im.paste(cbar,(w*2,int(round(h/4))))
+
+    w,h=new_im.size
+
+    draw = ImageDraw.Draw(new_im)
+    #draw.text((0,0),f"{title}_{subject}_{feature}_{score_type}",(0,0,0)) #UNCOMMENT TO PRINT TITLE TOP LEFT
+
+    new_im.save(f'{save_dir}{title}_{subject}_{feature}_{score_type}.png')
+#     os.remove(f'{scratch_dir}/flat_L.png')
+#     os.remove(f'{scratch_dir}/flat_R.png')
+#     os.remove(f'{scratch_dir}/vinf_L.png')
+#     os.remove(f'{scratch_dir}/vinf_R.png')
+
+
+
+def plot_results_medial_midthickness_alpha(scores,score_type,data_type,vertex_info,subject,feature,dataset,title):
+    '''Inputs:
+        scores = data to plot
+        score_type = r2, r, p, z, d, raw, weights
+        data_type = 32k (3T) or 59k (7T)
+        vertex info = None or the vertex info if it is 59k data beacuse hcp_utils doesnt by default
+        subject = eg 100610 subject id for file naming
+        feature = eg as_scores plotted feature for file naming
+        dataset = eg merlin or HCP_7T which dataset?
+        title = 
+    '''
+    scratch_dir = '../tmp'
+#     scratch_dir = '/scratch/scratch/Fri/jsmentch/tmp'
+#     if not os.path.exists(scratch_dir):
+#         os.mkdir(scratch_dir)
+    if score_type == 'r2':
+        v=[0,0.5]
+        threshold=None
+        symmetric_cmap=False
+        cmap='inferno'
+    if score_type == 'r':
+        v=[0,1]
+        threshold=None
+        symmetric_cmap=False
+        cmap='inferno'
+    if score_type == 'p':
+        v=[0,0.05]
+        threshold=None
+        symmetric_cmap=False
+        cmap='inferno'
+    if score_type == 'z':
+        v=[-10,10]
+        threshold=3
+        symmetric_cmap=True
+        cmap='cold_hot'
+    if score_type == 'd':
+        v=[0,10]
+        threshold=3
+        symmetric_cmap=True
+        cmap='inferno'
+    if score_type == 'raw':
+        v=[-10,10]
+        threshold=1
+        symmetric_cmap=True
+        cmap='cold_hot'
+    if score_type == 'weights':
+        v=[-1,1]
+        threshold=None
+        symmetric_cmap=True
+        cmap='cold_hot'
+    if score_type == 'c_weights':
+        v=[-.003,.003]
+        threshold=None
+        symmetric_cmap=True
+        cmap='cold_hot'
+    if score_type == 'nmf_weights':
+        v=[0,1]
+        threshold=None
+        symmetric_cmap=False
+        cmap='inferno'
+    if score_type == 'tensor_decomp':
+        v=[-1,1]
+        threshold=None
+        symmetric_cmap=True
+        cmap=pigr
+    if score_type == 'tensor_decomp_inv':
+        v=[-1,1]
+        threshold=None
+        symmetric_cmap=True
+        cmap=pigr_r
+    if score_type == 'tensor_decomp_raw':
+        v=[None,None]
+        threshold=None
+        symmetric_cmap=True
+        cmap='cold_hot'
+    if score_type == 'tensor_decomp_par':
+        v=[-1,1]
+        threshold=None
+        symmetric_cmap=True
+        cmap=pigr
+    save_dir=f'../outputs/figures/{dataset}/'
+    if not os.path.exists(save_dir):
+        os.mkdir(save_dir)    
+    if data_type == '59k':
+        flatmeshes=load_flatmaps_59k() #load flatmaps
+        surf_path_msm = '../sourcedata/data/human-connectome-project-openaccess/HCP1200/100610/T1w/fsaverage_LR59k/100610.L.inflated_1.6mm_MSMAll.59k_fs_LR.surf.gii'
+        mesh59k_msm = load_meshes(example_filename=surf_path_msm) #load other meshes
+        # get data from results in plotting format
+        score_cortex_dataL = hcp.left_cortex_data(scores, fill=0, vertex_info=vertex_info)
+        score_cortex_dataR = hcp.right_cortex_data(scores, fill=0, vertex_info=vertex_info)
+        # sulcal depth paths
+        sulc_left = '../sourcedata/data/human-connectome-project-openaccess/HCP1200/100610/MNINonLinear/fsaverage_LR59k/100610.L.sulc.59k_fs_LR.shape.gii'
+        sulc_right = '../sourcedata/data/human-connectome-project-openaccess/HCP1200/100610/MNINonLinear/fsaverage_LR59k/100610.R.sulc.59k_fs_LR.shape.gii'
+        # params for view to plot
+        params = [('flat_L',score_cortex_dataL,flatmeshes.flat_left,sulc_left,'left'),\
+         ('flat_R',score_cortex_dataR,flatmeshes.flat_right,sulc_right,'right'),\
+         ('vinf_L',score_cortex_dataL,mesh59k_msm.very_inflated_left,sulc_left,'left'),\
+         ('vinf_R',score_cortex_dataR,mesh59k_msm.very_inflated_right,sulc_right,'right'),\
+        ]
+    elif data_type == '32k':
+        score_cortex_dataL = hcp.left_cortex_data(scores, fill=0)
+        score_cortex_dataR = hcp.right_cortex_data(scores, fill=0)
+    #     # sulcal depth paths
+    #     sulc_left = '../sourcedata/data/human-connectome-project-openaccess/HCP1200/100610/MNINonLinear/fsaverage_LR59k/100610.L.sulc.59k_fs_LR.shape.gii'
+    #     sulc_right = '../sourcedata/data/human-connectome-project-openaccess/HCP1200/100610/MNINonLinear/fsaverage_LR59k/100610.R.sulc.59k_fs_LR.shape.gii'
+    #     # params for view to plot
+        params = [('flat_L',score_cortex_dataL,hcp.mesh.flat_left,hcp.mesh.sulc_left,'left'),\
+         ('flat_R',score_cortex_dataR,hcp.mesh.flat_right,hcp.mesh.sulc_right,'right'),\
+         ('vinf_L',score_cortex_dataL,hcp.mesh.very_inflated_left,hcp.mesh.sulc_left,'left'),\
+         ('vinf_R',score_cortex_dataR,hcp.mesh.very_inflated_right,hcp.mesh.sulc_right,'right'),\
+        ]
+        params = [('vinf_L',score_cortex_dataL,hcp.mesh.inflated_left,hcp.mesh.sulc_left,'left','lateral'),\
+         ('vinf_R',score_cortex_dataR,hcp.mesh.inflated_right,hcp.mesh.sulc_right,'right','lateral'),\
+         ('flat_L',score_cortex_dataL,hcp.mesh.inflated_left,hcp.mesh.sulc_left,'left','medial'),\
+         ('flat_R',score_cortex_dataR,hcp.mesh.inflated_right,hcp.mesh.sulc_right,'right','medial'),\
+        ]
+        params = [('vinf_L',score_cortex_dataL,hcp.mesh.midthickness_left,hcp.mesh.sulc_left,'left','lateral'),\
+         ('vinf_R',score_cortex_dataR,hcp.mesh.midthickness_right,hcp.mesh.sulc_right,'right','lateral'),\
+         ('flat_L',score_cortex_dataL,hcp.mesh.midthickness_left,hcp.mesh.sulc_left,'left','medial'),\
+         ('flat_R',score_cortex_dataR,hcp.mesh.midthickness_right,hcp.mesh.sulc_right,'right','medial'),\
+        ]
+    # plot each hemi and mesh, save to outputs dir
+    for name, data, mesh, sulc, hemi, view in params:
+        #figure, axes = plt.subplots(subplot_kw=dict(projection="3d"), figsize=(6,4))
+        plot_surf(mesh,\
+                data, \
+                  cmap=cmap,symmetric_cmap=symmetric_cmap, avg_method='median',#figure=fig,\
+                bg_map=sulc, colorbar=True, vmin=v[0], vmax=v[1], threshold=threshold, hemi=hemi, \
+                  view=view, \
+#                 data_alpha=np.where(np.abs(data)>0,1,0),\
+#                 data_alpha=np.where(np.abs(data)>0.1,1,np.abs(data)*10),\
+                data_alpha=np.abs(data),\
+#                 data_alpha=np.ones(data.shape), \
+                  data_remove=np.zeros(data.shape),output_file=f'{scratch_dir}/{name}.png')
+#combine saved maps into one with PIL
+#     if notebook==True:
+    area = (75, 140, 635, 560) #area to crop from each image
+#     else:
+#         area = (105, 190, 880, 780)
+        
+    img = Image.open(f'{scratch_dir}/flat_L.png',mode='r')
+    img = img.resize((770,720))
+    fL = img.crop(area)
+    #fL=cropped.transpose(Image.FLIP_LEFT_RIGHT)
+    w,h = img.size
+    c_area = (690, 0, w-10, h) # area of colorbar to crop
+    cbar = img.crop(c_area)
+
+    img = Image.open(f'{scratch_dir}/flat_R.png',mode='r')
+    img = img.resize((770,720))
+    fR = img.crop(area)
+
+    img = Image.open(f'{scratch_dir}/vinf_L.png',mode='r')
+    img = img.resize((770,720))
+    iL = img.crop(area)
+    #iL=cropped.transpose(Image.FLIP_LEFT_RIGHT)
+
+    img = Image.open(f'{scratch_dir}/vinf_R.png',mode='r')
+    img = img.resize((770,720))
+    iR = img.crop(area)
+
+    w,h=iR.size
+
+    new_im = Image.new('RGB', ( (w*2)+70 , h*2) ,(255, 255, 255, 1))
+    new_im.paste(fL,(0,h))
+    new_im.paste(fR,(w,h))
+    new_im.paste(iL,(0,0))
+    new_im.paste(iR,(w,0))
+    new_im.paste(cbar,(w*2,int(round(h/4))))
+
+    w,h=new_im.size
+
+    draw = ImageDraw.Draw(new_im)
+    #draw.text((0,0),f"{title}_{subject}_{feature}_{score_type}",(0,0,0)) #UNCOMMENT TO PRINT TITLE TOP LEFT
+
+    new_im.save(f'{save_dir}{title}_{subject}_{feature}_{score_type}.png')
+#     os.remove(f'{scratch_dir}/flat_L.png')
+#     os.remove(f'{scratch_dir}/flat_R.png')
+#     os.remove(f'{scratch_dir}/vinf_L.png')
+#     os.remove(f'{scratch_dir}/vinf_R.png')
+
+
+
+
+
+
+
+
+
+
+def plot_results_medial_midthickness_alpha_ventralflat(scores,score_type,data_type,vertex_info,subject,feature,dataset,title):
+    '''Inputs:
+        scores = data to plot
+        score_type = r2, r, p, z, d, raw, weights
+        data_type = 32k (3T) or 59k (7T)
+        vertex info = None or the vertex info if it is 59k data beacuse hcp_utils doesnt by default
+        subject = eg 100610 subject id for file naming
+        feature = eg as_scores plotted feature for file naming
+        dataset = eg merlin or HCP_7T which dataset?
+        title = 
+    '''
+    scratch_dir = '../tmp'
+#     scratch_dir = '/scratch/scratch/Fri/jsmentch/tmp'
+#     if not os.path.exists(scratch_dir):
+#         os.mkdir(scratch_dir)
+    if score_type == 'r2':
+        v=[0,0.5]
+        threshold=None
+        symmetric_cmap=False
+        cmap='inferno'
+    if score_type == 'r':
+        v=[0,1]
+        threshold=None
+        symmetric_cmap=False
+        cmap='inferno'
+    if score_type == 'p':
+        v=[0,0.05]
+        threshold=None
+        symmetric_cmap=False
+        cmap='inferno'
+    if score_type == 'z':
+        v=[-10,10]
+        threshold=3
+        symmetric_cmap=True
+        cmap='cold_hot'
+    if score_type == 'd':
+        v=[0,10]
+        threshold=3
+        symmetric_cmap=True
+        cmap='inferno'
+    if score_type == 'raw':
+        v=[-10,10]
+        threshold=1
+        symmetric_cmap=True
+        cmap='cold_hot'
+    if score_type == 'weights':
+        v=[-1,1]
+        threshold=None
+        symmetric_cmap=True
+        cmap='cold_hot'
+    if score_type == 'c_weights':
+        v=[-.003,.003]
+        threshold=None
+        symmetric_cmap=True
+        cmap='cold_hot'
+    if score_type == 'nmf_weights':
+        v=[0,1]
+        threshold=None
+        symmetric_cmap=False
+        cmap='inferno'
+    if score_type == 'tensor_decomp':
+        v=[-1,1]
+        threshold=None
+        symmetric_cmap=True
+        cmap=pigr
+    if score_type == 'tensor_decomp_inv':
+        v=[-1,1]
+        threshold=None
+        symmetric_cmap=True
+        cmap=pigr_r
+    if score_type == 'tensor_decomp_raw':
+        v=[None,None]
+        threshold=None
+        symmetric_cmap=True
+        cmap='cold_hot'
+    if score_type == 'tensor_decomp_par':
+        v=[-1,1]
+        threshold=None
+        symmetric_cmap=True
+        cmap=pigr
+    save_dir=f'../outputs/figures/{dataset}/'
+    if not os.path.exists(save_dir):
+        os.mkdir(save_dir)    
+    if data_type == '59k':
+        flatmeshes=load_flatmaps_59k() #load flatmaps
+        surf_path_msm = '../sourcedata/data/human-connectome-project-openaccess/HCP1200/100610/T1w/fsaverage_LR59k/100610.L.inflated_1.6mm_MSMAll.59k_fs_LR.surf.gii'
+        mesh59k_msm = load_meshes(example_filename=surf_path_msm) #load other meshes
+        # get data from results in plotting format
+        score_cortex_dataL = hcp.left_cortex_data(scores, fill=0, vertex_info=vertex_info)
+        score_cortex_dataR = hcp.right_cortex_data(scores, fill=0, vertex_info=vertex_info)
+        # sulcal depth paths
+        sulc_left = '../sourcedata/data/human-connectome-project-openaccess/HCP1200/100610/MNINonLinear/fsaverage_LR59k/100610.L.sulc.59k_fs_LR.shape.gii'
+        sulc_right = '../sourcedata/data/human-connectome-project-openaccess/HCP1200/100610/MNINonLinear/fsaverage_LR59k/100610.R.sulc.59k_fs_LR.shape.gii'
+        # params for view to plot
+        params = [('flat_L',score_cortex_dataL,flatmeshes.flat_left,sulc_left,'left'),\
+         ('flat_R',score_cortex_dataR,flatmeshes.flat_right,sulc_right,'right'),\
+         ('vinf_L',score_cortex_dataL,mesh59k_msm.very_inflated_left,sulc_left,'left'),\
+         ('vinf_R',score_cortex_dataR,mesh59k_msm.very_inflated_right,sulc_right,'right'),\
+        ]
+    elif data_type == '32k':
+        score_cortex_dataL = hcp.left_cortex_data(scores, fill=0)
+        score_cortex_dataR = hcp.right_cortex_data(scores, fill=0)
+    #     # sulcal depth paths
+    #     sulc_left = '../sourcedata/data/human-connectome-project-openaccess/HCP1200/100610/MNINonLinear/fsaverage_LR59k/100610.L.sulc.59k_fs_LR.shape.gii'
+    #     sulc_right = '../sourcedata/data/human-connectome-project-openaccess/HCP1200/100610/MNINonLinear/fsaverage_LR59k/100610.R.sulc.59k_fs_LR.shape.gii'
+    #     # params for view to plot
+        params = [('flat_L',score_cortex_dataL,hcp.mesh.flat_left,hcp.mesh.sulc_left,'left'),\
+         ('flat_R',score_cortex_dataR,hcp.mesh.flat_right,hcp.mesh.sulc_right,'right'),\
+         ('vinf_L',score_cortex_dataL,hcp.mesh.very_inflated_left,hcp.mesh.sulc_left,'left'),\
+         ('vinf_R',score_cortex_dataR,hcp.mesh.very_inflated_right,hcp.mesh.sulc_right,'right'),\
+        ]
+        params = [('vinf_L',score_cortex_dataL,hcp.mesh.inflated_left,hcp.mesh.sulc_left,'left','lateral'),\
+         ('vinf_R',score_cortex_dataR,hcp.mesh.inflated_right,hcp.mesh.sulc_right,'right','lateral'),\
+         ('flat_L',score_cortex_dataL,hcp.mesh.inflated_left,hcp.mesh.sulc_left,'left','medial'),\
+         ('flat_R',score_cortex_dataR,hcp.mesh.inflated_right,hcp.mesh.sulc_right,'right','medial'),\
+        ]
+        params = [('vinf_L',score_cortex_dataL,hcp.mesh.midthickness_left,hcp.mesh.sulc_left,'left','ventral'),\
+         ('vinf_R',score_cortex_dataR,hcp.mesh.midthickness_right,hcp.mesh.sulc_right,'right','ventral'),\
+         ('flat_L',score_cortex_dataL,hcp.mesh.flat_left,hcp.mesh.sulc_left,'left','lateral'),\
+         ('flat_R',score_cortex_dataR,hcp.mesh.flat_right,hcp.mesh.sulc_right,'right','lateral'),\
+        ]
+    # plot each hemi and mesh, save to outputs dir
+    for name, data, mesh, sulc, hemi, view in params:
+        #figure, axes = plt.subplots(subplot_kw=dict(projection="3d"), figsize=(6,4))
+        plot_surf(mesh,\
+                data, \
+                  cmap=cmap,symmetric_cmap=symmetric_cmap, avg_method='median',#figure=fig,\
+                bg_map=sulc, colorbar=True, vmin=v[0], vmax=v[1], threshold=threshold, hemi=hemi, \
+                  view=view, \
+#                 data_alpha=np.where(np.abs(data)>0,1,0),\
+#                 data_alpha=np.where(np.abs(data)>0.1,1,np.abs(data)*10),\
+                data_alpha=np.abs(data),\
+#                 data_alpha=np.ones(data.shape), \
+                  data_remove=np.zeros(data.shape),output_file=f'{scratch_dir}/{name}.png')
+#combine saved maps into one with PIL
+#     if notebook==True:
+    area = (75, 140, 635, 560) #area to crop from each image
+#     else:
+#         area = (105, 190, 880, 780)
+        
+    img = Image.open(f'{scratch_dir}/flat_L.png',mode='r')
+    img = img.resize((770,720))
+    cropped = img.crop(area)
+    fL=cropped.transpose(Image.FLIP_LEFT_RIGHT)
+    w,h = img.size
+    c_area = (690, 0, w-10, h) # area of colorbar to crop
+    cbar = img.crop(c_area)
+
+    img = Image.open(f'{scratch_dir}/flat_R.png',mode='r')
+    img = img.resize((770,720))
+    fR = img.crop(area)
+
+    img = Image.open(f'{scratch_dir}/vinf_L.png',mode='r')
+    img = img.resize((770,720))
+    cropped = img.crop(area)
+    cropped_flipped=cropped.transpose(Image.FLIP_LEFT_RIGHT)
+    iL=cropped_flipped.transpose(Image.FLIP_TOP_BOTTOM)
+
+    img = Image.open(f'{scratch_dir}/vinf_R.png',mode='r')
+    img = img.resize((770,720))
+    adjust=80
+    area2 = (75, 140-adjust, 635, 560-adjust) #area to crop from each image Left, Top, Right, Botton
+    iR = img.crop(area2)
 
     w,h=iR.size
 
