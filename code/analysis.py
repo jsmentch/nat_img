@@ -238,8 +238,8 @@ def plot_results(scores,score_type,data_type,vertex_info,subject,feature,dataset
 #     if not os.path.exists(scratch_dir):
 #         os.mkdir(scratch_dir)
     if score_type == 'r2':
-        v=[0,0.5]
-        threshold=None
+        v=[0,0.05]
+        threshold=0.005
         symmetric_cmap=False
         cmap='inferno'
     if score_type == 'r':
@@ -268,8 +268,13 @@ def plot_results(scores,score_type,data_type,vertex_info,subject,feature,dataset
         symmetric_cmap=True
         cmap='cold_hot'
     if score_type == 'weights':
-        v=[-1,1]
-        threshold=None
+        v=[-0.1,0.1]
+        threshold=0.01
+        symmetric_cmap=True
+        cmap='cold_hot'
+    if score_type == 'weights_ind':
+        v=[-0.3,0.3]
+        threshold=0.05
         symmetric_cmap=True
         cmap='cold_hot'
     if score_type == 'c_weights':
@@ -307,6 +312,21 @@ def plot_results(scores,score_type,data_type,vertex_info,subject,feature,dataset
         threshold=None
         symmetric_cmap=False
         cmap='inferno'
+    if score_type == 'yibei':
+        v=[0.1,1]
+        threshold=None
+        symmetric_cmap=False
+        cmap='inferno'
+    if score_type == 'a_v':
+        v=[0,1]
+        threshold=None
+        symmetric_cmap=False
+        cmap='bwr'
+    if score_type == 'a_v_diff':
+        v=[-1,1]
+        threshold=None
+        symmetric_cmap=False
+        cmap='bwr'
     save_dir=f'../outputs/figures/{dataset}/'
     if not os.path.exists(save_dir):
         os.mkdir(save_dir)    
@@ -481,6 +501,16 @@ def plot_results_inputalpha(scores,scores_alpha,score_type,data_type,vertex_info
         threshold=None
         symmetric_cmap=False
         cmap='inferno'
+    if score_type == 'a_v':
+        v=[0,1]
+        threshold=None
+        symmetric_cmap=False
+        cmap='bwr'
+    if score_type == 'a_v_diff':
+        v=[-1,1]
+        threshold=None
+        symmetric_cmap=False
+        cmap='bwr'
     save_dir=f'../outputs/figures/{dataset}/'
     if not os.path.exists(save_dir):
         os.mkdir(save_dir)    
